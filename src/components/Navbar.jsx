@@ -1,4 +1,25 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const menuVariants = {
+  hidden: { y: -30, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.08,
+      duration: 0.3,
+      ease: "easeOut"
+    }
+  },
+  exit: { y: -30, opacity: 0, transition: { duration: 0.2 } }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } }
+};
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,16 +31,24 @@ const Navbar = () => {
         </span>
         Timilehin Adekunle
       </h1>
-           
-      {/* Hamburger button for mobile */}
+      {/* Hamburger button for mobile with framer-motion animation */}
       <button
         className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-label="Toggle menu"
       >
-        <span className={`block h-0.5 w-7 bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-        <span className={`block h-0.5 w-7 bg-white my-1 transition-all duration-300 origin-center ${menuOpen ? 'opacity-0' : ''}`}></span>
-        <span className={`block h-0.5 w-7 bg-white transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        <motion.span
+          animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+          className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
+        />
+        <motion.span
+          animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+          className="block h-0.5 w-7 bg-white my-1 transition-all duration-300 origin-center"
+        />
+        <motion.span
+          animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+          className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
+        />
       </button>
       {/* Desktop menu */}
       <ul className="hidden md:flex gap-6 text-light text-sm">
@@ -38,26 +67,35 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
-      {/* Mobile menu */}
-      <ul
-        className={`md:hidden absolute top-full left-0 w-full bg-dark text-light text-center flex flex-col gap-6 py-6 shadow-lg transition-all duration-300 ${menuOpen ? 'block' : 'hidden'}`}
-      >
-        <li><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></li>
-        <li><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></li>
-        <li><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></li>
-        <li><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></li>
-        <li>
-          <a
-            href="/resume.pdf"
-            className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 transition block mx-auto w-4/5"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
+      {/* Mobile menu with framer-motion animation */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.ul
+            key="mobile-menu"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={menuVariants}
+            className="md:hidden absolute top-full left-0 w-full bg-dark text-light text-center flex flex-col gap-6 py-6 shadow-lg"
           >
-            My Resume
-          </a>
-        </li>
-      </ul>
+            <motion.li variants={itemVariants}><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></motion.li>
+            <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
+            <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
+            <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
+            <motion.li variants={itemVariants}>
+              <a
+                href="/resume.pdf"
+                className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 transition block mx-auto w-4/5"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+              >
+                My Resume
+              </a>
+            </motion.li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
