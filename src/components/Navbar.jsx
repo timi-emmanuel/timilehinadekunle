@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuVariants = {
@@ -23,8 +23,42 @@ const itemVariants = {
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-dark px-8 py-4 flex justify-between items-center shadow-sm">
+    <motion.nav
+      initial={false}
+      animate={scrolled ? "scrolled" : "top"}
+      variants={{
+        top: {
+          width: "100%",
+          left: 0,
+          x: 0,
+          borderRadius: "0px",
+          top: 0,
+          borderWidth: 0,
+        },
+        scrolled: {
+          width: "95%",
+          left: "50%",
+          x: "-50%",
+          borderRadius: "9999px",
+          top: 16, // 1rem (top-4)
+          borderWidth: 2,
+        },
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      className="fixed z-50 bg-dark/60 backdrop-blur-md px-8 py-4 flex justify-between items-center shadow-sm border-primary mx-auto"
+      style={{ position: "fixed", borderStyle: 'solid' }}
+    >
       <h1 className="text-white text-xl font-bold font-alt flex items-center gap-2">
         <span className="flex items-center justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
           T.A
@@ -96,7 +130,7 @@ const Navbar = () => {
           </motion.ul>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   )
 }
 
