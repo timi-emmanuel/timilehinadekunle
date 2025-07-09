@@ -56,7 +56,7 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-md px-8 py-4 flex justify-between items-center shadow-sm border-primary mx-auto"
+      className="fixed z-50 bg-dark/60 backdrop-blur-sm px-3 md:px-8 py-4 flex justify-between items-center shadow-sm border-primary mx-auto"
       style={{ position: "fixed", borderStyle: 'solid' }}
     >
       <h1 className="text-white text-xl font-bold font-alt flex items-center gap-2">

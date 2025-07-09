@@ -23,7 +23,7 @@ const Hero = () => {
   return (
     <motion.section
       id="home"
-      className="bg-dark text-white min-h-screen flex items-center justify-center px-6 md:px-16"
+      className="bg-dark text-white min-h-screen flex items-center justify-center px-6 md:px-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -69,7 +69,7 @@ const Hero = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-primary text-primary px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition"
+              className="border border-primary text-primary px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition duration-200 ease-linear"
             >
               My Resume
             </a>
