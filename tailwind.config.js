@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: '#0d1117', // Background
+        dark: '#20232a', // Background
         grayDark: '#161b22', // Card/Section BG
         primary: '#9f3fff', // Primary Accent
         white: '#ffffff', // Heading Text
@@ -12,8 +12,11 @@ export default {
         light: '#8b949e', // Light Text Contrast
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'], // Default choice
+        sans: ['Poppins', 'sans-serif'], // Default body font
+        lora: ['Lora', 'serif'], // Lora for headings or special use
         alt: ['Inter', 'sans-serif'], // Secondary if you want variation
+        openSans: ['Open-Sans', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
     },
   },

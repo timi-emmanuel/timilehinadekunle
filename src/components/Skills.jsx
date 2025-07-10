@@ -33,7 +33,7 @@ const skillVariants = {
 const Skills = () => {
   return (
     <motion.section
-      className="bg-dark text-white py-20 px-6 md:px-16 group"
+      className="bg-dark text-white py-20 px-6 md:px-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -57,7 +57,7 @@ const Skills = () => {
                 {skills.map((skill, i) => (
                   <motion.li
                     key={i}
-                    className="bg-grayDark text-light px-4 py-2 rounded-full border border-primary text-sm transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-white/10 hover:text-primary group-hover:cursor-pointer"
+                    className="bg-grayDark text-light px-4 py-2 rounded-full border border-primary text-sm transition duration-300 hover:scale-110 hover:shadow-lg hover:bg-gradient-to-r hover:from-primary/80 hover:to-secondary/80 hover:text-white"
                     variants={skillVariants}
                   >
                     {skill}

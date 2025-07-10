@@ -35,37 +35,38 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={false}
+      initial="top"
       animate={scrolled ? "scrolled" : "top"}
       variants={{
         top: {
-          width: "100%",
-          left: 0,
-          x: 0,
+          width: "95%",
+          left: "50%",
+          x: "-50%",
           borderRadius: "0px",
           top: 0,
           borderWidth: 0,
         },
         scrolled: {
-          width: "95%",
+          width: "90%",
           left: "50%",
           x: "-50%",
           borderRadius: "9999px",
-          top: 16, // 1rem (top-4)
+          top: 16,
           borderWidth: 2,
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-sm px-3 md:px-8 py-4 flex justify-between items-center shadow-sm border-primary mx-auto"
+      className="fixed z-50 bg-dark/60 backdrop-blur-sm py-2 md:py-3 px-4 md:px-8 flex justify-between items-center shadow-sm border-primary"
       style={{ position: "fixed", borderStyle: 'solid' }}
     >
-      <h1 className="text-white text-xl font-bold font-alt flex items-center gap-2">
-        <span className="flex items-center justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
+      <h1 className="text-white text-xl font-medium font-lora tracking-wide flex items-center gap-2">
+        <span className="flex items-center font-lora justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
           T.A
         </span>
         Timilehin Adekunle
       </h1>
-      {/* Hamburger button for mobile with framer-motion animation */}
+
+      {/* Hamburger button for mobile */}
       <button
         className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
         onClick={() => setMenuOpen((prev) => !prev)}
@@ -84,6 +85,7 @@ const Navbar = () => {
           className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
         />
       </button>
+
       {/* Desktop menu */}
       <ul className="hidden md:flex gap-6 text-light text-sm">
         <li><a href="#home" className="hover:text-primary">Home</a></li>
@@ -101,7 +103,8 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
-      {/* Mobile menu with framer-motion animation */}
+
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.ul
@@ -131,7 +134,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </motion.nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
