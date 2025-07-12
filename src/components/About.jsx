@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import profileImage from "../assets/hero-image.png";
+import Skills from "./Skills";
+// import profileImage from "../assets/about-image.png"; // replace with your real image
 
 const containerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -6,16 +9,16 @@ const containerVariants = {
     opacity: 1,
     y: 0,
     transition: {
+      duration: 0.6,
+      ease: "easeOut",
       when: "beforeChildren",
       staggerChildren: 0.15,
-      duration: 0.5,
-      ease: "easeOut",
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
@@ -23,45 +26,83 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="bg-grayDark text-white py-20 px-6 md:px-16"
+      className="py-16 bg-[#0e0e0e] text-light "
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
+
     >
-      <motion.div className="max-w-4xl mx-auto" variants={containerVariants}>
-        <motion.h2
-          className="text-3xl font-bold text-primary mb-4"
-          variants={itemVariants}
-        >
-          About Me
-        </motion.h2>
-        <motion.p
-          className="text-light leading-relaxed mb-6"
-          variants={itemVariants}
-        >
-          I'm Timilehin, a self-taught frontend developer with a mechanical
-          engineering background. I specialize in building fast, responsive, and
-          intuitive web apps using React, Tailwind, and Firebase.
-        </motion.p>
+      <div className="flex items-center gap-4 md:w-[85%] mx-auto">
+           <h2 className="text-5xl font-bold text-white relative inline-flex items-end">
+              About
+           <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
+                  &#8226;
+           </span>
+          </h2>
+           <div className="w-full h-[0.1em] bg-gray-600"></div>
+          
+         </div>
+
+      <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row-reverse mt-8 gap-12">
+        
+        {/* Skills */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6 text-center"
-          variants={containerVariants}
+          variants={itemVariants}
+          className="w-full md:w-1/2 flex justify-centr "
         >
-          <motion.div variants={itemVariants}>
-            <p className="text-3xl font-bold text-primary">5+</p>
-            <p className="text-light">Projects Completed</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="text-3xl font-bold text-primary">2+</p>
-            <p className="text-light">Client Projects</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="text-3xl font-bold text-primary">1</p>
-            <p className="text-light">Hackathon Escrow App</p>
-          </motion.div>
+         <Skills/>
         </motion.div>
-      </motion.div>
+
+        {/* Text */}
+        <motion.div
+          variants={itemVariants}
+          className="w-full md:w-1/2 text-left space-y-6"
+        >      
+          <div>
+             <p className="text-base text-light leading-relaxed">
+            I'm Timilehin Adekunle, a passionate frontend developer with a
+            mechanical engineering background. I love building clean, responsive
+            UIs and modern web apps that feel great to use. My tools of choice
+            include React, Tailwind CSS, and Firebase — and I’m currently
+            exploring TypeScript and Next.js to further improve performance and
+            scalability in my projects.
+          </p>
+          <p className="text-base text-light leading-relaxed">
+            Over time, I’ve built a range of projects — from sleek landing pages
+            and dashboards to real-time tools with authentication and database
+            integration. I take pride in attention to detail, problem-solving,
+            and learning fast. Whether it’s a design-heavy interface or a
+            functional frontend challenge, I enjoy bringing ideas to life.
+          </p>
+          <p className="text-base text-light leading-relaxed">
+            Outside of code, I love skyscrapers, great storytelling, and the
+            sitcom <em>Friends</em>. I believe software should feel as good as it
+            works — and I’m here to create meaningful digital experiences that do
+            just that.
+          </p>
+          </div>
+          <div>
+            {/* Stats Section */}
+            <div className="flex gap-8 mt-8 flex-wrap">
+              <div className="flex flex-col items-center justify-center rounded-xl px-2 py-0 min-w-[100px]">
+                <span className="text-3xl font-bold text-primary">2+</span>
+                <span className="text-light text-sm mt-1 whitespace-nowrap">Years Experience</span>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-xl px-2 py-0 min-w-[100px]">
+                <span className="text-3xl font-bold text-primary">10+</span>
+                <span className="text-light text-sm mt-1 whitespace-nowrap">Projects Completed</span>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-xl px-2 py-0 min-w-[100px]">
+                <span className="text-3xl font-bold text-primary">100%</span>
+                <span className="text-light text-sm mt-1 whitespace-nowrap">Client Satisfaction</span>
+              </div>
+            </div>
+          </div>
+         
+        </motion.div>
+
+      </div>
     </motion.section>
   );
 };

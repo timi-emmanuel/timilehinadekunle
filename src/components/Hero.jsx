@@ -59,7 +59,7 @@ const Hero = () => {
       variants={containerVariants}
     >
       <motion.div
-        className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center mt-12 pt-12"
+        className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center  pt-8"
         variants={containerVariants}
       >
         {/* Left: Text Content */}
@@ -142,14 +142,14 @@ const Hero = () => {
         >
           <div className="absolute inset-0 flex items-center justify-center z-0">
             <div
-              className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-primary/20 blur-2xl"
+              className="w-72 h-72 md:w-[30rem] md:h-[30rem]] rounded-full bg-primary/20 blur-2xl"
               style={{ filter: "blur(60px)" }}
             ></div>
           </div>
           <motion.img
             src={heroImage}
             alt="Developer Illustration"
-            className="w-80 h-auto z-10 relative"
+            className="w-[30rem] h-auto z-10 relative"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}

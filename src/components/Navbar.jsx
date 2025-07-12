@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X, Linkedin, Github } from "lucide-react";
 
 const menuVariants = {
   hidden: { y: -30, opacity: 0 },
@@ -56,14 +57,14 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-sm py-2 md:py-3 px-4 md:px-8 flex justify-between items-center shadow-sm border-primary"
+      className="fixed z-50 bg-dark/60 backdrop-blur-md py-2 md:py-3 px-4 md:px-8 flex justify-between items-center shadow-sm border-primary"
       style={{ position: "fixed", borderStyle: 'solid' }}
     >
       <h1 className="text-white text-xl font-medium font-lora tracking-wide flex items-center gap-2">
         <span className="flex items-center font-lora justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
-          T.A
+          T.
         </span>
-        Timilehin Adekunle
+        TimTech
       </h1>
 
       {/* Hamburger button for mobile */}
@@ -87,7 +88,7 @@ const Navbar = () => {
       </button>
 
       {/* Desktop menu */}
-      <ul className="hidden md:flex gap-6 text-light text-sm">
+      <ul className="hidden md:flex gap-6 text-light text-sm items-center">
         <li><a href="#home" className="hover:text-primary">Home</a></li>
         <li><a href="#about" className="hover:text-primary">About</a></li>
         <li><a href="#projects" className="hover:text-primary">Projects</a></li>
@@ -100,6 +101,22 @@ const Navbar = () => {
             rel="noopener noreferrer"
           >
             My Resume
+          </a>
+        </li>
+        {/* Social icons */}
+        <li>
+          <a href="https://x.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
+            <X size={22} />
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
+            <Linkedin size={22} />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
+            <Github size={22} />
           </a>
         </li>
       </ul>
