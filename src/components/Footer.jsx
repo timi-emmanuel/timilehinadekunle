@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light py-6 text-center text-sm">
+    <footer className="bg-grayDark text-light py-6 text-center text-sm">
       <p>&copy; {new Date().getFullYear()} Timilehin Adekunle. All rights reserved.</p>
       <div className="flex justify-center gap-4 mt-2">
         <a href="https://github.com/yourusername" target="_blank" className="hover:text-primary">GitHub</a>

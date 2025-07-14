@@ -43,23 +43,26 @@ const letter = {
   },
 };
 
-
-
-
 const Hero = () => {
   const name = "I'm Timilehin,";
 
   return (
     <motion.section
       id="home"
-       className="text-white min-h-screen flex items-center overflow-hidden"
+      className="relative text-white min-h-screen flex items-center overflow-hidden bg-dark mt-16 md:mt-0"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#444_1px,transparent_1px)] [background-size:24px_24px] opacity-10 animate-pulse-slow z-0"></div>
+
+      {/* Gradient Glow Blob */}
+      <div className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary via-purple-600 to-indigo-500 rounded-full blur-[120px] opacity-30 left-1/2 -translate-x-1/2 top-10 z-0"></div>
+
       <motion.div
-        className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center  pt-8"
+        className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center pt-8 relative z-10"
         variants={containerVariants}
       >
         {/* Left: Text Content */}
@@ -101,8 +104,11 @@ const Hero = () => {
               </motion.span>
             </motion.div>
 
-            <span className="text-white text-4xl font-sans block px-6 md:px-16">
-              Frontend Developer
+            <span className="text-white text-4xl font-sans block px-6 md:px-16 relative">
+              <span className="relative inline-block">
+                Frontend Developer
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse opacity-60"></span>
+              </span>
             </span>
           </motion.h1>
 
@@ -120,7 +126,7 @@ const Hero = () => {
           >
             <a
               href="#contact"
-              className="bg-primary text-white px-5 py-3 hover:opacity-70 transition duration-200 ease-linear"
+              className="bg-primary text-white px-5 py-3 rounded hover:opacity-80 hover:scale-105 transition-transform duration-200"
             >
               Got a project?
             </a>
@@ -128,7 +134,7 @@ const Hero = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-primary text-primary px-5 py-3 hover:bg-primary hover:text-white transition duration-200 ease-linear"
+              className="border border-primary text-primary px-5 py-3 rounded hover:bg-primary hover:text-white hover:scale-105 transition-transform duration-200"
             >
               My Resume
             </a>
@@ -140,25 +146,33 @@ const Hero = () => {
           className="flex justify-center flex-1 relative"
           variants={itemVariants}
         >
-          <div className="absolute inset-0 flex items-center justify-center z-0">
-            <div
-              className="w-72 h-72 md:w-[30rem] md:h-[30rem]] rounded-full bg-primary/20 blur-2xl"
-              style={{ filter: "blur(60px)" }}
-            ></div>
-          </div>
           <motion.img
             src={heroImage}
             alt="Developer Illustration"
-            className="w-[30rem] h-auto z-10 relative"
+            className="w-[30rem] h-auto z-10 relative rounded-xl shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
           />
+
+          {/* Floating Tech Bubbles */}
+          <div className="absolute top-8 right-10 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-lg animate-bounce-slow">
+            React.js
+          </div>
+          <div className="absolute bottom-16 left-10 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-md animate-pulse-slow">
+            Firebase
+          </div>
         </motion.div>
       </motion.div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-60 z-10">
+        ↓
+      </div>
     </motion.section>
   );
 };
 
 export default Hero;
+

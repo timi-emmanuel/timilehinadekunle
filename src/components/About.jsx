@@ -33,7 +33,7 @@ const About = () => {
       variants={containerVariants}
 
     >
-      <div className="flex items-center gap-4 md:w-[85%] mx-auto">
+      <div className="flex items-center gap-4 w-[90%] md:w-[85%] mx-auto">
            <h2 className="text-5xl font-bold text-white relative inline-flex items-end">
               About
            <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
@@ -42,14 +42,14 @@ const About = () => {
           </h2>
            <div className="w-full h-[0.1em] bg-gray-600"></div>
           
-         </div>
+      </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row-reverse mt-8 gap-12">
         
         {/* Skills */}
         <motion.div
           variants={itemVariants}
-          className="w-full md:w-1/2 flex justify-centr "
+          className="w-full md:w-1/2 flex "
         >
          <Skills/>
         </motion.div>

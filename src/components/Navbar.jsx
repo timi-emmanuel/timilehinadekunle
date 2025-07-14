@@ -74,7 +74,7 @@ const Navbar = () => {
         aria-label="Toggle menu"
       >
         <motion.span
-          animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+          animate={menuOpen ? { rotate: 45, y: 2 } : { rotate: 0, y: 0 }}
           className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
         />
         <motion.span
@@ -82,18 +82,18 @@ const Navbar = () => {
           className="block h-0.5 w-7 bg-white my-1 transition-all duration-300 origin-center"
         />
         <motion.span
-          animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+          animate={menuOpen ? { rotate: -45, y: -10 } : { rotate: 0, y: 0 }}
           className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
         />
       </button>
 
       {/* Desktop menu */}
-      <ul className="hidden md:flex gap-6 text-light text-sm items-center">
+      <ul className="hidden md:flex gap-6 text-white text-sm items-center">
         <li><a href="#home" className="hover:text-primary">Home</a></li>
         <li><a href="#about" className="hover:text-primary">About</a></li>
         <li><a href="#projects" className="hover:text-primary">Projects</a></li>
         <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-        <li>
+        {/* <li>
           <a
             href="/resume.pdf"
             className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 transition"
@@ -102,26 +102,31 @@ const Navbar = () => {
           >
             My Resume
           </a>
-        </li>
+        </li> */}        
+      </ul>
+
+      <ul className="hidden md:flex text-white gap-6">
         {/* Social icons */}
         <li>
-          <a href="https://x.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
-            <X size={22} />
+          <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary">
+            {/* Lucide Twitter/X icon */}
+            <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17.5 6.5L6.5 17.5" />
+              <path d="M6.5 6.5l11 11" />
+            </svg>
           </a>
         </li>
         <li>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
+          <a href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
             <Linkedin size={22} />
           </a>
         </li>
         <li>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
+          <a href="https://github.com/timi-emmanuel" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
             <Github size={22} />
           </a>
         </li>
       </ul>
-
-      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.ul
@@ -136,16 +141,23 @@ const Navbar = () => {
             <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
             <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
             <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
-            <motion.li variants={itemVariants}>
-              <a
-                href="/resume.pdf"
-                className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 transition block mx-auto w-4/5"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMenuOpen(false)}
-              >
-                My Resume
-              </a>
+            <motion.li variants={itemVariants} className="pt-2">
+              <span className="block text-xs text-gray-400 mb-2">Connect with me</span>
+              <div className="flex justify-center gap-6">
+                <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
+                  {/* Lucide Twitter/X icon */}
+                  <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.5 6.5L6.5 17.5" />
+                    <path d="M6.5 6.5l11 11" />
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
+                  <Linkedin size={22} />
+                </a>
+                <a href="https://github.com/timi-emmanuel" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
+                  <Github size={22} />
+                </a>
+              </div>
             </motion.li>
           </motion.ul>
         )}

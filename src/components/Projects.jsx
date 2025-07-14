@@ -1,109 +1,163 @@
-import { motion } from "framer-motion";
-import nationaryImage from "../assets/projects/nationary.png"
-import shortlyImage from "../assets/projects/Shortly.png"
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
     title: "Shortly",
-    image: shortlyImage, // Replace with actual image or leave for now
     description: "A modern URL shortener with Firebase Auth, analytics, and animations.",
-    tech: ["React", "Tailwind", "Firebase"],
+    tech: ["React", "Tailwind", "Firebase","Framer"],
     live: "https://shortly-ivory-theta.vercel.app/",
-    github: "https://github.com/yourusername/shortly",
+    github: "https://github.com/timi-emmanuel/shortly",
+    image: "/public/projects/shortly.png",
   },
-  // {
-  //   title: "QuiqOrder",
-  //   image: "/projects/quiqorder.png", // Replace with actual image or leave for now
-  //   description: "An AI-powered restaurant chatbot for order automation and admin dashboard.",
-  //   tech: ["React", "Node.js", "OpenAI", "Firebase"],
-  //   live: "https://quiqorder.com/",
-  //   github: "https://github.com/yourusername/quiqorder",
-  // },
-   {
-    title: "Nationary",
-    image:nationaryImage, // Replace with actual image or leave for now
-    description: "A resource for finding details about any country in the world",
-    tech: ["React", "Node.js", "OpenAI", "Firebase"],
-    live: "https://quiqorder.com/",
-    github: "https://github.com/yourusername/quiqorder",
+  {
+    title: "QuiqOrder",
+    description: "An AI-powered restaurant chatbot for order automation and admin dashboard.",
+    tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack","Node.js"],
+    live: "https://www.quiqorderng.com/",
+    github: "https://github.com/timi-emmanuel/shortly",
+    image: "/public/projects/quiqorder.png",
   },
+  {
+  title: "Nationary",
+  description: "An elegant dictionary web app with sleek UI, search suggestions, and audio pronunciations.",
+  tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
+  live: "https://nationary.vercel.app/",
+  github: "https://github.com/timi-ema/nationary",
+  image: "/public/projects/nationary.png", 
+},
+{
+  title: "Huddle Landing Page",
+  description: "A responsive landing page challenge built with clean layout, hover effects, and mobile-first design.",
+  tech: ["HTML", "CSS", "Responsive Design"],
+  live: "https://huddle-page-timmy.vercel.app/",
+  github: "https://github.com/timi-emmanuel/huddle-landing-page",
+  image: "/public/projects/huddle.png", 
+},
+
 ];
 
-const container = {
-  hidden: {},
+const containerVariants = {
+  hidden: { opacity: 0, y: 40 },
   visible: {
+    opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: 0.15,
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+      duration: 0.6,
+      ease: "easeOut",
     },
   },
 };
 
-const card = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
     <motion.section
       id="projects"
-      className="bg-dark text-white py-20 px-6 md:px-16"
+      ref={sectionRef}
+      className="relative bg-dark text-white py-20 px-6 md:px-24 overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={container}
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
     >
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-primary mb-12 text-center">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-10">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-grayDark rounded-lg shadow-md overflow-hidden hover:shadow-lg transition group"
-              variants={card}
-            >
-              <div className="w-full h-60 bg-gray-800">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) =>
-                    (e.currentTarget.src = "https://via.placeholder.com/500x300?text=Project+Preview")
-                  }
-                />
-              </div>
-              <div className="p-6 flex flex-col gap-4">
-                <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                <p className="text-light text-sm">{project.description}</p>
-                <div className="flex flex-wrap gap-2 text-sm text-primary">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 bg-dark border border-primary rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+      {/* Grid Background */}
+      <motion.div
+        className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none z-0"
+        style={{ y: yBg }}
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="flex  items-center gap-4 mx-auto mb-12 p-2 md:p-0">           
+           <div className="w-full h-[0.1em] bg-gray-600"></div>   
+           <h2 className="text-5xl  font-bold text-white relative inline-flex items-end">
+              Project
+           <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
+                  &#8226;
+           </span>
+          </h2>       
+        </div>
+
+        <div className="space-y-20">
+          {projects.map((project, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <motion.div
+                key={idx}
+                variants={cardVariants}
+                
+              >
+                
+                <div className={`flex flex-col-reverse md:flex-row  ${
+                  isEven ? "md:flex-row-reverse" : ""
+                }  gap-6 md:gap-12`}>
+                  <div className="flex-1">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="rounded-lg shadow-lg w-full transition-transform duration-300 ease-out transform hover:scale-105"
+                  />
                 </div>
-                <div className="flex gap-4 mt-2">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 text-sm"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    className="border border-light text-light px-4 py-2 rounded hover:bg-light hover:text-dark text-sm"
-                  >
-                    GitHub
-                  </a>
+
+                <div className="flex-1 text-left">
+                  <h3 className="text-2xl font-semibold mb-6">{project.title}</h3>
+                  <div className="flex flex-wrap justify-cnter md:justify-start gap-2 text-sm text-primary mb-4">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-gray-600 text-gray-200  px-2 py-1 rounded-full  "
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>                  
+                  <p className="text-light mb-4">{project.description}</p>
+                  
+                    <div className="flex justify-start gap-4 items-center">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-primary text-white px-3 py-2 rounded flex items-center gap-2 hover:opacity-90 transition"
+                        aria-label="GitHub"
+                      >
+                        <Github size={18} />
+                        GitHub
+                      </a>
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-light underline underline-offset-8 rounded flex items-center gap-2 hover:text-primary transition"
+                        aria-label="Live Project"
+                      >
+                        <ExternalLink size={18} />
+                        Live
+                      </a>
+                    </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+                
+
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </motion.section>
