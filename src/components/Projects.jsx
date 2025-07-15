@@ -1,6 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import ShortlyImg from "../assets/Shortly.png";
+import QuiqOrderImg from "../assets/quiqorder.png";
+import NationaryImg from "../assets/nationary.png";
+import HuddleImg from "../assets/huddle.png";
 
 const projects = [
   {
@@ -9,7 +13,7 @@ const projects = [
     tech: ["React", "Tailwind", "Firebase","Framer"],
     live: "https://shortly-ivory-theta.vercel.app/",
     github: "https://github.com/timi-emmanuel/shortly",
-    image: "/public/projects/shortly.png",
+    image: ShortlyImg,
   },
   {
     title: "QuiqOrder",
@@ -17,7 +21,7 @@ const projects = [
     tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack","Node.js"],
     live: "https://www.quiqorderng.com/",
     github: "https://github.com/timi-emmanuel/shortly",
-    image: "/public/projects/quiqorder.png",
+    image: QuiqOrderImg,
   },
   {
   title: "Nationary",
@@ -25,7 +29,7 @@ const projects = [
   tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
   live: "https://nationary.vercel.app/",
   github: "https://github.com/timi-ema/nationary",
-  image: "/public/projects/nationary.png", 
+  image: NationaryImg, 
 },
 {
   title: "Huddle Landing Page",
@@ -33,7 +37,7 @@ const projects = [
   tech: ["HTML", "CSS", "Responsive Design"],
   live: "https://huddle-page-timmy.vercel.app/",
   github: "https://github.com/timi-emmanuel/huddle-landing-page",
-  image: "/public/projects/huddle.png", 
+  image: HuddleImg, 
 },
 
 ];
