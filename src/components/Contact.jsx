@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const container = {
   hidden: { opacity: 0, y: 50 },
@@ -19,7 +20,19 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
+const suggestions = [
+  "API Integration",
+  "Landing Page",
+  "Portfolio Website",
+  "E-commerce Store",
+  "Dashboard UI",
+  "Frontend Revamp",
+  "AI Automation"
+];
+
 const Contact = () => {
+  const [subject, setSubject] = useState("");
+
   return (
     <motion.section
       id="contact"
@@ -47,7 +60,7 @@ const Contact = () => {
 
         {/* Form */}
         <motion.form
-          action="https://formspree.io/f/mqkrgyvn" // Replace with your own Formspree or Netlify URL
+          action="https://formsubmit.co/adekemmanuel17@gmail.com"
           method="POST"
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           variants={container}
@@ -68,6 +81,34 @@ const Contact = () => {
             required
             variants={item}
           />
+
+          {/* Subject Field */}
+          <motion.div className="md:col-span-2" variants={item}>
+            <input
+              type="text"
+              name="subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder="Subject"
+              className="bg-grayDark p-4 rounded text-white placeholder-light outline-none focus:ring-2 focus:ring-primary w-full"
+              required
+            />
+
+            {/* Suggestions */}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {suggestions.map((s, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setSubject(s)}
+                  className="text-xs md:text-sm px-3 py-1 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
           <motion.textarea
             name="message"
             placeholder="Your Message"
