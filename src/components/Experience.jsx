@@ -11,7 +11,7 @@ const experienceVariants = {
 
 const Experience = () => {
   return (
-    <section id="experience" className="text-white pt-12 px-6 md:px-16">
+    <section id="experience" className="text-white pt-20 px-6 md:px-16">
       <div className="max-w-5xl mx-auto">
        <div className="flex  items-center gap-4 mx-auto mb-12 p-2 md:p-0">           
              

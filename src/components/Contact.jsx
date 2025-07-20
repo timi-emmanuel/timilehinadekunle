@@ -36,7 +36,7 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="bg-dark text-white py-20 px-6 md:px-16"
+      className="bg-dark text-white py-24 px-6 md:px-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

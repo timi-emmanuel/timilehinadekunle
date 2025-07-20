@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import profileImage from "../assets/hero-image.png";
 import Skills from "./Skills";
-// import profileImage from "../assets/about-image.png"; // replace with your real image
+
 
 const containerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -26,7 +25,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="py-16 bg-[#0e0e0e] text-light "
+      className="pt-20 pb-12 bg-[#0e0e0e] text-light "
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -71,13 +70,12 @@ const About = () => {
           <p className="text-base text-light leading-relaxed">
             Over time, I’ve built a range of projects — from sleek landing pages
             and dashboards to real-time tools with authentication and database
-            integration. I take pride in attention to detail, problem-solving,
+            integration. I take pride in attention to detail, problem-solving, web accessibility
             and learning fast. Whether it’s a design-heavy interface or a
             functional frontend challenge, I enjoy bringing ideas to life.
           </p>
           <p className="text-base text-light leading-relaxed">
-            Outside of code, I love skyscrapers, great storytelling, and the
-            sitcom <em>Friends</em>. I believe software should feel as good as it
+            Outside of code, I love skyscrapers, great storytelling, and I think it safe to say I'm a critical thinker with a flair for the extraordinaire. I believe software should feel as good as it
             works — and I’m here to create meaningful digital experiences that do
             just that.
           </p>
@@ -94,7 +92,7 @@ const About = () => {
                 <span className="text-light text-sm mt-1 whitespace-nowrap">Projects Completed</span>
               </div>
               <div className="flex flex-col items-center justify-center rounded-xl px-2 py-0 min-w-[100px]">
-                <span className="text-3xl font-bold text-primary">100%</span>
+                <span className="text-3xl font-bold text-primary">98%</span>
                 <span className="text-light text-sm mt-1 whitespace-nowrap">Client Satisfaction</span>
               </div>
             </div>

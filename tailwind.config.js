@@ -18,6 +18,10 @@ export default {
         openSans: ['Open-Sans', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
       },
+      animation: {
+        'bounce-slow': 'bounce 4s infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

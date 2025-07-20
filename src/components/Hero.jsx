@@ -56,7 +56,7 @@ const Hero = () => {
       variants={containerVariants}
     >
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#444_1px,transparent_1px)] [background-size:24px_24px] opacity-10 animate-pulse-slow z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(#444_1px,transparent_2px)] [background-size:24px_24px] opacity-20 animate-pulse-slow z-0"></div>
 
       {/* Gradient Glow Blob */}
       <div className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary via-purple-600 to-indigo-500 rounded-full blur-[120px] opacity-30 left-1/2 -translate-x-1/2 top-10 z-0"></div>
@@ -74,7 +74,7 @@ const Hero = () => {
             className="flex items-end mb-2 relative pl-6 md:pl-16"
             variants={itemVariants}
           >
-            <span className="text-2xl text-white mr-2 font-bold tracking-wider">
+            <span className="text-2xl text-white mr-2 font-bold tracking-wider animate-pulse">
               Hello
             </span>
             <span className="relative inline-block h-[1.5em]">
@@ -91,7 +91,7 @@ const Hero = () => {
             <motion.div className="flex items-end mb-6" variants={itemVariants}>
               <span className="h-0.5 bg-primary mr-2 w-24 mb-2"></span>
               <motion.span
-                className="text-2xl font-lora tracking-wide inline-flex overflow-hidden"
+                className="text-2xl font-lora tracking-wide inline-flex overflow-hidden "
                 variants={textParent}
                 initial="hidden"
                 animate="visible"
@@ -105,9 +105,8 @@ const Hero = () => {
             </motion.div>
 
             <span className="text-white text-4xl font-sans block px-6 md:px-16 relative">
-              <span className="relative inline-block">
-                Frontend Developer
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse opacity-60"></span>
+              <span className="relative inline-block animate-bounce-slow">
+                Frontend Developer                
               </span>
             </span>
           </motion.h1>
@@ -160,8 +159,15 @@ const Hero = () => {
           <div className="absolute top-8 right-10 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-lg animate-bounce-slow">
             React.js
           </div>
-          <div className="absolute bottom-16 left-10 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-md animate-pulse-slow">
-            Firebase
+          <div className=" absolute top-8 left-8 md:left-2 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-md animate-pulse-slow">
+            Tailwind
+          </div>
+
+          <div className=" absolute md:bottom-8 md:left-3 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-md animate-bounce-slow">
+            Framer
+          </div>
+          <div className="absolute md:bottom-8 right-2 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-lg animate-pulse-slow">
+            Node.js
           </div>
         </motion.div>
       </motion.div>

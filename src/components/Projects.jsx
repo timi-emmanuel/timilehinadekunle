@@ -27,7 +27,7 @@ const projects = [
   title: "Nationary",
   description: "An elegant dictionary web app with sleek UI, search suggestions, and audio pronunciations.",
   tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
-  live: "https://nationary.vercel.app/",
+  live: "https://rest-countries-app-hazel.vercel.app/",
   github: "https://github.com/timi-ema/nationary",
   image: NationaryImg, 
 },
@@ -108,8 +108,8 @@ const Projects = () => {
                 
               >
                 
-                <div className={`flex flex-col-reverse md:flex-row  ${
-                  isEven ? "md:flex-row-reverse" : ""
+                <div className={`flex flex-col-reverse  ${
+                  isEven ? "md:flex-row-reverse" : "md:flex-row "
                 }  gap-6 md:gap-12`}>
                   <div className="flex-1">
                   <img

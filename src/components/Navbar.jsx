@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Linkedin, Github } from "lucide-react";
+import XIcon from '../assets/x.svg';
+import { Linkedin, Github } from "lucide-react";
 
 const menuVariants = {
   hidden: { y: -30, opacity: 0 },
@@ -88,32 +89,19 @@ const Navbar = () => {
       </button>
 
       {/* Desktop menu */}
-      <ul className="hidden md:flex gap-6 text-white text-sm items-center">
+      <ul className="hidden md:flex gap-6 text-gray-400 text-sm items-center">
         <li><a href="#home" className="hover:text-primary">Home</a></li>
         <li><a href="#about" className="hover:text-primary">About</a></li>
         <li><a href="#projects" className="hover:text-primary">Projects</a></li>
-        <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-        {/* <li>
-          <a
-            href="/resume.pdf"
-            className="bg-primary text-white px-4 py-2 rounded hover:opacity-90 transition"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            My Resume
-          </a>
-        </li> */}        
+         <li><a href="#experience" className="hover:text-primary">Experience</a></li>
+        <li><a href="#contact" className="hover:text-primary">Contact</a></li>     
       </ul>
 
       <ul className="hidden md:flex text-white gap-6">
         {/* Social icons */}
         <li>
-          <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary">
-            {/* Lucide Twitter/X icon */}
-            <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17.5 6.5L6.5 17.5" />
-              <path d="M6.5 6.5l11 11" />
-            </svg>
+          <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
+            <img src={XIcon} alt="X Icon" className="w-5 h-5 filter invert" />
           </a>
         </li>
         <li>
@@ -140,16 +128,13 @@ const Navbar = () => {
             <motion.li variants={itemVariants}><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></motion.li>
             <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
             <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
+            <motion.li variants={itemVariants}><a href="#experience" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Experience</a></motion.li>
             <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
             <motion.li variants={itemVariants} className="pt-2">
               <span className="block text-xs text-gray-400 mb-2">Connect with me</span>
-              <div className="flex justify-center gap-6">
+              <div className="flex justify-center gap-6 text-white">
                 <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
-                  {/* Lucide Twitter/X icon */}
-                  <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17.5 6.5L6.5 17.5" />
-                    <path d="M6.5 6.5l11 11" />
-                  </svg>
+                 <img src={XIcon} alt="X Icon" className="w-5 h-5 filter invert"/>
                 </a>
                 <a href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
                   <Linkedin size={22} />
