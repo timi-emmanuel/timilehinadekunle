@@ -49,7 +49,7 @@ const Hero = () => {
   return (
     <motion.section
       id="home"
-      className="relative text-white min-h-screen flex items-center overflow-hidden bg-dark mt-16 md:mt-0"
+      className="relative text-white lg:h-screen h-fit flex items-center overflow-hidden bg-dark mt-16 md:mt-0"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
