@@ -95,7 +95,7 @@ const Contact = () => {
             />
 
             {/* Suggestions */}
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-4">
               {suggestions.map((s, idx) => (
                 <button
                   key={idx}

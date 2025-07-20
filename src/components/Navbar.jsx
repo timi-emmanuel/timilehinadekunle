@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import XIcon from '../assets/x.svg';
 import { Linkedin, Github } from "lucide-react";
@@ -26,6 +26,7 @@ const itemVariants = {
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,20 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Effect to close mobile menu when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleClickOutside = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   return (
     <motion.nav
@@ -119,6 +134,7 @@ const Navbar = () => {
         {menuOpen && (
           <motion.ul
             key="mobile-menu"
+            ref={mobileMenuRef}
             initial="hidden"
             animate="visible"
             exit="exit"
