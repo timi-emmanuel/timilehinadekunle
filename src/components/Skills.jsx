@@ -66,15 +66,15 @@ const skillVariants = {
 const Skills = () => {
   return (
     <motion.section
-      className="text-white px-6 md:px-16"
+      className="text-white px-6 lg:px-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="mx-auto">
         <motion.h2
-          className="text-3xl font-bold text-primary text-left md:text-center mb-6"
+          className="text-3xl font-bold text-primary text-left md:text-center mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

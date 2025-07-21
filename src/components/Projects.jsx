@@ -50,7 +50,7 @@ const containerVariants = {
     transition: {
       when: "beforeChildren",
       staggerChildren: 0.2,
-      duration: 0.6,
+      duration: 0.3,
       ease: "easeOut",
     },
   },
@@ -75,7 +75,7 @@ const Projects = () => {
     <motion.section
       id="projects"
       ref={sectionRef}
-      className="relative bg-dark text-white py-20 px-6 md:px-24 overflow-hidden"
+      className="relative bg-dark text-white py-20 px-6 md:px-12 lg:px-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -87,11 +87,11 @@ const Projects = () => {
         style={{ y: yBg }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10  mx-auto">
         <div className="flex  items-center gap-4 mx-auto mb-12 p-2 md:p-0">           
            <div className="w-full h-[0.1em] bg-gray-600"></div>   
            <h2 className="text-5xl  font-bold text-white relative inline-flex items-end">
-              Project
+              Project 
            <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
                   &#8226;
            </span>
@@ -111,11 +111,12 @@ const Projects = () => {
                 <div className={`flex flex-col-reverse  ${
                   isEven ? "md:flex-row-reverse" : "md:flex-row "
                 }  gap-6 md:gap-12`}>
-                  <div className="flex-1">
+                  <div className="flex-1 overflow-hidden rounded-lg">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="rounded-lg shadow-lg w-full transition-transform duration-300 ease-out transform hover:scale-105"
+                    loading="lazy"
+                    className="w-full h-full object-cover  shadow-lg  transition-transform duration-300 ease-out transform hover:scale-105"
                   />
                 </div>
 

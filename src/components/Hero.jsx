@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import heroImage from "../assets/hero-image.png";
 
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
 const containerVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -8,24 +14,19 @@ const containerVariants = {
     y: 0,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.15,
-      duration: 0.5,
+      staggerChildren: 0.08, // less delay
+      duration: 0.6,
       ease: "easeOut",
     },
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 const textParent = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.12,
+      delayChildren: 0.1, // was 0.4
+      staggerChildren: 0.08,
     },
   },
 };
@@ -37,11 +38,12 @@ const letter = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.5,
-      ease: "easeOut",
+      duration: 0.35, 
+      ease: [0.25, 0.46, 0.45, 0.94], // '
     },
   },
 };
+
 
 const Hero = () => {
   const name = "I'm Timilehin,";
@@ -49,7 +51,7 @@ const Hero = () => {
   return (
     <motion.section
       id="home"
-      className="relative text-white lg:h-screen h-fit flex items-center overflow-hidden bg-dark mt-16 md:mt-0"
+      className="relative text-white  md:h-fit xl:h-screen 2xl:h-full flex  justify-between overflow-hidden bg-dark mt-16 md:mt-12 lg:mt-6 md:pb-6"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -59,10 +61,13 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(#444_1px,transparent_2px)] [background-size:24px_24px] opacity-20 animate-pulse-slow z-0"></div>
 
       {/* Gradient Glow Blob */}
-      <div className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary via-purple-600 to-indigo-500 rounded-full blur-[120px] opacity-30 left-1/2 -translate-x-1/2 top-10 z-0"></div>
+      <motion.div
+      className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary via-purple-600 to-indigo-500 rounded-full blur-[120px] opacity-30 left-1/2 -translate-x-1/2 top-10 z-0"
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}/>
 
       <motion.div
-        className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center pt-8 relative z-10"
+        className=" w-full grid md:grid-cols-2 gap-12 items-center pt-8 relative z-10"
         variants={containerVariants}
       >
         {/* Left: Text Content */}
@@ -104,7 +109,7 @@ const Hero = () => {
               </motion.span>
             </motion.div>
 
-            <span className="text-white text-4xl font-sans block px-6 md:px-16 relative">
+            <span className="text-white text-3xl lg:text-4xl font-sans block pl-6 md:pl-12 lg:px-16 relative">
               <span className="relative inline-block animate-bounce-slow">
                 Frontend Developer                
               </span>
@@ -112,7 +117,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-light font-roboto mt-2 mb-4 max-w-md pl-6 md:pl-16"
+            className="text-light font-roboto mt-2 mb-4 max-w-md px-6 md:pl-12 md:pr-0 lg:pl-16 lg:pr-0"
             variants={itemVariants}
           >
             I build interactive and modern web experiences using React, Tailwind
@@ -120,7 +125,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex gap-4 pl-6 md:pl-16"
+            className="flex gap-4 pl-6 md:pl-12 lg:pl-16"
             variants={itemVariants}
           >
             <a
@@ -142,20 +147,19 @@ const Hero = () => {
 
         {/* Right: Image Section */}
         <motion.div
-          className="flex justify-center flex-1 relative"
+          className="flex justify-center flex-1 relative lg:mr-12"
           variants={itemVariants}
         >
           <motion.img
             src={heroImage}
             alt="Developer Illustration"
             className="w-[30rem] h-auto z-10 relative rounded-xl shadow-lg"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           />
 
-          {/* Floating Tech Bubbles */}
+          
           <div className="absolute top-8 right-10 bg-dark px-3 py-1 text-sm text-white border border-primary rounded-full shadow-lg animate-bounce-slow">
             React.js
           </div>

@@ -22,6 +22,9 @@ export default {
         'bounce-slow': 'bounce 4s infinite',
         'pulse-slow': 'pulse 3s ease-in-out infinite',
       },
+      screens: {
+        '2xl': '1270px',
+      },
     },
   },
   plugins: [],

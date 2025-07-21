@@ -59,7 +59,6 @@ const Navbar = () => {
           width: "95%",
           left: "50%",
           x: "-50%",
-          borderRadius: "0px",
           top: 0,
           borderWidth: 0,
         },
@@ -73,8 +72,8 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-md py-2 md:py-3 px-4 md:px-8 flex justify-between items-center shadow-sm border-primary"
-      style={{ position: "fixed", borderStyle: 'solid' }}
+      className="fixed z-50 bg-dark/60 backdrop-blur-md py-2 md:py-3  px-4 lg:px-8 flex justify-between items-center shadow-sm border-primary"
+      style={{  borderStyle: 'solid' }}
     >
       <h1 className="text-white text-xl font-medium font-lora tracking-wide flex items-center gap-2">
         <span className="flex items-center font-lora justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
@@ -104,7 +103,7 @@ const Navbar = () => {
       </button>
 
       {/* Desktop menu */}
-      <ul className="hidden md:flex gap-6 text-gray-400 text-sm items-center">
+      <ul className="hidden md:flex md:gap-3 lg:gap-6 text-gray-400 text-sm items-center">
         <li><a href="#home" className="hover:text-primary">Home</a></li>
         <li><a href="#about" className="hover:text-primary">About</a></li>
         <li><a href="#projects" className="hover:text-primary">Projects</a></li>
@@ -112,7 +111,7 @@ const Navbar = () => {
         <li><a href="#contact" className="hover:text-primary">Contact</a></li>     
       </ul>
 
-      <ul className="hidden md:flex text-white gap-6">
+      <ul className="hidden md:flex text-white md:gap-4 lg:gap-6">
         {/* Social icons */}
         <li>
           <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
