@@ -131,35 +131,49 @@ const Navbar = () => {
       </ul>
       <AnimatePresence>
         {menuOpen && (
-          <motion.ul
-            key="mobile-menu"
-            ref={mobileMenuRef}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={menuVariants}
-            className="md:hidden absolute top-full left-0 w-full bg-dark text-light text-center flex flex-col gap-6 py-6 shadow-lg"
-          >
-            <motion.li variants={itemVariants}><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></motion.li>
-            <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
-            <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
-            <motion.li variants={itemVariants}><a href="#experience" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Experience</a></motion.li>
-            <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
-            <motion.li variants={itemVariants} className="pt-2">
-              <span className="block text-xs text-gray-400 mb-2">Connect with me</span>
-              <div className="flex justify-center gap-6 text-white">
-                <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
-                 <img src={XIcon} alt="X Icon" className="w-5 h-5 filter invert"/>
-                </a>
-                <a href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
-                  <Linkedin size={22} />
-                </a>
-                <a href="https://github.com/timi-emmanuel" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
-                  <Github size={22} />
-                </a>
-              </div>
-            </motion.li>
-          </motion.ul>
+          <>
+            {/* Overlay */}
+            <motion.div
+              key="mobile-menu-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black z-40 md:hidden"
+              onClick={() => setMenuOpen(false)}
+              aria-hidden="true"
+            />
+            {/* Mobile menu */}
+            <motion.ul
+              key="mobile-menu"
+              ref={mobileMenuRef}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={menuVariants}
+              className="md:hidden absolute top-full left-0 w-full bg-dark text-light text-center flex flex-col gap-6 py-6 shadow-lg z-50"
+            >
+              <motion.li variants={itemVariants}><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></motion.li>
+              <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
+              <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
+              <motion.li variants={itemVariants}><a href="#experience" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Experience</a></motion.li>
+              <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
+              <motion.li variants={itemVariants} className="pt-2">
+                <span className="block text-xs text-gray-400 mb-2">Connect with me</span>
+                <div className="flex justify-center gap-6 text-white">
+                  <a href="https://x.com/TimiTech10" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-primary">
+                   <img src={XIcon} alt="X Icon" className="w-5 h-5 filter invert"/>
+                  </a>
+                  <a href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary">
+                    <Linkedin size={22} />
+                  </a>
+                  <a href="https://github.com/timi-emmanuel" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary">
+                    <Github size={22} />
+                  </a>
+                </div>
+              </motion.li>
+            </motion.ul>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>
