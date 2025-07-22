@@ -135,7 +135,7 @@ const Hero = () => {
               Got a project?
             </a>
             <a
-              href="/resume.pdf"
+              href="/frontendResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-primary text-primary px-5 py-3 rounded hover:bg-primary hover:text-white hover:scale-105 transition-transform duration-200"
