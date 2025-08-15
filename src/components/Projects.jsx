@@ -26,7 +26,7 @@ const projects = [
   },
   {
   title: "Nationary",
-  description: "An elegant dictionary web app with sleek UI, search suggestions, and audio pronunciations.",
+  description: "A responsive React app that provides quick access to countries’ facts, maps, and flags through REST API integration, intuitive search, and smooth animations.",
   tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
   live: "https://rest-countries-app-hazel.vercel.app/",
   github: "https://github.com/timi-ema/nationary",
