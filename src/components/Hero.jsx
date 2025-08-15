@@ -128,20 +128,23 @@ const Hero = () => {
             className="flex gap-4 pl-6 md:pl-12 lg:pl-16"
             variants={itemVariants}
           >
-            <a
+            <motion.a
               href="#contact"
               className="bg-primary text-white px-5 py-3 rounded hover:opacity-80 hover:scale-105 transition-transform duration-200"
             >
               Got a project?
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              whileTap={{
+                rotate:"5deg"
+              }}
               href="/frontendResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-primary text-primary px-5 py-3 rounded hover:bg-primary hover:text-white hover:scale-105 transition-transform duration-200"
             >
               My Resume
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
 

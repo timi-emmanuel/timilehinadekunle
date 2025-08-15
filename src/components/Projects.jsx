@@ -1,11 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Info } from "lucide-react";
 import ShortlyImg from "../assets/Shortly.png";
 import QuiqOrderImg from "../assets/quiqorder.png";
 import NationaryImg from "../assets/nationary.png";
 import HuddleImg from "../assets/huddle.png";
-
+import MatchkicksImg from "../assets/matchkicks.png"
+ 
 const projects = [
   {
     title: "Shortly",
@@ -35,9 +36,18 @@ const projects = [
   title: "Huddle Landing Page",
   description: "A responsive landing page challenge built with clean layout, hover effects, and mobile-first design.",
   tech: ["HTML", "CSS", "Responsive Design"],
-  live: "https://huddle-page-timmy.vercel.app/",
+  live: "https://manage-landing-page-test.netlify.app/",
   github: "https://github.com/timi-emmanuel/huddle-landing-page",
   image: HuddleImg, 
+},
+{
+  title: "Mockup Integration Tool",
+  description: "Automated system that overlays design images onto mockups at precise coordinates, with S3 integration for user uploads and local mockup handling.",
+  tech: ["Node.js", "Express.js", "Sharp", "AWS S3", "JavaScript"],
+  live: "https://matchkicks.com/",
+  github: null, 
+  // privateRepo: true,
+  image:  MatchkicksImg, 
 },
 
 ];
@@ -104,21 +114,22 @@ const Projects = () => {
             return (
               <motion.div
                 key={idx}
-                variants={cardVariants}
-                
-              >
-                
+                variants={cardVariants}                
+              >                
                 <div className={`flex flex-col-reverse  ${
                   isEven ? "md:flex-row-reverse" : "md:flex-row "
                 }  gap-6 md:gap-12`}>
-                  <div className="flex-1 overflow-hidden rounded-lg">
+                <motion.div
+                  whileHover={{ rotate: isEven ? 5 : -5 }}
+                  className="flex-1 overflow-hidden rounded-lg"
+                >
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="w-full h-full object-cover  shadow-lg  transition-transform duration-300 ease-out transform hover:scale-105"
+                    className="w-full h-full object-cover  shadow-lg"
                   />
-                </div>
+                </motion.div>
 
                 <div className="flex-1 text-left">
                   <h3 className="text-2xl font-semibold mb-6">{project.title}</h3>
@@ -132,34 +143,44 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>                  
-                  <p className="text-light mb-4">{project.description}</p>
-                  
+                  <p className="text-light mb-4">{project.description}</p>                  
                     <div className="flex justify-start gap-4 items-center">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-primary text-white px-3 py-2 rounded flex items-center gap-2 hover:opacity-90 transition"
-                        aria-label="GitHub"
-                      >
-                        <Github size={18} />
-                        GitHub
-                      </a>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-light underline underline-offset-8 rounded flex items-center gap-2 hover:text-primary transition"
-                        aria-label="Live Project"
-                      >
-                        <ExternalLink size={18} />
-                        Live
-                      </a>
-                    </div>
+                      {project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-white px-3 py-2 rounded flex items-center gap-2 hover:opacity-90 transition"
+                aria-label="GitHub"
+              >
+                <Github size={18} />
+                GitHub
+              </a>
+                       ) : (
+                      <div className="relative group">
+                        <button
+                          className="bg-gray-600 text-white px-3 py-2 rounded flex items-center gap-2 cursor-default"
+                        >
+                          <Info size={18} />
+                          Private Repo
+                        </button>
+                        <div className="absolute left-0 mt-2 w-max bg-gray-800 text-white text-sm rounded px-3 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-10">
+                          Available upon request
+                        </div>
+                      </div>)}
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-light underline underline-offset-8 rounded flex items-center gap-2 hover:text-primary transition"
+                      aria-label="Live Project"
+                    >
+                      <ExternalLink size={18} />
+                      Live
+                    </a>
+                  </div>
                 </div>
-                </div>
-                
-
+                </div>              
               </motion.div>
             );
           })}
