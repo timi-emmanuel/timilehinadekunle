@@ -5,60 +5,72 @@ import ShortlyImg from "../assets/Shortly.png";
 import QuiqOrderImg from "../assets/quiqorder.png";
 import NationaryImg from "../assets/nationary.png";
 import HuddleImg from "../assets/huddle.png";
-import MatchkicksImg from "../assets/matchkicks.png"
-import PadiHoldImg from "../assets/padihold.png"
- 
+import MatchkicksImg from "../assets/matchkicks.png";
+import PadiHoldImg from "../assets/padihold.png";
+
 const projects = [
   {
     title: "Padihold",
-    description: "Padihold is Nigeria's leading escrow platform designed to secure online transactions with trusted dispute resolution and fund protection.",
-    tech: ["Node.js", "TailwindCSS", "Next.js","Framer Motion" , "Radix UI", "Zod","Zustand"],
+    description:
+      "Padihold is Nigeria's leading escrow platform designed to secure online transactions with trusted dispute resolution and fund protection.",
+    tech: [
+      "Node.js",
+      "TailwindCSS",
+      "Next.js",
+      "Framer Motion",
+      "Radix UI",
+      "Zod",
+      "Zustand",
+    ],
     live: "https://padi-hold.vercel.app/",
-    github: null, 
+    github: null,
     image: PadiHoldImg,
   },
   {
     title: "Shortly",
-    description: "A modern URL shortener with Firebase Auth, analytics, and animations.",
-    tech: ["React", "Tailwind", "Firebase","Framer"],
+    description:
+      "A modern URL shortener with Firebase Auth, analytics, and animations.",
+    tech: ["React", "Tailwind", "Firebase", "Framer"],
     live: "https://shortly-ivory-theta.vercel.app/",
     github: "https://github.com/timi-emmanuel/shortly",
     image: ShortlyImg,
   },
   {
     title: "QuiqOrder",
-    description: "An AI-powered restaurant chatbot for order automation and admin dashboard.",
-    tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack","Node.js"],
+    description:
+      "An AI-powered restaurant chatbot for order automation and admin dashboard.",
+    tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack", "Node.js"],
     live: "https://www.quiqorderng.com/",
     github: null,
     image: QuiqOrderImg,
   },
   {
-  title: "Nationary",
-  description: "A responsive React app that provides quick access to countries’ facts, maps, and flags through REST API integration, intuitive search, and smooth animations.",
-  tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
-  live: "https://rest-countries-app-hazel.vercel.app/",
-  github: "https://github.com/timi-emmanuel/rest-countries-app",
-  image: NationaryImg, 
-},
-{
-  title: "Huddle Landing Page",
-  description: "A responsive landing page challenge built with clean layout, hover effects, and mobile-first design.",
-  tech: ["HTML", "CSS", "Responsive Design"],
-  live: "https://manage-landing-page-test.netlify.app/",
-  github: "https://github.com/timi-emmanuel/huddle-landing-page",
-  image: HuddleImg, 
-},
-{
-  title: "Mockup Integration Tool",
-  description: "Automated system that overlays design images onto mockups at precise coordinates, with S3 integration for user uploads and local mockup handling.",
-  tech: ["Node.js", "Express.js", "Sharp", "AWS S3", "JavaScript"],
-  live: "https://matchkicks.com/",
-  github: null, 
-  // privateRepo: true,
-  image:  MatchkicksImg, 
-},
-
+    title: "Nationary",
+    description:
+      "A responsive React app that provides quick access to countries’ facts, maps, and flags through REST API integration, intuitive search, and smooth animations.",
+    tech: ["React", "Tailwind", "REST Country API", "Zustand", "Framer"],
+    live: "https://rest-countries-app-hazel.vercel.app/",
+    github: "https://github.com/timi-emmanuel/rest-countries-app",
+    image: NationaryImg,
+  },
+  {
+    title: "Huddle Landing Page",
+    description:
+      "A responsive landing page challenge built with clean layout, hover effects, and mobile-first design.",
+    tech: ["HTML", "CSS", "Responsive Design"],
+    live: "https://manage-landing-page-test.netlify.app/",
+    github: "https://github.com/timi-emmanuel/huddle-landing-page",
+    image: HuddleImg,
+  },
+  {
+    title: "Mockup Integration Tool",
+    description:
+      "Automated system that overlays design images onto mockups at precise coordinates, with S3 integration for user uploads and local mockup handling.",
+    tech: ["Node.js", "Express.js", "Sharp", "AWS S3", "JavaScript"],
+    live: "https://matchkicks.com/",
+    github: null,
+    image: MatchkicksImg,
+  },
 ];
 
 const containerVariants = {
@@ -97,7 +109,7 @@ const Projects = () => {
       className="relative bg-dark text-white py-20 px-6 md:px-12 lg:px-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }} // 👈 lowered threshold so it always triggers
       variants={containerVariants}
     >
       {/* Grid Background */}
@@ -106,90 +118,91 @@ const Projects = () => {
         style={{ y: yBg }}
       />
 
-      <div className="relative z-10  mx-auto">
-        <div className="flex  items-center gap-4 mx-auto mb-12 p-2 md:p-0">           
-           <div className="w-full h-[0.1em] bg-gray-600"></div>   
-           <h2 className="text-5xl  font-bold text-white relative inline-flex items-end">
-              Project 
-           <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
-                  &#8226;
-           </span>
-          </h2>       
+      <div className="relative z-10 mx-auto">
+        <div className="flex items-center gap-4 mx-auto mb-12 p-2 md:p-0">
+          <div className="w-full h-[0.1em] bg-gray-600"></div>
+          <h2 className="text-5xl font-bold text-white relative inline-flex items-end">
+            Project
+            <span className="text-4xl text-primary absolute -right-4 bottom-[-0.20em]">
+              &#8226;
+            </span>
+          </h2>
         </div>
 
         <div className="space-y-20">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <motion.div
-                key={idx}
-                variants={cardVariants}                
-              >                
-                <div className={`flex flex-col-reverse  ${
-                  isEven ? "md:flex-row-reverse" : "md:flex-row "
-                }  gap-6 md:gap-12`}>
-                <motion.div
-                  whileHover={{ rotate: isEven ? 5 : -5 }}
-                  className="flex-1 overflow-hidden rounded-lg"
+              <motion.div key={idx} variants={cardVariants}>
+                <div
+                  className={`flex flex-col-reverse ${
+                    isEven ? "md:flex-row-reverse" : "md:flex-row "
+                  } gap-6 md:gap-12`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover  shadow-lg"
-                  />
-                </motion.div>
+                  <motion.div
+                    whileHover={{ rotate: isEven ? 5 : -5 }}
+                    className="flex-1 overflow-hidden rounded-lg"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-auto min-h-[200px] object-cover shadow-lg" // 👈 fix
+                    />
+                  </motion.div>
 
-                <div className="flex-1 text-left">
-                  <h3 className="text-2xl font-semibold mb-6">{project.title}</h3>
-                  <div className="flex flex-wrap justify-cnter md:justify-start gap-2 text-sm text-primary mb-4">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-gray-600 text-gray-200  px-2 py-1 rounded-full  "
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>                  
-                  <p className="text-light mb-4">{project.description}</p>                  
+                  <div className="flex-1 text-left">
+                    <h3 className="text-2xl font-semibold mb-6">
+                      {project.title}
+                    </h3>
+                    <div className="flex flex-wrap justify-cnter md:justify-start gap-2 text-sm text-primary mb-4">
+                      {project.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="bg-gray-600 text-gray-200 px-2 py-1 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-light mb-4">{project.description}</p>
+
                     <div className="flex justify-start gap-4 items-center">
                       {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary text-white px-3 py-2 rounded flex items-center gap-2 hover:opacity-90 transition"
-                aria-label="GitHub"
-              >
-                <Github size={18} />
-                GitHub
-              </a>
-                       ) : (
-                      <div className="relative group">
-                        <button
-                          className="bg-gray-600 text-white px-3 py-2 rounded flex items-center gap-2 cursor-default"
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-primary text-white px-3 py-2 rounded flex items-center gap-2 hover:opacity-90 transition"
+                          aria-label="GitHub"
                         >
-                          <Info size={18} />
-                          Private Repo
-                        </button>
-                        <div className="absolute left-0 mt-2 w-max bg-gray-800 text-white text-sm rounded px-3 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-10">
-                          Available upon request
+                          <Github size={18} />
+                          GitHub
+                        </a>
+                      ) : (
+                        <div className="relative group">
+                          <button className="bg-gray-600 text-white px-3 py-2 rounded flex items-center gap-2 cursor-default">
+                            <Info size={18} />
+                            Private Repo
+                          </button>
+                          <div className="absolute left-0 mt-2 w-max bg-gray-800 text-white text-sm rounded px-3 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-10">
+                            Available upon request
+                          </div>
                         </div>
-                      </div>)}
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-light underline underline-offset-8 rounded flex items-center gap-2 hover:text-primary transition"
-                      aria-label="Live Project"
-                    >
-                      <ExternalLink size={18} />
-                      Live
-                    </a>
+                      )}
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-light underline underline-offset-8 rounded flex items-center gap-2 hover:text-primary transition"
+                        aria-label="Live Project"
+                      >
+                        <ExternalLink size={18} />
+                        Live
+                      </a>
+                    </div>
                   </div>
                 </div>
-                </div>              
               </motion.div>
             );
           })}
