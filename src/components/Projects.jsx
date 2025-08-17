@@ -6,8 +6,17 @@ import QuiqOrderImg from "../assets/quiqorder.png";
 import NationaryImg from "../assets/nationary.png";
 import HuddleImg from "../assets/huddle.png";
 import MatchkicksImg from "../assets/matchkicks.png"
+import PadiHoldImg from "../assets/padihold.png"
  
 const projects = [
+  {
+    title: "Padihold",
+    description: "Padihold is Nigeria's leading escrow platform designed to secure online transactions with trusted dispute resolution and fund protection.",
+    tech: ["Node.js", "TailwindCSS", "Next.js","Framer Motion" , "Radix UI", "Zod","Zustand"],
+    live: "https://padi-hold.vercel.app/",
+    github: null, 
+    image: PadiHoldImg,
+  },
   {
     title: "Shortly",
     description: "A modern URL shortener with Firebase Auth, analytics, and animations.",
@@ -21,7 +30,7 @@ const projects = [
     description: "An AI-powered restaurant chatbot for order automation and admin dashboard.",
     tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack","Node.js"],
     live: "https://www.quiqorderng.com/",
-    github: "https://github.com/timi-emmanuel/shortly",
+    github: null,
     image: QuiqOrderImg,
   },
   {
@@ -29,7 +38,7 @@ const projects = [
   description: "A responsive React app that provides quick access to countries’ facts, maps, and flags through REST API integration, intuitive search, and smooth animations.",
   tech: ["React", "Tailwind", "REST Country API","Zustand", "Framer"],
   live: "https://rest-countries-app-hazel.vercel.app/",
-  github: "https://github.com/timi-ema/nationary",
+  github: "https://github.com/timi-emmanuel/rest-countries-app",
   image: NationaryImg, 
 },
 {
