@@ -109,7 +109,7 @@ const Projects = () => {
       className="relative bg-dark text-white py-20 px-6 md:px-12 lg:px-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }} // 👈 lowered threshold so it always triggers
+      viewport={{ once: false, amount: 0.1 }} 
       variants={containerVariants}
     >
       {/* Grid Background */}
@@ -147,7 +147,7 @@ const Projects = () => {
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
-                      className="w-full h-auto min-h-[200px] object-cover shadow-lg" // 👈 fix
+                      className="w-full h-full object-cover shadow-lg"
                     />
                   </motion.div>
 
@@ -166,7 +166,6 @@ const Projects = () => {
                       ))}
                     </div>
                     <p className="text-light mb-4">{project.description}</p>
-
                     <div className="flex justify-start gap-4 items-center">
                       {project.github ? (
                         <a
