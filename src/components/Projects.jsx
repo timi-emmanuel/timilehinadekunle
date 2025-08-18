@@ -109,7 +109,7 @@ const Projects = () => {
       className="relative bg-dark text-white py-20 px-6 md:px-12 lg:px-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.1 }} 
+      viewport={{ once: true, amount: 0.1 }} 
       variants={containerVariants}
     >
       {/* Grid Background */}
