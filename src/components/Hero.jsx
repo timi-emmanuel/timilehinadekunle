@@ -8,14 +8,13 @@ const itemVariants = {
 };
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0},
   visible: {
-    opacity: 1,
-    y: 0,
+    opacity: 1,  
     transition: {
       when: "beforeChildren",
       staggerChildren: 0.08, // less delay
-      duration: 0.6,
+      duration: 0.3,
       ease: "easeOut",
     },
   },
@@ -25,7 +24,7 @@ const textParent = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.1, // was 0.4
+      delayChildren: 0.5, // was 0.4
       staggerChildren: 0.08,
     },
   },
@@ -38,8 +37,8 @@ const letter = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.35, 
-      ease: [0.25, 0.46, 0.45, 0.94], // '
+      duration: 0.5, 
+      ease: [0.25, 0.46, 0.45, 0.94], 
     },
   },
 };

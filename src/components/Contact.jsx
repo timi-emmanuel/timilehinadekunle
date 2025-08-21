@@ -101,7 +101,7 @@ const Contact = () => {
                   key={idx}
                   type="button"
                   onClick={() => setSubject(s)}
-                  className="text-xs md:text-sm px-3 py-1 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition"
+                  className="text-sm px-3 py-1 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition"
                 >
                   {s}
                 </button>

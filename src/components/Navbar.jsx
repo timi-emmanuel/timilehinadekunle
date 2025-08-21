@@ -10,12 +10,19 @@ const menuVariants = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.08,
+      staggerChildren: 0.15,
       duration: 0.3,
       ease: "easeOut"
     }
   },
-  exit: { y: -30, opacity: 0, transition: { duration: 0.2 } }
+  exit: {
+     y: -30, 
+     opacity: 0,
+     transition: { 
+      duration: 0.3,
+        ease: "easeIn"
+     } 
+    }
 };
 
 const itemVariants = {
@@ -72,7 +79,7 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-md py-2 md:py-3  px-4 lg:px-8 flex justify-between items-center shadow-sm border-primary"
+      className="fixed z-50 bg-dark/60 backdrop-blur-lg py-2 md:py-3  px-4 lg:px-8 flex justify-between items-center shadow-sm border-primary"
       style={{  borderStyle: 'solid' }}
     >
       <h1 className="text-white text-xl font-medium font-lora tracking-wide flex items-center gap-2">
@@ -89,11 +96,12 @@ const Navbar = () => {
         aria-label="Toggle menu"
       >
         <motion.span
-          animate={menuOpen ? { rotate: 45, y: 2 } : { rotate: 0, y: 0 }}
+          animate={menuOpen ? { rotate: 45, y: 2,  } : { rotate: 0, y: 0 }}
           className="block h-0.5 w-7 bg-white transition-all duration-300 origin-center"
         />
         <motion.span
-          animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+          animate={menuOpen ? { opacity: 0 } : { opacity: 1 , transition:{ duration: 1,
+        ease: "easeOut"}}}
           className="block h-0.5 w-7 bg-white my-1 transition-all duration-300 origin-center"
         />
         <motion.span
@@ -139,10 +147,11 @@ const Navbar = () => {
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black z-40 md:hidden"
+              className="fixed inset-0 bg-none z-40 md:hidden"
               onClick={() => setMenuOpen(false)}
               aria-hidden="true"
             />
+
             {/* Mobile menu */}
             <motion.ul
               key="mobile-menu"
