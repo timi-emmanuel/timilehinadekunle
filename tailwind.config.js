@@ -6,7 +6,7 @@ export default {
       colors: {
         dark: '#20232a', // Background
         grayDark: '#161b22', // Card/Section BG
-        primary: '#6e29b3', // Primary Accent
+        primary: 'rgb(128, 0, 128)', // Primary Accent#6e29b3
         white: '#ffffff', // Heading Text
         text: '#c9d1d9', // Paragraph Text
         light: '#8b949e', // Light Text Contrast
