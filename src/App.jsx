@@ -9,7 +9,7 @@ import Experience from './components/Experience'
 
 function App() {
   return (
-    <div className='bg-dark min-h-screen pt-2'>
+    <div className='bg-dark min-h-screen pt-2 overflow-x-hidden'>
       <Navbar/>    
       <Hero/>
       <About/>

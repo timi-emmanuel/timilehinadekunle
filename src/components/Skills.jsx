@@ -66,7 +66,7 @@ const skillVariants = {
 const Skills = () => {
   return (
     <motion.section
-      className="text-white px-6 lg:px-8"
+      className="text-white px-4 sm:px-6 lg:px-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -74,7 +74,7 @@ const Skills = () => {
     >
       <div className="mx-auto">
         <motion.h2
-          className="text-3xl font-bold text-primary text-left md:text-center mb-4"
+          className="text-3xl sm:text-4xl font-bold gradient-text-primary text-left md:text-center mb-6 font-display"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -82,19 +82,24 @@ const Skills = () => {
         >
           Skills & Tools
         </motion.h2>
-        <motion.div className="grid grid-cols-1 gap-6" variants={containerVariants}>
+        <motion.div className="grid grid-cols-1 gap-8" variants={containerVariants}>
           {Object.entries(skillGroups).map(([category, skills], idx) => (
-            <motion.div key={idx} variants={cardVariants}>
-              <h3 className="text-xl font-semibold text-white mb-4">{category}</h3>
+            <motion.div 
+              key={idx} 
+              variants={cardVariants}
+              className="glass-card p-6 rounded-2xl hover-lift"
+            >
+              <h3 className="text-xl font-semibold text-white mb-4 font-display">{category}</h3>
               <ul className="flex flex-wrap gap-3">
                 {skills.map((skill, i) => (
                   <motion.li
                     key={i}
-                    className="bg-grayDark text-light px-4 py-2 rounded-full border border-primary text-sm flex items-center gap-2 transition duration-300 hover:scale-110 hover:shadow-lg hover:bg-gradient-to-r hover:from-primary/80 hover:to-secondary/80 hover:text-white"
+                    className="glass text-light px-4 py-2.5 rounded-full border border-primary/30 text-sm flex items-center gap-2 smooth-transition hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:text-white"
                     variants={skillVariants}
+                    whileHover={{ scale: 1.1, y: -2 }}
                   >
                     <span className="text-lg">{skill.icon}</span>
-                    {skill.name}
+                    <span className="font-medium">{skill.name}</span>
                   </motion.li>
                 ))}
               </ul>

@@ -33,6 +33,7 @@ const itemVariants = {
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const mobileMenuRef = useRef(null);
 
   useEffect(() => {
@@ -42,6 +43,79 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle initial hash navigation
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        const targetElement = document.getElementById(hash);
+        if (targetElement) {
+          const offset = 80;
+          const targetPosition = targetElement.offsetTop - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
+  // Active section detection using Intersection Observer
+  useEffect(() => {
+    const sections = ["home", "about", "projects", "experience", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+          // Update URL hash without scrolling
+          if (entry.target.id !== "home") {
+            window.history.replaceState(null, "", `#${entry.target.id}`);
+          } else {
+            window.history.replaceState(null, "", window.location.pathname);
+          }
+        }
+      });
+    };
+
+    const observers = sections.map((sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        observer.observe(section);
+        return observer;
+      }
+      return null;
+    });
+
+    return () => {
+      observers.forEach((observer) => {
+        if (observer) observer.disconnect();
+      });
+    };
+  }, []);
+
+  // Smooth scroll handler
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const offset = 80; // Account for navbar height
+      const targetPosition = targetElement.offsetTop - offset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+      setMenuOpen(false);
+    }
+  };
 
   // Effect to close mobile menu when clicking outside
   useEffect(() => {
@@ -79,14 +153,13 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 bg-dark/60 backdrop-blur-lg py-2 md:py-3  px-4 lg:px-8 flex justify-between items-center shadow-sm border-primary"
-      style={{  borderStyle: 'solid' }}
+      className="fixed z-50 glass-strong py-2 md:py-3 px-4 lg:px-8 flex justify-between items-center shadow-lg shadow-primary/10"
     >
-      <h1 className="text-white text-xl font-medium font-lora tracking-wide flex items-center gap-2">
-        <span className="flex items-center font-lora justify-center rounded-full bg-primary w-10 h-10 text-white font-bold text-lg">
+      <h1 className="text-white text-xl font-semibold font-display tracking-wide flex items-center gap-2">
+        <span className="flex items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 w-10 h-10 text-white font-bold text-lg shadow-lg shadow-primary/50">
           T.
         </span>
-        TimTech
+        <span className="gradient-text-primary font-bold">TimTech</span>
       </h1>
 
       {/* Hamburger button for mobile */}
@@ -111,12 +184,87 @@ const Navbar = () => {
       </button>
 
       {/* Desktop menu */}
-      <ul className="hidden md:flex md:gap-3 lg:gap-6 text-gray-400 text-sm items-center">
-        <li><a href="#home" className="hover:text-primary">Home</a></li>
-        <li><a href="#about" className="hover:text-primary">About</a></li>
-        <li><a href="#projects" className="hover:text-primary">Projects</a></li>
-         <li><a href="#experience" className="hover:text-primary">Experience</a></li>
-        <li><a href="#contact" className="hover:text-primary">Contact</a></li>     
+      <ul className="hidden md:flex md:gap-3 lg:gap-6 text-light text-sm items-center font-medium">
+        <li>
+          <a 
+            href="#home" 
+            onClick={(e) => handleSmoothScroll(e, "home")}
+            className={`smooth-transition relative group ${
+              activeSection === "home" 
+                ? "text-primary-400" 
+                : "hover:text-primary-400"
+            }`}
+          >
+            Home
+            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
+              activeSection === "home" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#about" 
+            onClick={(e) => handleSmoothScroll(e, "about")}
+            className={`smooth-transition relative group ${
+              activeSection === "about" 
+                ? "text-primary-400" 
+                : "hover:text-primary-400"
+            }`}
+          >
+            About
+            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
+              activeSection === "about" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#projects" 
+            onClick={(e) => handleSmoothScroll(e, "projects")}
+            className={`smooth-transition relative group ${
+              activeSection === "projects" 
+                ? "text-primary-400" 
+                : "hover:text-primary-400"
+            }`}
+          >
+            Projects
+            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
+              activeSection === "projects" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#experience" 
+            onClick={(e) => handleSmoothScroll(e, "experience")}
+            className={`smooth-transition relative group ${
+              activeSection === "experience" 
+                ? "text-primary-400" 
+                : "hover:text-primary-400"
+            }`}
+          >
+            Experience
+            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
+              activeSection === "experience" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#contact" 
+            onClick={(e) => handleSmoothScroll(e, "contact")}
+            className={`smooth-transition relative group ${
+              activeSection === "contact" 
+                ? "text-primary-400" 
+                : "hover:text-primary-400"
+            }`}
+          >
+            Contact
+            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
+              activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </a>
+        </li>     
       </ul>
 
       <ul className="hidden md:flex text-white md:gap-4 lg:gap-6">
@@ -144,10 +292,10 @@ const Navbar = () => {
             <motion.div
               key="mobile-menu-overlay"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-none z-40 md:hidden"
+              className="fixed inset-0 bg-dark/80 backdrop-blur-sm z-40 md:hidden"
               onClick={() => setMenuOpen(false)}
               aria-hidden="true"
             />
@@ -160,13 +308,63 @@ const Navbar = () => {
               animate="visible"
               exit="exit"
               variants={menuVariants}
-              className="md:hidden absolute top-full left-0 w-full bg-dark text-light text-center flex flex-col gap-6 py-6 shadow-lg z-50"
+              className="md:hidden absolute top-full left-0 w-full bg-grayDark/95 backdrop-blur-xl border-t border-primary/30 text-light text-center flex flex-col gap-6 py-8 shadow-2xl z-50 rounded-b-2xl"
             >
-              <motion.li variants={itemVariants}><a href="#home" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Home</a></motion.li>
-              <motion.li variants={itemVariants}><a href="#about" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>About</a></motion.li>
-              <motion.li variants={itemVariants}><a href="#projects" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Projects</a></motion.li>
-              <motion.li variants={itemVariants}><a href="#experience" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Experience</a></motion.li>
-              <motion.li variants={itemVariants}><a href="#contact" className="hover:text-primary block" onClick={() => setMenuOpen(false)}>Contact</a></motion.li>
+              <motion.li variants={itemVariants}>
+                <a 
+                  href="#home" 
+                  onClick={(e) => handleSmoothScroll(e, "home")}
+                  className={`block smooth-transition ${
+                    activeSection === "home" ? "text-primary-400 font-semibold" : "hover:text-primary-400"
+                  }`}
+                >
+                  Home
+                </a>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <a 
+                  href="#about" 
+                  onClick={(e) => handleSmoothScroll(e, "about")}
+                  className={`block smooth-transition ${
+                    activeSection === "about" ? "text-primary-400 font-semibold" : "hover:text-primary-400"
+                  }`}
+                >
+                  About
+                </a>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <a 
+                  href="#projects" 
+                  onClick={(e) => handleSmoothScroll(e, "projects")}
+                  className={`block smooth-transition ${
+                    activeSection === "projects" ? "text-primary-400 font-semibold" : "hover:text-primary-400"
+                  }`}
+                >
+                  Projects
+                </a>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <a 
+                  href="#experience" 
+                  onClick={(e) => handleSmoothScroll(e, "experience")}
+                  className={`block smooth-transition ${
+                    activeSection === "experience" ? "text-primary-400 font-semibold" : "hover:text-primary-400"
+                  }`}
+                >
+                  Experience
+                </a>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <a 
+                  href="#contact" 
+                  onClick={(e) => handleSmoothScroll(e, "contact")}
+                  className={`block smooth-transition ${
+                    activeSection === "contact" ? "text-primary-400 font-semibold" : "hover:text-primary-400"
+                  }`}
+                >
+                  Contact
+                </a>
+              </motion.li>
               <motion.li variants={itemVariants} className="pt-2">
                 <span className="block text-xs text-gray-400 mb-2">Connect with me</span>
                 <div className="flex justify-center gap-6 text-white">

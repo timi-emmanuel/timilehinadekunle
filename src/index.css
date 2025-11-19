@@ -2,8 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-dark text-text;
+  }
+}
 
-/* index.css or app.css */
+@layer utilities {
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-card {
+    @apply bg-grayDark/80 backdrop-blur-xl border border-primary/20 shadow-xl;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-accent-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-600 via-accent-500 to-cyan-500;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-accent-500 text-white px-6 py-3 rounded-lg font-medium;
+    @apply hover:from-primary-500 hover:to-accent-400 hover:shadow-lg hover:shadow-primary/50;
+    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply glass border-primary/50 text-primary px-6 py-3 rounded-lg font-medium;
+    @apply hover:bg-primary/10 hover:border-primary hover:shadow-lg hover:shadow-primary/30;
+    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-ghost {
+    @apply text-text border border-white/10 px-6 py-3 rounded-lg font-medium;
+    @apply hover:bg-white/5 hover:border-white/20 hover:text-white;
+    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/50;
+  }
+  
+  /* Smooth transitions */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-out;
+  }
+}
+
+/* Grid pattern animation */
 @keyframes moveGrid {
   0% {
     background-position: 0 0;
@@ -15,10 +90,10 @@
 
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.35;
+  opacity: 0.4;
   animation: moveGrid 15s linear infinite;
 }
 
