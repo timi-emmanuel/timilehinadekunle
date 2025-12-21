@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroImage from "../assets/hero-image.png";
+import MagneticButton from "./MagneticButton";
 
 
 const itemVariants = {
@@ -50,7 +51,7 @@ const Hero = () => {
   return (
     <motion.section
       id="home"
-      className="relative text-white md:h-fit xl:h-screen 2xl:h-full flex justify-between overflow-hidden bg-dark mt-16 md:mt-12 lg:mt-6 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20"
+      className="relative text-slate-800 dark:text-textDark flex justify-between overflow-hidden bg-slate-50 dark:bg-dark mt-16 md:mt-12 lg:mt-6 py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 transition-colors duration-300"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -72,7 +73,7 @@ const Hero = () => {
       />
 
       <motion.div
-        className=" w-full grid md:grid-cols-2 gap-12 items-center pt-8 relative z-10"
+        className="w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10"
         variants={containerVariants}
       >
         {/* Left: Text Content */}
@@ -84,7 +85,7 @@ const Hero = () => {
             className="flex items-end mb-2 relative pl-0 md:pl-8"
             variants={itemVariants}
           >
-            <span className="text-2xl sm:text-3xl text-white mr-3 font-bold tracking-wider">
+            <span className="text-2xl sm:text-3xl text-slate-800 dark:text-textDark mr-3 font-bold tracking-wider">
               Hello
             </span>
             <span className="relative inline-block h-[1.5em]">
@@ -107,7 +108,7 @@ const Hero = () => {
                 animate="visible"
               >
                 {name.split("").map((char, i) => (
-                  <motion.span key={i} variants={letter} className="inline-block text-white">
+                  <motion.span key={i} variants={letter} className="inline-block text-slate-800 dark:text-textDark">
                     {char === " " ? "\u00A0" : char}
                   </motion.span>
                 ))}
@@ -116,13 +117,13 @@ const Hero = () => {
 
             <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold block pl-0 md:pl-8 relative">
               <span className="gradient-text relative inline-block">
-                Frontend Developer                
+                Frontend Engineer                
               </span>
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-light text-base sm:text-lg mt-4 mb-6 max-w-lg leading-relaxed pl-0 md:pl-8"
+            className="text-slate-600 dark:text-lightDark text-base sm:text-lg mt-4 mb-6 max-w-lg leading-relaxed pl-0 md:pl-8"
             variants={itemVariants}
           >
             I build interactive and modern web experiences using React, Tailwind
@@ -133,36 +134,38 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 pl-0 md:pl-8"
             variants={itemVariants}
           >
-            <motion.a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                const targetElement = document.getElementById("contact");
-                if (targetElement) {
-                  const offset = 80;
-                  const targetPosition = targetElement.offsetTop - offset;
-                  window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-              className="btn-primary text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Got a project?
-            </motion.a>
-            <motion.a
-              href="/frontendResume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              My Resume
-            </motion.a>
+            <MagneticButton>
+              <motion.a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const targetElement = document.getElementById("contact");
+                  if (targetElement) {
+                    const offset = 80;
+                    const targetPosition = targetElement.offsetTop - offset;
+                    window.scrollTo({
+                      top: targetPosition,
+                      behavior: "smooth",
+                    });
+                  }
+                }}
+                className="btn-primary text-center"
+                whileTap={{ scale: 0.95 }}
+              >
+                Got a project?
+              </motion.a>
+            </MagneticButton>
+            <MagneticButton>
+              <motion.a
+                href="/frontendResume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-center"
+                whileTap={{ scale: 0.95 }}
+              >
+                My Resume
+              </motion.a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
@@ -179,42 +182,12 @@ const Hero = () => {
             <motion.img
               src={heroImage}
               alt="Developer Illustration"
-              className="w-full max-w-[28rem] sm:max-w-[32rem] h-auto relative rounded-2xl shadow-2xl hover-glow"
+              className="w-full max-w-[24rem] sm:max-w-[26rem] md:max-w-[28rem] h-auto relative rounded-2xl shadow-2xl hover-glow"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-accent-500/20 rounded-2xl blur-xl -z-10"></div>
-          </motion.div>
-
-          {/* Floating Tech Badges */}
-          <motion.div 
-            className="absolute top-4 right-4 md:top-8 md:right-10 glass-card px-4 py-2 text-sm text-white rounded-full shadow-lg"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-          >
-            <span className="gradient-text-primary font-semibold">React.js</span>
-          </motion.div>
-          <motion.div 
-            className="absolute top-4 left-4 md:top-8 md:left-2 glass-card px-4 py-2 text-sm text-white rounded-full shadow-lg"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            <span className="gradient-text-primary font-semibold">Tailwind</span>
-          </motion.div>
-          <motion.div 
-            className="absolute bottom-4 left-4 md:bottom-8 md:left-3 glass-card px-4 py-2 text-sm text-white rounded-full shadow-lg"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          >
-            <span className="gradient-text-primary font-semibold">Framer</span>
-          </motion.div>
-          <motion.div 
-            className="absolute bottom-4 right-4 md:bottom-8 md:right-2 glass-card px-4 py-2 text-sm text-white rounded-full shadow-lg"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-          >
-            <span className="gradient-text-primary font-semibold">Node.js</span>
           </motion.div>
         </motion.div>
       </motion.div>

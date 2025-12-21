@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        dark: '#0a0a0f', // Darker background
-        darkSecondary: '#121218', // Secondary dark
-        grayDark: '#1a1a24', // Card/Section BG
-        grayDarkHover: '#242430', // Card hover state
+        dark: '#0f172a', // Dark mode background - lighter slate for better readability
+        darkSecondary: '#1e293b', // Dark mode secondary - better contrast
+        grayDark: '#1e293b', // Dark mode card/Section BG - matches secondary
+        grayDarkHover: '#334155', // Dark mode card hover state - lighter for visibility
         primary: {
           DEFAULT: '#8b5cf6', // Modern purple
           50: '#faf5ff',
@@ -33,8 +34,10 @@ export default {
           500: '#06b6d4',
         },
         white: '#ffffff',
-        text: '#e2e8f0', // Better contrast
-        light: '#94a3b8', // Light Text Contrast
+        text: '#1e293b', // Light mode text (default)
+        textDark: '#f1f5f9', // Dark mode text - light for readability
+        light: '#64748b', // Light mode light text (default)
+        lightDark: '#cbd5e1', // Dark mode light text - lighter gray
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'], // Modern default

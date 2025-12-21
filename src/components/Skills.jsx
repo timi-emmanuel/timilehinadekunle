@@ -6,6 +6,10 @@ import {
   SiReact,
   SiTailwindcss,
   SiFramer,
+  SiVuedotjs,
+  SiNuxtdotjs,
+  SiNextdotjs,
+  SiTypescript,
   SiFirebase,
   SiNodedotjs,
   SiExpress,
@@ -21,7 +25,11 @@ const skillGroups = {
     { name: "HTML5", icon: <SiHtml5 className="text-[#e34f26]" /> },
     { name: "CSS3", icon: <SiCss3 className="text-[#1572B6]" /> },
     { name: "JavaScript (ES6+)", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+    { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
     { name: "React.js", icon: <SiReact className="text-[#61DAFB]" /> },
+    { name: "Vue.js", icon: <SiVuedotjs className="text-[#4FC08D]" /> },
+    { name: "Nuxt.js", icon: <SiNuxtdotjs className="text-[#00DC82]" /> },
+    { name: "Next.js", icon: <SiNextdotjs className="text-slate-800 dark:text-white" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38BDF8]" /> },
     { name: "Framer Motion", icon: <SiFramer className="text-white" /> },
   ],
@@ -66,7 +74,7 @@ const skillVariants = {
 const Skills = () => {
   return (
     <motion.section
-      className="text-white px-4 sm:px-6 lg:px-8"
+      className="text-slate-800 dark:text-textDark px-4 sm:px-6 lg:px-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -89,12 +97,12 @@ const Skills = () => {
               variants={cardVariants}
               className="glass-card p-6 rounded-2xl hover-lift"
             >
-              <h3 className="text-xl font-semibold text-white mb-4 font-display">{category}</h3>
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-textDark mb-4 font-display">{category}</h3>
               <ul className="flex flex-wrap gap-3">
                 {skills.map((skill, i) => (
                   <motion.li
                     key={i}
-                    className="glass text-light px-4 py-2.5 rounded-full border border-primary/30 text-sm flex items-center gap-2 smooth-transition hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:text-white"
+                    className="glass text-slate-600 dark:text-lightDark px-4 py-2.5 rounded-full border border-primary/30 text-sm flex items-center gap-2 smooth-transition hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:text-slate-800 dark:hover:text-textDark"
                     variants={skillVariants}
                     whileHover={{ scale: 1.1, y: -2 }}
                   >
