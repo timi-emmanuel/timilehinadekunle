@@ -9,12 +9,12 @@ const itemVariants = {
 };
 
 const containerVariants = {
-  hidden: { opacity: 0},
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,  
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.08, // less delay
+      staggerChildren: 0.08,
       duration: 0.3,
       ease: "easeOut",
     },
@@ -183,6 +183,10 @@ const Hero = () => {
               src={heroImage}
               alt="Developer Illustration"
               className="w-full max-w-[24rem] sm:max-w-[26rem] md:max-w-[28rem] h-auto relative rounded-2xl shadow-2xl hover-glow"
+              loading="eager"
+              fetchPriority="high"
+              width="448"
+              height="560"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: "easeOut" }}

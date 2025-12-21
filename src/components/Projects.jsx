@@ -185,6 +185,7 @@ const ProjectImageCard = ({ image, title }) => {
         src={image}
         alt={title}
         loading="lazy"
+        decoding="async"
         className="w-full h-full object-cover rounded-2xl hover-glow smooth-transition"
         animate={{
           scale: isHovered ? 1.1 : 1,

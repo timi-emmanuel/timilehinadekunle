@@ -5,14 +5,22 @@ const MouseOrbs = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setMousePosition({
+            x: e.clientX,
+            y: e.clientY,
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 

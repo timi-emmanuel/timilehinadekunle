@@ -21,10 +21,17 @@ const CursorFollower = () => {
     checkDesktop();
     window.addEventListener('resize', checkDesktop);
 
+    let ticking = false;
     const moveCursor = (e) => {
       if (!isDesktop) return;
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          cursorX.set(e.clientX - 16);
+          cursorY.set(e.clientY - 16);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     const handleMouseEnter = (e) => {
@@ -56,11 +63,11 @@ const CursorFollower = () => {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
     document.addEventListener('mouseenter', handleMouseEnter, true);
     document.addEventListener('mouseleave', handleMouseLeave, true);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousedown', handleMouseDown, { passive: true });
+    window.addEventListener('mouseup', handleMouseUp, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);

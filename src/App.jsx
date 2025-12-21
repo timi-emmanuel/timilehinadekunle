@@ -1,14 +1,23 @@
-import About from './components/About'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
+import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
+import Hero from './components/Hero'
 import CursorFollower from './components/CursorFollower'
 import ScrollProgress from './components/ScrollProgress'
 import MouseOrbs from './components/MouseOrbs'
 
+// Lazy load below-the-fold components
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Experience = lazy(() => import('./components/Experience'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="min-h-[200px] flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+  </div>
+);
 
 function App() {
   return (
@@ -18,11 +27,13 @@ function App() {
       <MouseOrbs />
       <Navbar/>    
       <Hero/>
-      <About/>
-      <Projects/>
-      <Experience/>
-      <Contact/>
-      <Footer/>          
+      <Suspense fallback={<LoadingFallback />}>
+        <About/>
+        <Projects/>
+        <Experience/>
+        <Contact/>
+        <Footer/>
+      </Suspense>
     </div>
   )
 }
