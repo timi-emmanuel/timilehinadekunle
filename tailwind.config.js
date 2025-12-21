@@ -10,23 +10,23 @@ export default {
         grayDark: '#1e293b', // Dark mode card/Section BG - matches secondary
         grayDarkHover: '#334155', // Dark mode card hover state - lighter for visibility
         primary: {
-          DEFAULT: '#8b5cf6', // Modern purple
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#8b5cf6',
-          700: '#7c3aed',
-          800: '#6d28d9',
-          900: '#5b21b6',
+          DEFAULT: '#d97706', // Golden amber
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
         },
         accent: {
-          DEFAULT: '#ec4899', // Pink accent
-          400: '#f472b6',
-          500: '#ec4899',
-          600: '#db2777',
+          DEFAULT: '#f59e0b', // Golden accent
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
         },
         cyan: {
           DEFAULT: '#06b6d4',
@@ -84,8 +84,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(139, 92, 246, 0.3)' },
-          '100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(139, 92, 246, 0.5)' },
+          '0%': { boxShadow: '0 0 5px rgba(217, 119, 6, 0.5), 0 0 10px rgba(217, 119, 6, 0.3)' },
+          '100%': { boxShadow: '0 0 20px rgba(217, 119, 6, 0.8), 0 0 30px rgba(217, 119, 6, 0.5)' },
         },
       },
       screens: {

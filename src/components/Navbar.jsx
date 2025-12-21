@@ -154,7 +154,7 @@ const Navbar = () => {
         },
       }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="fixed z-50 glass-strong py-2 md:py-3 px-4 lg:px-8 flex justify-between items-center shadow-lg shadow-primary/10"
+      className="fixed z-50 glass-strong py-2 md:py-3 px-4 lg:px-8 flex justify-between items-center shadow-lg shadow-primary/10 will-change-transform"
     >
       <h1 className="text-slate-800 dark:text-textDark text-xl font-semibold font-display tracking-wide flex items-center gap-2">
         <span className="flex items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 w-10 h-10 text-white font-bold text-lg shadow-lg shadow-primary/50">

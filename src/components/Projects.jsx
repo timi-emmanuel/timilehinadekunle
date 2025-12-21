@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Github, ExternalLink, Info } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import ShortlyImg from "../assets/Shortly.png";
@@ -132,6 +132,14 @@ const cardVariants = {
 const ProjectImageCard = ({ image, title }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 640);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 640);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -143,7 +151,7 @@ const ProjectImageCard = ({ image, title }) => {
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg']);
 
   const handleMouseMove = (e) => {
-    if (!ref.current) return;
+    if (!ref.current || !isDesktop) return;
 
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -166,17 +174,17 @@ const ProjectImageCard = ({ image, title }) => {
   return (
     <motion.div
       ref={ref}
-      className="flex-1 overflow-hidden rounded-2xl group relative shadow-lg dark:shadow-2xl dark:shadow-primary/20"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      className="flex-1 max-w-[500px] h-[400px] overflow-hidden rounded-2xl group relative shadow-lg dark:shadow-2xl dark:shadow-primary/20 will-change-transform"
+      onMouseMove={isDesktop ? handleMouseMove : undefined}
+      onMouseEnter={() => isDesktop && setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX,
-        rotateY,
+        rotateX: isDesktop ? rotateX : undefined,
+        rotateY: isDesktop ? rotateY : undefined,
         transformStyle: 'preserve-3d',
       }}
       animate={{
-        scale: isHovered ? 1.05 : 1,
+        scale: isHovered && isDesktop ? 1.05 : 1,
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
     >
@@ -186,9 +194,12 @@ const ProjectImageCard = ({ image, title }) => {
         alt={title}
         loading="lazy"
         decoding="async"
-        className="w-full h-full object-cover rounded-2xl hover-glow smooth-transition"
+        className="absolute inset-0 w-full h-full object-cover rounded-2xl hover-glow smooth-transition will-change-transform"
+        style={{
+          objectPosition: 'center center',
+        }}
         animate={{
-          scale: isHovered ? 1.1 : 1,
+          scale: isHovered && isDesktop ? 1.1 : 1,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       />
@@ -245,34 +256,36 @@ const Projects = () => {
                 >
                   <ProjectImageCard image={project.image} title={project.title} />
 
-                  <div className="flex-1 text-left glass-card p-6 md:p-8 rounded-2xl hover-lift">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-display gradient-text-primary">
-                      {project.title}
-                    </h3>
-                    <div className="flex flex-wrap justify-start gap-2 text-sm mb-6">
-                      {project.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="glass border-primary/30 text-slate-600 dark:text-lightDark px-3 py-1.5 rounded-full text-xs font-medium hover:border-primary/60 hover:bg-primary/10 smooth-transition"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <div className="flex-1 max-w-[500px] min-h-[300px] text-left glass-card p-6 md:p-8 rounded-2xl hover-lift flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-display gradient-text-primary">
+                        {project.title}
+                      </h3>
+                      <div className="flex flex-wrap justify-start gap-2 text-sm mb-6">
+                        {project.tech.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="glass border-primary/30 text-slate-600 dark:text-lightDark px-3 py-1.5 rounded-full text-xs font-medium hover:border-primary/60 hover:bg-primary/10 smooth-transition"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-slate-600 dark:text-lightDark mb-6 leading-relaxed text-base">{project.description}</p>
                     </div>
-                    <p className="text-slate-600 dark:text-lightDark mb-6 leading-relaxed text-base">{project.description}</p>
-                    <div className="flex flex-wrap justify-start gap-4 items-center">
+                    <div className="flex flex-wrap justify-start gap-4 items-center mt-auto">
                       {project.github ? (
                         <MagneticButton>
                           <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-primary text-sm flex items-center gap-2"
+                            className="btn-primary text-sm flex items-center gap-2 whitespace-nowrap flex-shrink-0"
                             aria-label="GitHub"
                             whileTap={{ scale: 0.95 }}
                           >
-                            <Github size={18} />
-                            GitHub
+                            <Github size={18} className="flex-shrink-0" />
+                            <span className="whitespace-nowrap">GitHub</span>
                           </motion.a>
                         </MagneticButton>
                       ) : (
@@ -281,7 +294,7 @@ const Projects = () => {
                             <Info size={18} />
                             Private Repo
                           </button>
-                          <div className="absolute left-0 mt-2 w-max glass-strong text-white text-sm rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-10 pointer-events-none">
+                          <div className="absolute left-0 mt-2 w-max glass-strong  dark:text-white text-slate-800 bg-slate-900 dark:bg-slate-800 text-sm rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-10 pointer-events-none border border-slate-200 dark:border-slate-600">
                             Available upon request
                           </div>
                         </div>
@@ -291,12 +304,12 @@ const Projects = () => {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-secondary text-sm flex items-center gap-2"
+                          className="btn-secondary text-sm flex items-center gap-2 whitespace-nowrap flex-shrink-0"
                           aria-label="Live Project"
                           whileTap={{ scale: 0.95 }}
-                        >
-                          <ExternalLink size={18} />
-                          Live Demo
+                        > 
+                          <ExternalLink size={18} className="flex-shrink-0" />
+                          <span className="whitespace-nowrap">Live Demo</span>
                         </motion.a>
                       </MagneticButton>
                     </div>

@@ -25,8 +25,8 @@ const textParent = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.5, // was 0.4
-      staggerChildren: 0.08,
+      delayChildren: 0.3,
+      staggerChildren: 0.06,
     },
   },
 };
@@ -38,7 +38,7 @@ const letter = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.5, 
+      duration: 0.4, 
       ease: [0.25, 0.46, 0.45, 0.94], 
     },
   },
@@ -46,7 +46,7 @@ const letter = {
 
 
 const Hero = () => {
-  const name = "I'm Timilehin,";
+  const name = "I'm Timi,";
 
   return (
     <motion.section
@@ -58,18 +58,18 @@ const Hero = () => {
       variants={containerVariants}
     >
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 bg-grid-pattern z-0"></div>
+      <div className="absolute inset-0 bg-grid-pattern z-0 will-change-auto"></div>
 
-      {/* Gradient Glow Blobs */}
+      {/* Gradient Glow Blobs - Reduced opacity and simplified animation for performance */}
       <motion.div
-        className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary-500 via-accent-500 to-cyan-500 rounded-full blur-[120px] opacity-20 left-1/2 -translate-x-1/2 top-10 z-0"
-        animate={{ scale: [1, 1.1, 1], x: [0, 50, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary-500 via-accent-500 to-cyan-500 rounded-full blur-[120px] opacity-10 dark:opacity-20 left-1/2 -translate-x-1/2 top-10 z-0 will-change-transform"
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute w-[25rem] h-[25rem] bg-gradient-to-bl from-cyan-500 via-primary-500 to-accent-500 rounded-full blur-[100px] opacity-15 right-0 bottom-20 z-0"
-        animate={{ scale: [1, 1.15, 1], x: [0, -30, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute w-[25rem] h-[25rem] bg-gradient-to-bl from-cyan-500 via-primary-500 to-accent-500 rounded-full blur-[100px] opacity-8 dark:opacity-15 right-0 bottom-20 z-0 will-change-transform"
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.div
@@ -131,10 +131,10 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 pl-0 md:pl-8"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-4 pl-0 md:pl-8 w-full sm:w-auto"
             variants={itemVariants}
           >
-            <MagneticButton>
+            <MagneticButton className="w-full sm:w-auto">
               <motion.a
                 href="#contact"
                 onClick={(e) => {
@@ -149,18 +149,18 @@ const Hero = () => {
                     });
                   }
                 }}
-                className="btn-primary text-center"
+                className="btn-primary text-center w-full sm:w-auto block"
                 whileTap={{ scale: 0.95 }}
               >
                 Got a project?
               </motion.a>
             </MagneticButton>
-            <MagneticButton>
+            <MagneticButton className="w-full sm:w-auto">
               <motion.a
                 href="/frontendResume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary text-center"
+                className="btn-secondary text-center w-full sm:w-auto block"
                 whileTap={{ scale: 0.95 }}
               >
                 My Resume
@@ -175,7 +175,7 @@ const Hero = () => {
           variants={itemVariants}
         >
           <motion.div
-            className="relative z-10"
+            className="relative z-10 will-change-transform"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -198,13 +198,13 @@ const Hero = () => {
 
       {/* Scroll Down Indicator */}
       <motion.div 
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 will-change-transform"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2">
           <motion.div
-            className="w-1.5 h-1.5 bg-primary rounded-full"
+            className="w-1.5 h-1.5 bg-primary rounded-full will-change-transform"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />

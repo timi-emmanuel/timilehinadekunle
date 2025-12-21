@@ -23,6 +23,23 @@
     background-attachment: fixed;
   }
 
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize animations */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   @media (pointer: coarse) {
     body {
       cursor: auto; /* Show default cursor on touch devices */
@@ -63,12 +80,16 @@
     @apply bg-gradient-to-r from-primary-600 to-accent-500 text-white px-6 py-3 rounded-lg font-medium;
     @apply hover:from-primary-500 hover:to-accent-400 hover:shadow-lg hover:shadow-primary/50;
     @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply inline-flex items-center;
+    @apply flex-shrink-0;
   }
   
   .btn-secondary {
     @apply glass border-primary/50 text-primary px-6 py-3 rounded-lg font-medium;
     @apply hover:bg-primary/10 hover:border-primary hover:shadow-lg hover:shadow-primary/30;
     @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply inline-flex items-center;
+    @apply flex-shrink-0;
   }
   
   .btn-ghost {
@@ -142,6 +163,13 @@
   background-size: 48px 48px;
   opacity: 0.4;
   animation: moveGrid 15s linear infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-grid-pattern {
+    animation: none;
+  }
 }
 
 .dark .bg-grid-pattern {

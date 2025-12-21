@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const MagneticButton = ({ children, className = '', ...props }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -14,8 +15,17 @@ const MagneticButton = ({ children, className = '', ...props }) => {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7.5deg', '-7.5deg']);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg']);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleMouseMove = (e) => {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return;
 
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -39,15 +49,15 @@ const MagneticButton = ({ children, className = '', ...props }) => {
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX,
-        rotateY,
+        rotateX: !isMobile ? rotateX : undefined,
+        rotateY: !isMobile ? rotateY : undefined,
         transformStyle: 'preserve-3d',
       }}
       animate={{
-        scale: isHovered ? 1.05 : 1,
+        scale: isHovered && !isMobile ? 1.05 : 1,
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       className={className}

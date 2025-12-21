@@ -52,7 +52,7 @@ const MouseOrbs = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       <motion.div
-        className="absolute w-[500px] h-[500px] bg-gradient-to-br from-primary-500/20 via-accent-500/20 to-cyan-500/20 rounded-full blur-[120px]"
+        className="absolute w-[500px] h-[500px] bg-gradient-to-br from-primary-500/20 via-accent-500/20 to-cyan-500/20 rounded-full blur-[120px] will-change-transform"
         style={{
           x: orb1XSpring,
           y: orb1YSpring,
@@ -61,7 +61,7 @@ const MouseOrbs = () => {
         }}
       />
       <motion.div
-        className="absolute w-[400px] h-[400px] bg-gradient-to-tr from-cyan-500/20 via-primary-500/20 to-accent-500/20 rounded-full blur-[100px]"
+        className="absolute w-[400px] h-[400px] bg-gradient-to-tr from-cyan-500/20 via-primary-500/20 to-accent-500/20 rounded-full blur-[100px] will-change-transform"
         style={{
           x: orb2XSpring,
           y: orb2YSpring,
@@ -70,7 +70,7 @@ const MouseOrbs = () => {
         }}
       />
       <motion.div
-        className="absolute w-[350px] h-[350px] bg-gradient-to-bl from-accent-500/20 via-cyan-500/20 to-primary-500/20 rounded-full blur-[90px]"
+        className="absolute w-[350px] h-[350px] bg-gradient-to-bl from-accent-500/20 via-cyan-500/20 to-primary-500/20 rounded-full blur-[90px] will-change-transform"
         style={{
           x: orb3XSpring,
           y: orb3YSpring,

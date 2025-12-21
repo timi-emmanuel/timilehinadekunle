@@ -12,11 +12,22 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'framer-motion': ['framer-motion'],
-          'lucide-react': ['lucide-react'],
-          'react-icons': ['react-icons/si'],
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer-motion';
+            }
+            if (id.includes('lucide-react')) {
+              return 'lucide-react';
+            }
+            if (id.includes('react-icons')) {
+              return 'react-icons';
+            }
+            return 'vendor';
+          }
         },
       },
     },
@@ -27,8 +38,10 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
       },
     },
+    sourcemap: false,
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
