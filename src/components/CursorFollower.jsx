@@ -1,33 +1,39 @@
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 
 const CursorFollower = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 30, stiffness: 500 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Only show cursor on desktop (non-touch devices)
-    const checkDesktop = () => {
-      setIsDesktop(window.matchMedia('(pointer: fine)').matches);
+    const pointerMedia = window.matchMedia('(pointer: fine)');
+    const updateDesktop = () => {
+      setIsDesktop(pointerMedia.matches);
     };
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
+    updateDesktop();
+    pointerMedia.addEventListener('change', updateDesktop);
 
     let ticking = false;
+    let lastX = -100;
+    let lastY = -100;
+
     const moveCursor = (e) => {
-      if (!isDesktop) return;
+      if (!pointerMedia.matches || shouldReduceMotion) return;
+      lastX = e.clientX;
+      lastY = e.clientY;
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          cursorX.set(e.clientX - 16);
-          cursorY.set(e.clientY - 16);
+          cursorX.set(lastX - 16);
+          cursorY.set(lastY - 16);
           ticking = false;
         });
         ticking = true;
@@ -75,15 +81,15 @@ const CursorFollower = () => {
       document.removeEventListener('mouseleave', handleMouseLeave, true);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('resize', checkDesktop);
+      pointerMedia.removeEventListener('change', updateDesktop);
     };
-  }, [cursorX, cursorY, isDesktop]);
+  }, [cursorX, cursorY, shouldReduceMotion]);
 
-  if (!isDesktop) return null;
+  if (!isDesktop || shouldReduceMotion) return null;
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference"
+      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference opacity-90"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,

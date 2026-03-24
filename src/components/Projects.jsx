@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
 import { Github, ExternalLink, Info } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import ShortlyImg from "../assets/Shortly.png";
@@ -132,14 +132,7 @@ const cardVariants = {
 const ProjectImageCard = ({ image, title }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    setIsDesktop(window.innerWidth >= 640);
-    const handleResize = () => setIsDesktop(window.innerWidth >= 640);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const shouldReduceMotion = useReducedMotion();
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -151,7 +144,7 @@ const ProjectImageCard = ({ image, title }) => {
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg']);
 
   const handleMouseMove = (e) => {
-    if (!ref.current || !isDesktop) return;
+    if (!ref.current || shouldReduceMotion) return;
 
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -175,16 +168,16 @@ const ProjectImageCard = ({ image, title }) => {
     <motion.div
       ref={ref}
       className="flex-1 max-w-[500px] h-[400px] overflow-hidden rounded-2xl group relative shadow-lg dark:shadow-2xl dark:shadow-primary/20 will-change-transform"
-      onMouseMove={isDesktop ? handleMouseMove : undefined}
-      onMouseEnter={() => isDesktop && setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX: isDesktop ? rotateX : undefined,
-        rotateY: isDesktop ? rotateY : undefined,
+        rotateX: shouldReduceMotion ? undefined : rotateX,
+        rotateY: shouldReduceMotion ? undefined : rotateY,
         transformStyle: 'preserve-3d',
       }}
       animate={{
-        scale: isHovered && isDesktop ? 1.05 : 1,
+        scale: isHovered && !shouldReduceMotion ? 1.03 : 1,
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
     >
@@ -199,7 +192,7 @@ const ProjectImageCard = ({ image, title }) => {
           objectPosition: 'center center',
         }}
         animate={{
-          scale: isHovered && isDesktop ? 1.1 : 1,
+          scale: isHovered && !shouldReduceMotion ? 1.06 : 1,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       />

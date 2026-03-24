@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
-import heroImage from "../assets/hero-image.png";
+import { motion, useReducedMotion } from "framer-motion";
+import heroImage448 from "../assets/hero-image-448.jpg";
+import heroImage768 from "../assets/hero-image-768.jpg";
+import heroImage from "../assets/hero-image-optimized.jpg";
 import MagneticButton from "./MagneticButton";
 
 
@@ -47,6 +49,7 @@ const letter = {
 
 const Hero = () => {
   const name = "I'm Timi,";
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.section
@@ -63,13 +66,13 @@ const Hero = () => {
       {/* Gradient Glow Blobs - Reduced opacity and simplified animation for performance */}
       <motion.div
         className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary-500 via-accent-500 to-cyan-500 rounded-full blur-[120px] opacity-10 dark:opacity-20 left-1/2 -translate-x-1/2 top-10 z-0 will-change-transform"
-        animate={{ scale: [1, 1.05, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        animate={shouldReduceMotion ? undefined : { scale: [1, 1.03, 1] }}
+        transition={shouldReduceMotion ? undefined : { duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute w-[25rem] h-[25rem] bg-gradient-to-bl from-cyan-500 via-primary-500 to-accent-500 rounded-full blur-[100px] opacity-8 dark:opacity-15 right-0 bottom-20 z-0 will-change-transform"
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        animate={undefined}
+        transition={undefined}
       />
 
       <motion.div
@@ -176,14 +179,17 @@ const Hero = () => {
         >
           <motion.div
             className="relative z-10 will-change-transform"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
+            transition={shouldReduceMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             <motion.img
               src={heroImage}
+              srcSet={`${heroImage448} 448w, ${heroImage768} 768w, ${heroImage} 1024w`}
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 55vw, 448px"
               alt="Developer Illustration"
               className="w-full max-w-[24rem] sm:max-w-[26rem] md:max-w-[28rem] h-auto relative rounded-2xl shadow-2xl hover-glow"
               loading="eager"
+              decoding="async"
               fetchPriority="high"
               width="448"
               height="560"
@@ -199,14 +205,14 @@ const Hero = () => {
       {/* Scroll Down Indicator */}
       <motion.div 
         className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 will-change-transform"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        animate={shouldReduceMotion ? undefined : { y: [0, 8, 0] }}
+        transition={shouldReduceMotion ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2">
           <motion.div
             className="w-1.5 h-1.5 bg-primary rounded-full will-change-transform"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            animate={shouldReduceMotion ? undefined : { y: [0, 10, 0] }}
+            transition={shouldReduceMotion ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
       </motion.div>
