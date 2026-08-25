@@ -1,92 +1,150 @@
 import { motion } from "framer-motion";
+import {
+  Briefcase,
+  CalendarBlank,
+  CheckCircle,
+  Buildings,
+  Lightning,
+  ShieldCheck,
+  Code,
+  RocketLaunch,
+  ArrowUpRight
+} from "@phosphor-icons/react";
+import { fadeUpVariant as itemVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
 
 const experiences = [
   {
-    company: "SBE",
-    role: "Software Engineer",
+    role: "Frontend Developer (Freelance / Contract)",
+    company: "Sportsbook Back Office (SBE Ecosystem)",
+    location: "Remote",
     period: "2025 – Present",
-    description: (
-      <>
-        Built and maintained internal sportsbook back-office systems at{" "}
-        <strong className="text-slate-800 dark:text-textDark">SBE</strong>.
-        Worked across multiple codebases (main and partner BO), implementing
-        role-based access control for superusers, agents, and cashiers.
-        Designed and integrated authentication flows, API key systems,
-        financial logic (deposits, withdrawals, RTP calculations), and
-        performance optimizations such as caching. Collaborated with the
-        product team to ensure reliability, security, and scalability of
-        sportsbook operations.
-      </>
-    ),
+    type: "Contract / Production",
+    tagColor: "bg-neo-yellow",
+    highlights: [
+      "Built and maintained frontend features for a multi-tenant sportsbook back office serving 6+ betting clients in production, supporting 3,000+ betting markets and 100,000+ prematch events.",
+      "Integrated REST APIs from Swagger documentation for real-time betting, cashier, and partner data across the Aviata Back Office, Aviata Partner BO, and Aviata Crash Shop applications.",
+      "Resolved cross-origin (CORS) and API integration issues, and worked on security considerations around impersonation tokens in admin tooling.",
+      "Diagnosed and fixed production issues, including a Docker Compose healthcheck port mismatch affecting service reliability; built Vue 3 component architecture for the Aviata Crash Shop cashier app handling real-time approval and transaction workflows.",
+    ],
+    tech: ["React", "TypeScript", "Vue 3", "Node.js", "REST APIs", "Swagger", "Docker", "JWT", "RBAC"],
   },
   {
-    company: "QuiqOrder",
-    role: "Frontend Developer",
+    role: "Junior Developer / Growth & Content",
+    company: "QuiqOrder (J6 Business, Startup)",
+    location: "Lagos, Nigeria",
     period: "2024 – Present",
-    description: (
-      <>
-        Built and maintained the frontend of{" "}
-        <strong className="text-slate-800 dark:text-textDark">QuiqOrder</strong> —
-        an AI-powered restaurant assistant and dashboard system. Implemented
-        clean UI with React and Tailwind CSS, integrated Firebase services,
-        and contributed to the overall UX and responsiveness of the platform.
-      </>
-    ),
+    type: "Startup / Hybrid",
+    tagColor: "bg-neo-lime",
+    highlights: [
+      "Contribute to frontend development of QuiqOrder's branded storefront platform for WhatsApp-based sellers, including UI development and Firebase integration.",
+      "Support lead generation and merchant activation through outreach campaigns, running a structured funnel and qualification process for prospective merchants.",
+      "Built segmented outreach and follow-up content reflecting QuiqOrder's product positioning as the company scaled and refined its offering.",
+    ],
+    tech: ["React", "Firebase", "Tailwind CSS", "Node.js", "WhatsApp API", "Paystack"],
   },
 ];
 
-export { experiences };
-
-const experienceVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 const Experience = () => {
   return (
-    <section id="experience" className="text-slate-800 dark:text-textDark pt-24 pb-16 px-4 sm:px-6 md:px-12 lg:px-20 bg-slate-100 dark:bg-darkSecondary transition-colors duration-300">
-      <div className="mx-auto">
-        <div className="flex items-center gap-4 mx-auto mb-16 p-2 md:p-0">           
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-800 dark:text-textDark relative inline-flex items-end font-display">
-            <span className="hidden md:inline">Experience</span>
-            <span className="md:hidden">Exp</span>
-            <span className="text-4xl text-primary-500 absolute -right-4 bottom-[-0.20em]">
-              &#8226;
-            </span>
-          </h2>       
-          <div className="w-full h-[0.1em] bg-gradient-to-r from-primary/50 via-accent/50 to-transparent"></div> 
+    <section
+      id="experience"
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgAlt dark:bg-neo-darkSurface transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
+    >
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 text-left">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="neo-badge bg-neo-pink text-white">
+                <Briefcase size={14} weight="bold" />
+                CAREER & TRACK RECORD
+              </span>
+            </div>
+            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
+              WORK{" "}
+              <span className="bg-neo-lime text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[-1deg]">
+                EXPERIENCE
+              </span>
+            </h2>
+          </div>
+          <span className="font-mono text-xs font-bold text-zinc-500">
+            PROVEN IMPACT IN PRODUCTION
+          </span>
         </div>
 
-        <div className="space-y-6">
-          {experiences.map((experience, index) => (
+        {/* Experience Timeline Cards */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-8 text-left"
+        >
+          {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="glass-card p-8 rounded-2xl hover-lift"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={experienceVariants}
-              whileHover={{ scale: 1.02 }}
+              variants={itemVariants}
+              className="neo-box-lg bg-white dark:bg-neo-darkCard p-6 sm:p-8 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
             >
-              <h3 className="text-2xl font-bold text-slate-800 dark:text-textDark mb-2 font-display gradient-text-primary">
-                {experience.company}
-              </h3>
-              <p className="text-sm text-primary-400 font-medium mb-4">
-                {experience.role} &bull; {experience.period}
-              </p>
-              <div className="text-slate-600 dark:text-lightDark leading-relaxed text-base">
-                {experience.description}
+              {/* Top Meta Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b-2 border-black dark:border-zinc-700 mb-6">
+                <div>
+                  <span className="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest block">
+                    {exp.company}
+                  </span>
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-black dark:text-white leading-tight">
+                    {exp.role}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`neo-badge ${exp.tagColor} text-black`}>
+                    {exp.type}
+                  </span>
+                  <span className="neo-badge bg-zinc-100 dark:bg-neo-darkSurface text-black dark:text-white">
+                    <CalendarBlank size={13} weight="bold" />
+                    <span>{exp.period}</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Highlights List */}
+              <div className="mb-6 space-y-3 font-sans text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+                {exp.highlights.map((point, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle
+                      size={18}
+                      weight="bold"
+                      className="text-neo-lime flex-shrink-0 mt-0.5"
+                    />
+                    <p className="leading-relaxed">{point}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Technologies Used Strip */}
+              <div className="pt-4 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 flex flex-wrap items-center gap-2">
+                <span className="font-mono text-xs font-bold text-zinc-500 mr-2">
+                  Stack:
+                </span>
+                {exp.tech.map((t, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-zinc-100 dark:bg-neo-darkSurface border border-black dark:border-zinc-600 px-2 py-0.5 text-xs font-mono font-bold text-black dark:text-white"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
 export default Experience;
+

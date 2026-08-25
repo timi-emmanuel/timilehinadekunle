@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import commonjs from 'vite-plugin-commonjs';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [
     react(),
-    commonjs(), 
     svgr()
   ],
   build: {
@@ -20,11 +18,8 @@ export default defineConfig({
             if (id.includes('framer-motion')) {
               return 'framer-motion';
             }
-            if (id.includes('lucide-react')) {
-              return 'lucide-react';
-            }
-            if (id.includes('react-icons')) {
-              return 'react-icons';
+            if (id.includes('@phosphor-icons')) {
+              return 'phosphor-icons';
             }
             return 'vendor';
           }
@@ -37,6 +32,7 @@ export default defineConfig({
     sourcemap: false,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion'],
+    include: ['react', 'react-dom', 'framer-motion', '@phosphor-icons/react'],
   },
 });
+

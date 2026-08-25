@@ -1,224 +1,295 @@
-import { motion, useReducedMotion } from "framer-motion";
-import heroImage448 from "../assets/hero-image-448.jpg";
-import heroImage768 from "../assets/hero-image-768.jpg";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowDown,
+  FilePdf,
+  PaperPlaneTilt,
+  Copy,
+  Check,
+  Lightning,
+  TerminalWindow,
+  Code,
+  ShieldCheck,
+  CheckCircle,
+  Sparkle,
+  ArrowUpRight
+} from "@phosphor-icons/react";
+import { fadeUpVariant as itemVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
 import heroImage from "../assets/hero-image-optimized.jpg";
-import MagneticButton from "./MagneticButton";
+import heroImage768 from "../assets/hero-image-768.jpg";
 
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,  
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.08,
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
-
-const textParent = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-const letter = {
-  hidden: { y: 60, opacity: 0, scale: 0.6 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.4, 
-      ease: [0.25, 0.46, 0.45, 0.94], 
-    },
-  },
-};
-
+const stats = [
+  { label: "Production Clients", value: "6+", sub: "Sportsbook Back Office" },
+  { label: "Prematch Events", value: "100k+", sub: "Handled in Production" },
+  { label: "Betting Markets", value: "3,000+", sub: "Real-time feeds" },
+  { label: "Academic GPA", value: "4.65", sub: "First Class / Distinction" },
+];
 
 const Hero = () => {
-  const name = "I'm Timi,";
-  const shouldReduceMotion = useReducedMotion();
+  const [copied, setCopied] = useState(false);
+  const email = "adekemmanuel17@gmail.com";
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleScrollTo = (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const offset = 90;
+      const targetPosition = targetElement.offsetTop - offset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <motion.section
+    <section
       id="home"
-      className="relative text-slate-800 dark:text-textDark flex justify-between overflow-hidden bg-slate-50 dark:bg-dark mt-16 md:mt-12 lg:mt-6 py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 transition-colors duration-300"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
+      className="relative text-black dark:text-white pt-28 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-12 xl:px-20 neo-grid-bg transition-colors duration-200"
     >
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 bg-grid-pattern z-0 will-change-auto"></div>
-
-      {/* Gradient Glow Blobs - Reduced opacity and simplified animation for performance */}
-      <motion.div
-        className="absolute w-[30rem] h-[30rem] bg-gradient-to-tr from-primary-500 via-accent-500 to-cyan-500 rounded-full blur-[120px] opacity-10 dark:opacity-20 left-1/2 -translate-x-1/2 top-10 z-0 will-change-transform"
-        animate={shouldReduceMotion ? undefined : { scale: [1, 1.03, 1] }}
-        transition={shouldReduceMotion ? undefined : { duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute w-[25rem] h-[25rem] bg-gradient-to-bl from-cyan-500 via-primary-500 to-accent-500 rounded-full blur-[100px] opacity-8 dark:opacity-15 right-0 bottom-20 z-0 will-change-transform"
-        animate={undefined}
-        transition={undefined}
-      />
-
-      <motion.div
-        className="w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10"
-        variants={containerVariants}
-      >
-        {/* Left: Text Content */}
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Top Badges Bar */}
         <motion.div
-          variants={containerVariants}
-          className="flex flex-col gap-6 flex-1 z-10"
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6"
         >
-          <motion.h2
-            className="flex items-end mb-2 relative pl-0 md:pl-8"
-            variants={itemVariants}
-          >
-            <span className="text-2xl sm:text-3xl text-slate-800 dark:text-textDark mr-3 font-bold tracking-wider">
-              Hello
-            </span>
-            <span className="relative inline-block h-[1.5em]">
-              <span className="text-4xl text-primary-500 absolute left-1/2 -translate-x-1/2 bottom-[-0.2em] animate-pulse-slow">
-                &#8226;
-              </span>
-            </span>
-          </motion.h2>
+          <div className="neo-badge bg-neo-yellow text-black">
+            <Lightning size={14} weight="bold" />
+            <span>FULL-STACK & FRONTEND ENGINEER</span>
+          </div>
+          <div className="neo-badge bg-neo-lime text-black">
+            <ShieldCheck size={14} weight="bold" />
+            <span>PRODUCTION SPORTSBOOK EXPERIENCE</span>
+          </div>
+          <div className="neo-badge bg-white dark:bg-neo-darkSurface text-black dark:text-white hidden sm:inline-flex">
+            <span>LAGOS / NIGERIA • REMOTE READY</span>
+          </div>
+        </motion.div>
 
-          <motion.h1
-            className="font-bold leading-tight"
-            variants={itemVariants}
-          >
-            <motion.div className="flex items-end mb-4 md:mb-6" variants={itemVariants}>
-              <span className="h-1 bg-gradient-to-r from-primary-500 to-accent-500 mr-3 w-16 md:w-24 mb-2 rounded-full"></span>
-              <motion.span
-                className="text-3xl sm:text-4xl md:text-5xl font-display tracking-tight inline-flex overflow-hidden"
-                variants={textParent}
-                initial="hidden"
-                animate="visible"
-              >
-                {name.split("").map((char, i) => (
-                  <motion.span key={i} variants={letter} className="inline-block text-slate-800 dark:text-textDark">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-              </motion.span>
-            </motion.div>
-
-            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold block pl-0 md:pl-8 relative">
-              <span className="gradient-text relative inline-block">
-                Frontend Engineer                
-              </span>
-            </span>
-          </motion.h1>
-
-          <motion.p
-            className="text-slate-600 dark:text-lightDark text-base sm:text-lg mt-4 mb-6 max-w-lg leading-relaxed pl-0 md:pl-8"
-            variants={itemVariants}
-          >
-            I build interactive and modern web experiences using React, Tailwind
-            CSS, and Firebase. Let's turn ideas into fast, beautiful websites.
-          </motion.p>
-
+        {/* Main Grid: Left Pitch / Right Terminal & Photo Card */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          
+          {/* Left Column (7 cols): Hero Pitch & CTAs */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 sm:gap-4 pl-0 md:pl-8 w-full sm:w-auto"
-            variants={itemVariants}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="lg:col-span-7 flex flex-col gap-6"
           >
-            <MagneticButton className="w-full sm:w-auto">
-              <motion.a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const targetElement = document.getElementById("contact");
-                  if (targetElement) {
-                    const offset = 80;
-                    const targetPosition = targetElement.offsetTop - offset;
-                    window.scrollTo({
-                      top: targetPosition,
-                      behavior: "smooth",
-                    });
-                  }
-                }}
-                className="btn-primary text-center w-full sm:w-auto block"
-                whileTap={{ scale: 0.95 }}
+            <motion.h1
+              variants={itemVariants}
+              className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.08]"
+            >
+              Hi, I'm{" "}
+              <span className="bg-neo-yellow text-black px-2 py-0.5 border-2 border-black shadow-neo-sm inline-block rotate-[-1deg]">
+                Timilehin
+              </span>
+              <br />
+              Building{" "}
+              <span className="bg-neo-lime text-black px-2 py-0.5 border-2 border-black shadow-neo-sm inline-block mx-1 rotate-[1deg]">
+                High-Scale
+              </span>{" "}
+              Sportsbook, FinTech & Web Platforms.
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-zinc-700 dark:text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl font-sans"
+            >
+              Full-Stack Developer with production experience building high-traffic, real-money betting back-offices, escrow systems, and AI SaaS. Self-taught engineer with a <strong className="text-black dark:text-white font-bold underline decoration-neo-yellow decoration-4">Mechanical Engineering background (4.65/5.00 GPA)</strong>. Specialized in React, Next.js, Vue 3, TypeScript, Supabase, and Node.js.
+            </motion.p>
+
+            {/* Quick CTAs */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-3 pt-2"
+            >
+              <button
+                onClick={() => handleScrollTo("projects")}
+                className="neo-btn-primary"
               >
-                Got a project?
-              </motion.a>
-            </MagneticButton>
-            <MagneticButton className="w-full sm:w-auto">
-              <motion.a
+                <ArrowDown size={18} weight="bold" />
+                <span>EXPLORE WORK</span>
+              </button>
+
+              <a
                 href="/frontendResume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary text-center w-full sm:w-auto block"
-                whileTap={{ scale: 0.95 }}
+                className="neo-btn-secondary"
               >
-                My Resume
-              </motion.a>
-            </MagneticButton>
-          </motion.div>
-        </motion.div>
+                <FilePdf size={18} weight="bold" />
+                <span>RESUME (PDF)</span>
+              </a>
 
-        {/* Right: Image Section */}
-        <motion.div
-          className="flex justify-center items-center flex-1 relative lg:mr-12 mt-8 md:mt-0"
-          variants={itemVariants}
-        >
+              <button
+                onClick={() => handleScrollTo("contact")}
+                className="neo-btn-lime"
+              >
+                <PaperPlaneTilt size={18} weight="bold" />
+                <span>LET'S TALK</span>
+              </button>
+            </motion.div>
+
+            {/* Email Quick-Copy Pill */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-2 pt-1"
+            >
+              <div className="flex items-center bg-white dark:bg-neo-darkCard border-2 border-black dark:border-zinc-300 p-1 pl-3 shadow-neo-sm">
+                <span className="font-mono text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 mr-3">
+                  {email}
+                </span>
+                <button
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-1 bg-neo-yellow hover:bg-neo-yellowHover text-black border-2 border-black px-2.5 py-1 text-xs font-mono font-bold transition-all active:translate-x-0.5 active:translate-y-0.5"
+                  title="Copy email to clipboard"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={14} weight="bold" />
+                      <span>COPIED!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} weight="bold" />
+                      <span>COPY</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Key Metrics Strip (Mobile / Tablet) */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4"
+            >
+              {stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white dark:bg-neo-darkCard border-2 border-black dark:border-zinc-200 p-3 shadow-neo-sm text-left hover:-translate-y-0.5 transition-transform"
+                >
+                  <div className="font-display font-black text-2xl sm:text-3xl text-black dark:text-white">
+                    {stat.value}
+                  </div>
+                  <div className="font-mono text-[11px] font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-tight">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column (5 cols): Neo Terminal & Photo Showcase */}
           <motion.div
-            className="relative z-10 will-change-transform"
-            animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
-            transition={shouldReduceMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="lg:col-span-5 flex flex-col gap-5"
           >
-            <motion.img
-              src={heroImage}
-              srcSet={`${heroImage448} 448w, ${heroImage768} 768w, ${heroImage} 1024w`}
-              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 55vw, 448px"
-              alt="Developer Illustration"
-              className="w-full max-w-[24rem] sm:max-w-[26rem] md:max-w-[28rem] h-auto relative rounded-2xl shadow-2xl hover-glow"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              width="448"
-              height="560"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-accent-500/20 rounded-2xl blur-xl -z-10"></div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            {/* Retro System Specs Terminal */}
+            <div className="neo-box-lg bg-white dark:bg-neo-darkCard overflow-hidden">
+              
+              {/* Terminal Header */}
+              <div className="bg-black text-white px-4 py-2.5 flex items-center justify-between border-b-2 border-black">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black" />
+                  <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black" />
+                  <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-black" />
+                </div>
+                <div className="flex items-center gap-1.5 font-mono text-xs text-zinc-300 font-bold">
+                  <TerminalWindow size={15} weight="bold" />
+                  <span>timi@production-box:~$</span>
+                </div>
+                <span className="w-4" />
+              </div>
 
-      {/* Scroll Down Indicator */}
-      <motion.div 
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 will-change-transform"
-        animate={shouldReduceMotion ? undefined : { y: [0, 8, 0] }}
-        transition={shouldReduceMotion ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2">
-          <motion.div
-            className="w-1.5 h-1.5 bg-primary rounded-full will-change-transform"
-            animate={shouldReduceMotion ? undefined : { y: [0, 10, 0] }}
-            transition={shouldReduceMotion ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          />
+              {/* Terminal Content */}
+              <div className="p-4 sm:p-5 font-mono text-xs sm:text-sm text-left space-y-3 bg-[#18181B] text-[#F4F4F5]">
+                <div className="flex items-center justify-between text-neo-yellow pb-2 border-b border-zinc-700">
+                  <span className="font-bold">// SYSTEM ARCHITECTURE</span>
+                  <span className="text-[10px] bg-zinc-800 text-neo-lime px-2 py-0.5 border border-zinc-600 font-bold">
+                    ONLINE
+                  </span>
+                </div>
+
+                <div className="space-y-1.5 text-zinc-300">
+                  <p>
+                    <span className="text-neo-pink font-bold">● Ecosystem:</span>{" "}
+                    <span className="text-white font-medium">SBE Sportsbook & Partner BO</span>
+                  </p>
+                  <p>
+                    <span className="text-neo-lime font-bold">● Core Stack:</span>{" "}
+                    <span className="text-white font-medium">React, Next.js, Vue 3, TS, Node</span>
+                  </p>
+                  <p>
+                    <span className="text-neo-blue font-bold">● Database:</span>{" "}
+                    <span className="text-white font-medium">Supabase (PostgreSQL, RLS, Auth)</span>
+                  </p>
+                  <p>
+                    <span className="text-neo-yellow font-bold">● Specialization:</span>{" "}
+                    <span className="text-white font-medium">Dashboards, Real-Time APIS, FinTech</span>
+                  </p>
+                  <p>
+                    <span className="text-zinc-400 font-bold">● Education:</span>{" "}
+                    <span className="text-white font-medium">B.Eng Mech Eng (FUTA, 4.65/5.00)</span>
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-zinc-700 flex items-center gap-2 text-neo-lime text-xs">
+                  <span className="animate-pulse">▶</span>
+                  <span>ready_for_dispatch: full-stack_challenges</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Snapshot Card with Sticker Badges */}
+            <div className="neo-box bg-neo-yellow p-4 sm:p-5 text-black relative">
+              <div className="flex items-center gap-4">
+                <div className="relative flex-shrink-0">
+                  <img
+                    src={heroImage}
+                    srcSet={`${heroImage768} 768w, ${heroImage} 1024w`}
+                    alt="Timilehin Adekunle"
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover border-2 border-black shadow-neo-sm"
+                    loading="eager"
+                  />
+                  <div className="absolute -bottom-2 -right-2 bg-neo-lime text-black border-2 border-black p-1 shadow-neo-sm">
+                    <Sparkle size={16} weight="bold" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col text-left">
+                  <span className="font-mono text-xs font-black uppercase tracking-wider text-zinc-800">
+                    Oluwatimilehin Adekunle
+                  </span>
+                  <span className="font-display font-black text-lg sm:text-xl leading-tight">
+                    Senior-Grade Execution.
+                  </span>
+                  <p className="text-xs text-zinc-800 font-sans mt-1">
+                    Delivering clean architecture, maintainable components, and reliable production tooling.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 
 export default Hero;
+
 

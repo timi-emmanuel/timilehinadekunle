@@ -1,115 +1,188 @@
 import { motion } from "framer-motion";
+import {
+  GraduationCap,
+  UsersThree,
+  Cpu,
+  ShieldCheck,
+  CheckCircle,
+  Lightning,
+  Sparkle,
+  Compass
+} from "@phosphor-icons/react";
 import Skills from "./Skills";
+import { fadeUpVariant as itemVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
 
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      when: "beforeChildren",
-      staggerChildren: 0.15,
-    },
+const principles = [
+  {
+    num: "01",
+    title: "High Reliability & Speed",
+    desc: "Production systems demand zero-error tolerance, caching strategies, and fast loading.",
+    bg: "bg-neo-yellow",
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+  {
+    num: "02",
+    title: "Clean & Secure Architecture",
+    desc: "Strict Row-Level Security (RLS), impersonation token safety, and modular component hierarchy.",
+    bg: "bg-neo-lime",
+  },
+  {
+    num: "03",
+    title: "Engineering Problem Solving",
+    desc: "Mechanical engineering analytical rigor applied to complex full-stack web applications.",
+    bg: "bg-neo-pink",
+    textColor: "text-white",
+  },
+];
 
 const About = () => {
   return (
-    <motion.section
+    <section
       id="about"
-      className="pt-24 pb-16 px-4 sm:px-6 md:px-12 lg:px-20 bg-slate-100 dark:bg-darkSecondary text-slate-600 dark:text-lightDark transition-colors duration-300"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bg dark:bg-neo-darkBg transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
-      <div className="flex items-center gap-4 mx-auto mb-12">
-        <h2 className="text-4xl sm:text-5xl font-bold text-slate-800 dark:text-textDark relative inline-flex items-end font-display">
-          About
-          <span className="text-4xl text-primary-500 absolute -right-4 bottom-[-0.20em]">
-            &#8226;
-          </span>
-        </h2>
-        <div className="w-full h-[0.1em] bg-gradient-to-r from-primary/50 via-accent/50 to-transparent"></div>
-      </div>
-
-      <div className="mx-auto flex flex-col-reverse md:flex-row-reverse mt-8 gap-8 lg:gap-16">
+      <div className="max-w-6xl mx-auto">
         
-        {/* Skills */}
-        <motion.div
-          variants={itemVariants}
-          className="w-full md:w-1/2"
-        >
-         <Skills/>
-        </motion.div>
+        {/* Section Header */}
+        <div className="mb-12 text-left">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="neo-badge bg-neo-lime text-black">
+              <Compass size={14} weight="bold" />
+              BACKGROUND & PHILOSOPHY
+            </span>
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
+            ABOUT{" "}
+            <span className="bg-neo-yellow text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[1deg]">
+              ME
+            </span>
+          </h2>
+        </div>
 
-        {/* Text */}
-        <motion.div
-          variants={itemVariants}
-          className="w-full md:w-1/2 text-left space-y-6"
-        >      
-          <div className="space-y-4">
-            <p className="text-base sm:text-lg text-slate-600 dark:text-lightDark leading-relaxed">
-              I'm Timilehin Adekunle, a passionate frontend developer with a
-              mechanical engineering background. I love building clean, responsive
-              UIs and modern web apps that feel great to use. My tools of choice
-              include React, Tailwind CSS, and Firebase — and I'm currently
-              exploring TypeScript and Next.js to further improve performance and
-              scalability in my projects.
-            </p>
-            <p className="text-base sm:text-lg text-slate-600 dark:text-lightDark leading-relaxed">
-              Over time, I've built a range of projects — from sleek landing pages
-              and dashboards to real-time tools with authentication and database
-              integration. I take pride in attention to detail, problem-solving, web accessibility
-              and learning fast. Whether it's a design-heavy interface or a
-              functional frontend challenge, I enjoy bringing ideas to life.
-            </p>
-            <p className="text-base sm:text-lg text-slate-600 dark:text-lightDark leading-relaxed">
-              Outside of code, I love skyscrapers, great storytelling, and I think it safe to say I'm a critical thinker with a flair for the extraordinaire. I believe software should feel as good as it
-              works — and I'm here to create meaningful digital experiences that do
-              just that.
-            </p>
-          </div>
-          <div>
-            {/* Stats Section */}
-            <div className="flex gap-6 lg:gap-8 mt-8 flex-wrap">
-              <motion.div 
-                className="glass-card flex flex-col items-center justify-center rounded-xl px-6 py-4 hover-lift"
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="text-4xl font-bold gradient-text-primary">3+</span>
-                <span className="text-slate-600 dark:text-lightDark text-sm mt-2 whitespace-nowrap">Years Experience</span>
-              </motion.div>
-              <motion.div 
-                className="glass-card flex flex-col items-center justify-center rounded-xl px-6 py-4 hover-lift"
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="text-4xl font-bold gradient-text-primary">10+</span>
-                <span className="text-slate-600 dark:text-light text-sm mt-2 whitespace-nowrap">Projects Completed</span>
-              </motion.div>
-              <motion.div 
-                className="glass-card flex flex-col items-center justify-center rounded-xl px-6 py-4 hover-lift"
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="text-4xl font-bold gradient-text-primary">98%</span>
-                <span className="text-slate-600 dark:text-light text-sm mt-2 whitespace-nowrap">Client Satisfaction</span>
-              </motion.div>
+        {/* 2-Column Layout: Left Narrative & Education / Right Skills Matrix */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          
+          {/* Left Column (6 cols): Story, Education & Leadership */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="lg:col-span-6 flex flex-col gap-6 text-left"
+          >
+            {/* Main Narrative Box */}
+            <div className="neo-box bg-white dark:bg-neo-darkCard p-6 sm:p-7 space-y-4 text-zinc-700 dark:text-zinc-300 font-sans text-sm sm:text-base leading-relaxed">
+              <p>
+                I'm <strong className="text-black dark:text-white font-bold">Timilehin Adekunle</strong>, a Full-Stack & Frontend Engineer based in Nigeria with a strong foundation in mechanical engineering and distributed systems thinking.
+              </p>
+              <p>
+                Transitioning from mechanical engineering (graduating with a <strong className="text-black dark:text-white font-bold bg-neo-yellow/50 dark:bg-neo-yellow/20 px-1 border border-black dark:border-zinc-500">4.65 / 5.00 First Class GPA</strong> from FUTA), I bring deep mathematical, logical, and systems-level problem solving to software engineering.
+              </p>
+              <p>
+                In production, I have built and maintained multi-tenant frontend features for the <strong className="text-black dark:text-white font-bold">SBE Sportsbook Back Office Ecosystem</strong> (serving 6+ clients, 3,000+ betting markets, and 100,000+ prematch events), engineered real-time cashier architecture in Vue 3, architected FinTech escrow platforms (PadiHold), and designed robust PostgreSQL schemas with Supabase RLS.
+              </p>
             </div>
-          </div>
-         
-        </motion.div>
+
+            {/* Education & Leadership Cards */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              
+              {/* Education Card */}
+              <div className="neo-box bg-neo-yellow p-5 text-black">
+                <div className="flex items-center gap-2 mb-2">
+                  <GraduationCap size={22} weight="bold" />
+                  <span className="font-mono text-xs font-black uppercase">Education</span>
+                </div>
+                <h4 className="font-display font-black text-base leading-tight">
+                  B.Eng. Mechanical Engineering
+                </h4>
+                <p className="font-mono text-xs font-bold text-zinc-800 mt-1">
+                  FUTA • 4.65 / 5.00 GPA
+                </p>
+                <p className="text-xs text-zinc-700 mt-1">
+                  First Class Distinction (Graduated 2024)
+                </p>
+              </div>
+
+              {/* Leadership Card */}
+              <div className="neo-box bg-neo-lime p-5 text-black">
+                <div className="flex items-center gap-2 mb-2">
+                  <UsersThree size={22} weight="bold" />
+                  <span className="font-mono text-xs font-black uppercase">Leadership</span>
+                </div>
+                <h4 className="font-display font-black text-base leading-tight">
+                  Academic Unit Leader
+                </h4>
+                <p className="font-mono text-xs font-bold text-zinc-800 mt-1">
+                  WCF FUTA • 100+ Students
+                </p>
+                <p className="text-xs text-zinc-700 mt-1">
+                  Mentoring, tutorials & academic planning
+                </p>
+              </div>
+
+            </div>
+
+            {/* Engineering Principles */}
+            <div className="space-y-3 pt-2">
+              <h4 className="font-display font-black text-base uppercase tracking-wider text-black dark:text-white">
+                Engineering Values:
+              </h4>
+              <div className="grid gap-3">
+                {principles.map((p, idx) => (
+                  <div
+                    key={idx}
+                    className="neo-box bg-white dark:bg-neo-darkCard p-4 flex items-start gap-4"
+                  >
+                    <span
+                      className={`font-mono font-black text-xs px-2 py-1 border-2 border-black ${p.bg} ${
+                        p.textColor || "text-black"
+                      } shadow-neo-sm flex-shrink-0`}
+                    >
+                      {p.num}
+                    </span>
+                    <div>
+                      <h5 className="font-display font-black text-sm text-black dark:text-white">
+                        {p.title}
+                      </h5>
+                      <p className="font-sans text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* Right Column (6 cols): Skills & Tech Stack Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="lg:col-span-6 flex flex-col gap-4"
+          >
+            <div className="flex items-center justify-between pb-2 mb-1">
+              <div className="flex items-center gap-2">
+                <span className="neo-badge bg-neo-pink text-white">
+                  <Cpu size={14} weight="bold" />
+                  TECHNICAL SKILLS
+                </span>
+              </div>
+              <span className="font-mono text-xs font-bold text-zinc-500">
+                VERIFIED IN PRODUCTION
+              </span>
+            </div>
+
+            <Skills />
+          </motion.div>
+
+        </div>
 
       </div>
-    </motion.section>
+    </section>
   );
 };
 
 export default About;
+

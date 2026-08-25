@@ -1,16 +1,16 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import ScrollProgress from './components/ScrollProgress'
-import About from './components/About'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import MarqueeTicker from './components/MarqueeTicker';
+import ScrollProgress from './components/ScrollProgress';
+import About from './components/About';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
-// Lazy load heavy desktop-only components
+// Lazy load custom cursor on desktop
 const CursorFollower = lazy(() => import('./components/CursorFollower'));
-const MouseOrbs = lazy(() => import('./components/MouseOrbs'));
 
 function App() {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -37,34 +37,25 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle(
-      'custom-cursor-enabled',
-      isDesktop && !prefersReducedMotion
-    );
-    return () => {
-      document.documentElement.classList.remove('custom-cursor-enabled');
-    };
-  }, [isDesktop, prefersReducedMotion]);
-
   return (
-    <div className='bg-slate-50 dark:bg-dark min-h-screen pt-2 overflow-x-hidden transition-colors duration-300'>
+    <div className="bg-neo-bg dark:bg-neo-darkBg min-h-screen text-neo-black dark:text-white font-sans selection:bg-neo-yellow selection:text-black transition-colors duration-200">
       <ScrollProgress />
       {isDesktop && !prefersReducedMotion && (
         <Suspense fallback={null}>
           <CursorFollower />
-          <MouseOrbs />
         </Suspense>
       )}
-      <Navbar/>    
-      <Hero/>
-      <About/>
-      <Projects/>
-      <Experience/>
-      <Contact/>
-      <Footer/>
+      <Navbar />
+      <Hero />
+      <MarqueeTicker />
+      <About />
+      <Projects />
+      <Experience />
+      <Contact />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+

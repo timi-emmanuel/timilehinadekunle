@@ -1,320 +1,427 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
-import { Github, ExternalLink, Info } from "lucide-react";
-import MagneticButton from "./MagneticButton";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowSquareOut,
+  GithubLogo,
+  LockKey,
+  Tag,
+  Sparkle,
+  Cpu,
+  CheckCircle,
+  X,
+  Buildings,
+  ShieldCheck,
+  Lightning,
+  Funnel
+} from "@phosphor-icons/react";
+import { fadeUpVariant as cardVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
+
 import ShortlyImg from "../assets/Shortly.png";
 import QuiqOrderImg from "../assets/quiqorder.png";
 import NationaryImg from "../assets/nationary.png";
-import HuddleImg from "../assets/huddle.png";
 import MatchkicksImg from "../assets/matchkicks.png";
 import PadiHoldImg from "../assets/padihold.png";
 import SBEBackOfficeImg from "../assets/sbe-back-office.png";
 import SBEPartnerBOImg from "../assets/sbe-partner-bo.png";
+import JirellaImg from "../assets/jirella-farm.jpg";
+
+const categories = ["ALL", "SPORTSBOOK & FINTECH", "SAAS & TOOLS", "WEB APPS"];
 
 const projects = [
   {
-    title: "Padihold",
-    description:
-      "Padihold is Nigeria's leading escrow platform designed to secure online transactions with trusted dispute resolution and fund protection.",
-    tech: [
-      "Node.js",
-      "TailwindCSS",
-      "Next.js",
-      "Framer Motion",
-      "Radix UI",
-      "Zod",
-      "Zustand",
-    ],
-    live: "https://padi-hold.vercel.app/",
-    github: null,
-    image: PadiHoldImg,
-  },
-  {
+    id: "sbe-back-office",
     title: "SBE Sportsbook Back Office",
+    subtitle: "Enterprise Multi-Tenant Administration Platform",
+    category: "SPORTSBOOK & FINTECH",
+    featured: true,
+    tag: "PRODUCTION SYSTEM",
+    tagColor: "bg-neo-yellow",
+    metrics: "6+ Clients • 100k+ Events • 3k+ Markets",
     description:
-      "An internal sportsbook back-office system used to manage agents, cashiers, users, and financial operations. Implemented role-based access control, secure authentication flows, and real-time operational dashboards for sportsbook management.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "JWT",
-      "Role-Based Access Control",
-      "REST APIs",
+      "Enterprise sportsbook administration platform used to manage multi-tenant sportsbook operations. Built and maintained React/TypeScript interfaces, role-based access control (Super Admin, Agents, Cashiers), secure JWT authentication, and high-frequency real-time betting operational feeds.",
+    highlights: [
+      "Integrated Swagger REST APIs for real-time betting, cashier, and partner data.",
+      "Resolved cross-origin (CORS) & security considerations around impersonation tokens.",
+      "Optimized data tables and state flow handling 100,000+ prematch events.",
     ],
+    tech: ["React", "TypeScript", "Node.js", "JWT Auth", "REST APIs", "RBAC", "Docker"],
     live: null,
     github: null,
     image: SBEBackOfficeImg,
+    confidential: true,
   },
   {
-    title: "SBE Partner Back Office",
+    id: "sbe-partner-bo",
+    title: "SBE Partner Back Office & Aviata Cashier",
+    subtitle: "Sportsbook Partner Platform & Cashier System",
+    category: "SPORTSBOOK & FINTECH",
+    featured: true,
+    tag: "PRODUCTION SYSTEM",
+    tagColor: "bg-neo-lime",
+    metrics: "Vue 3 Cashier • RTP Engine • API Keys",
     description:
-      "A partner-facing sportsbook management platform built as a separate codebase from the main back office. Focused on performance optimizations, token validation, API key management, and accurate financial computations including deposits, withdrawals, and RTP metrics.",
-    tech: [
-      "React",
-      "Node.js",
-      "JWT",
-      "API Keys",
-      "Caching",
-      "Financial Logic",
+      "A dedicated partner-facing sportsbook management platform and cashier application. Built Vue 3 component architecture for the Aviata Crash Shop cashier app handling real-time approval and transaction workflows, API key validation, caching strategies, and RTP financial computations.",
+    highlights: [
+      "Built Vue 3 component architecture for cashier app real-time approval workflows.",
+      "Diagnosed and fixed Docker Compose healthcheck port mismatch in production.",
+      "Implemented financial calculations, RTP metrics, deposits, and withdrawal auditing.",
     ],
+    tech: ["Vue 3", "React", "Node.js", "Express", "API Keys", "Docker", "Caching"],
     live: null,
     github: null,
     image: SBEPartnerBOImg,
-  },
-  
-  {
-    title: "Shortly",
-    description:
-      "A modern URL shortener with Firebase Auth, analytics, and animations.",
-    tech: ["React", "Tailwind", "Firebase", "Framer"],
-    live: "https://shortly-ivory-theta.vercel.app/",
-    github: "https://github.com/timi-emmanuel/shortly",
-    image: ShortlyImg,
+    confidential: true,
   },
   {
-    title: "QuiqOrder",
+    id: "padihold",
+    title: "PadiHold — Escrow Platform",
+    subtitle: "Nigeria's Escrow Platform for Secure Online Transactions",
+    category: "SPORTSBOOK & FINTECH",
+    featured: true,
+    tag: "FINTECH ESCROW",
+    tagColor: "bg-neo-pink",
+    tagTextColor: "text-white",
+    metrics: "Blockchain Escrow • AI Dispute Assistant",
     description:
-      "An AI-powered restaurant chatbot for order automation and admin dashboard.",
-    tech: ["React", "Whatsapp API", "OpenAI", "Firebase", "Paystack", "Node.js"],
+      "Nigeria's trust-centric escrow platform engineered to eliminate e-commerce fraud. Features a smart dispute resolution assistant powered by OpenAI, a trust scoring algorithm, and WhatsApp/Telegram bot interfaces for transaction updates.",
+    highlights: [
+      "Architected with Next.js, Tailwind CSS, Zustand, and Radix UI.",
+      "Integrated AI dispute resolution assistant with OpenAI and simulated logistics API.",
+      "Solidity smart contract prototype with Hardhat & Firebase Functions backend.",
+    ],
+    tech: ["Next.js", "Tailwind CSS", "Firebase Functions", "Zustand", "Radix UI", "OpenAI", "Solidity"],
+    live: "https://padi-hold.vercel.app/",
+    github: null,
+    image: PadiHoldImg,
+    confidential: false,
+  },
+  {
+    id: "jirella-farm",
+    title: "Jirella Farm Management System",
+    subtitle: "Modular Agritech & Inventory Platform",
+    category: "SAAS & TOOLS",
+    featured: true,
+    tag: "SUPABASE RLS & AUTH",
+    tagColor: "bg-neo-lime",
+    metrics: "PostgreSQL Schema • Inventory • Feed Mill Logs",
+    description:
+      "A modern, modular farm management system designed for agricultural businesses. Covers inventory and store tracking, poultry lifecycle metrics, mortality tracking, and feed mill production logs with Supabase backend architecture.",
+    highlights: [
+      "Designed scalable data architecture on Supabase with strict Row-Level Security (RLS).",
+      "Built modular dashboard components with Next.js, shadcn/ui, and Tailwind CSS.",
+      "Interactive data visualizations for daily production output and feed consumption.",
+    ],
+    tech: ["Next.js", "Supabase", "PostgreSQL", "RLS & Auth", "shadcn/ui", "Tailwind CSS"],
+    live: null,
+    github: null,
+    image: JirellaImg,
+    confidential: false,
+  },
+  {
+    id: "quiqorder",
+    title: "QuiqOrder (Startup)",
+    subtitle: "AI-Powered WhatsApp Storefront & Ordering System",
+    category: "SAAS & TOOLS",
+    featured: false,
+    tag: "SAAS STARTUP",
+    tagColor: "bg-neo-yellow",
+    metrics: "WhatsApp API • Paystack Payments",
+    description:
+      "Frontend development for QuiqOrder's branded storefront platform empowering WhatsApp-based sellers. Includes real-time ordering UI, Firebase data sync, and Paystack payment processing.",
+    highlights: [
+      "Built responsive ordering interfaces for merchants and end-customers.",
+      "Integrated Firebase authentication and real-time order state pipelines.",
+      "Built segmented merchant activation content as the product scaled.",
+    ],
+    tech: ["React", "Firebase", "Node.js", "WhatsApp API", "Paystack", "OpenAI"],
     live: "https://www.quiqorderng.com/",
     github: null,
     image: QuiqOrderImg,
+    confidential: false,
   },
   {
-    title: "Nationary",
-    description:
-      "A responsive React app that provides quick access to countries’ facts, maps, and flags through REST API integration, intuitive search, and smooth animations.",
-    tech: ["React", "Tailwind", "REST Country API", "Zustand", "Framer"],
-    live: "https://rest-countries-app-hazel.vercel.app/",
-    github: "https://github.com/timi-emmanuel/rest-countries-app",
-    image: NationaryImg,
-  },
-  {
-    title: "Huddle Landing Page",
-    description:
-      "A responsive landing page challenge built with clean layout, hover effects, and mobile-first design.",
-    tech: ["HTML", "CSS", "Responsive Design"],
-    live: "https://manage-landing-page-test.netlify.app/",
-    github: "https://github.com/timi-emmanuel/huddle-landing-page",
-    image: HuddleImg,
-  },
-  {
+    id: "mockup-tool",
     title: "Mockup Integration Tool",
+    subtitle: "Automated Image Processing & Placement Engine",
+    category: "SAAS & TOOLS",
+    featured: false,
+    tag: "BACKEND AUTOMATION",
+    tagColor: "bg-neo-blue",
+    metrics: "AWS S3 • Sharp • Coordinate Mapping",
     description:
-      "Automated system that overlays design images onto mockups at precise coordinates, with S3 integration for user uploads and local mockup handling.",
+      "Backend automation service that dynamically overlays user-uploaded custom designs onto apparel and merchandise mockups at pixel-perfect coordinates.",
+    highlights: [
+      "Engineered high-throughput image rendering pipelines with Node.js and Sharp.",
+      "Integrated Amazon S3 for multi-part file uploads and asset storage.",
+      "Designed coordinate mapping algorithms for realistic product mockups.",
+    ],
     tech: ["Node.js", "Express.js", "Sharp", "AWS S3", "JavaScript"],
     live: "https://matchkicks.com/",
     github: null,
     image: MatchkicksImg,
+    confidential: false,
+  },
+  {
+    id: "shortly",
+    title: "Shortly",
+    subtitle: "Modern URL Shortener with Analytics",
+    category: "WEB APPS",
+    featured: false,
+    tag: "WEB APP",
+    tagColor: "bg-neo-pink",
+    tagTextColor: "text-white",
+    metrics: "Firebase Auth • Realtime Analytics",
+    description:
+      "Feature-rich URL shortening application with user authentication, link management, click tracking analytics, and Framer Motion micro-animations.",
+    highlights: [
+      "Firebase Authentication and Firestore real-time database.",
+      "Click tracking analytics with interactive charts.",
+      "Mobile-first responsive design with Tailwind CSS.",
+    ],
+    tech: ["React", "Tailwind CSS", "Firebase", "Framer Motion"],
+    live: "https://shortly-ivory-theta.vercel.app/",
+    github: "https://github.com/timi-emmanuel/shortly",
+    image: ShortlyImg,
+    confidential: false,
+  },
+  {
+    id: "nationary",
+    title: "Nationary",
+    subtitle: "Global Country Explorer & Data Viewer",
+    category: "WEB APPS",
+    featured: false,
+    tag: "REST API",
+    tagColor: "bg-neo-yellow",
+    metrics: "REST Countries API • Zustand",
+    description:
+      "Interactive country exploration platform utilizing REST Countries API with real-time fuzzy search, regional filtering, border country links, and dark/light modes.",
+    highlights: [
+      "Global state management utilizing Zustand for search and filters.",
+      "Dynamic theme toggle with accessible color contrast.",
+      "Smooth list animations and detail modal transitions.",
+    ],
+    tech: ["React", "Zustand", "Tailwind CSS", "REST API", "Framer Motion"],
+    live: "https://rest-countries-app-hazel.vercel.app/",
+    github: "https://github.com/timi-emmanuel/rest-countries-app",
+    image: NationaryImg,
+    confidential: false,
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.2,
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-// Enhanced Project Image Card with 3D tilt and zoom
-const ProjectImageCard = ({ image, title }) => {
-  const ref = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 });
-  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7.5deg', '-7.5deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg']);
-
-  const handleMouseMove = (e) => {
-    if (!ref.current || shouldReduceMotion) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    setIsHovered(false);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="flex-1 max-w-[500px] h-[400px] overflow-hidden rounded-2xl group relative shadow-lg dark:shadow-2xl dark:shadow-primary/20 will-change-transform"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX: shouldReduceMotion ? undefined : rotateX,
-        rotateY: shouldReduceMotion ? undefined : rotateY,
-        transformStyle: 'preserve-3d',
-      }}
-      animate={{
-        scale: isHovered && !shouldReduceMotion ? 1.03 : 1,
-      }}
-      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-2xl"></div>
-      <motion.img
-        src={image}
-        alt={title}
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover rounded-2xl hover-glow smooth-transition will-change-transform"
-        style={{
-          objectPosition: 'center center',
-        }}
-        animate={{
-          scale: isHovered && !shouldReduceMotion ? 1.06 : 1,
-        }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      />
-    </motion.div>
-  );
-};
-
 const Projects = () => {
-  const sectionRef = useRef(null);
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const filteredProjects =
+    activeCategory === "ALL"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <motion.section
+    <section
       id="projects"
-      ref={sectionRef}
-      className="relative bg-slate-50 dark:bg-dark text-slate-800 dark:text-textDark py-24 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden transition-colors duration-300"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }} 
-      variants={containerVariants}
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgAlt dark:bg-neo-darkSurface transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
-      {/* Grid Background */}
-      <motion.div
-        className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none z-0"
-        style={{ y: yBg }}
-      />
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Section Header with Neo Stamp */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="neo-badge bg-neo-yellow text-black">
+                <Cpu size={14} weight="bold" />
+                PORTFOLIO & CASE STUDIES
+              </span>
+            </div>
+            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
+              FEATURED{" "}
+              <span className="bg-neo-lime text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[-1deg]">
+                PROJECTS
+              </span>
+            </h2>
+          </div>
 
-      <div className="relative z-10 mx-auto">
-        <div className="flex items-center gap-4 mx-auto mb-16 p-2 md:p-0">
-          <div className="w-full h-[0.1em] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-800 dark:text-textDark relative inline-flex items-end font-display">
-            Projects
-            <span className="text-4xl text-primary-500 absolute -right-4 bottom-[-0.20em]">
-              &#8226;
-            </span>
-          </h2>
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3 py-1.5 font-mono font-bold text-xs border-2 border-black dark:border-white transition-all duration-150 cursor-pointer ${
+                    isActive
+                      ? "bg-neo-yellow text-black shadow-neo-sm -translate-y-0.5"
+                      : "bg-white dark:bg-neo-darkCard text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="space-y-24">
-          {projects.map((project, idx) => {
-            const isEven = idx % 2 === 0;
-            return (
-              <motion.div key={idx} variants={cardVariants}>
-                <div
-                  className={`flex flex-col-reverse ${
-                    isEven ? "md:flex-row-reverse" : "md:flex-row "
-                  } gap-8 md:gap-12 items-center`}
-                >
-                  <ProjectImageCard image={project.image} title={project.title} />
+        {/* Projects Grid */}
+        <motion.div
+          layout
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          className="grid md:grid-cols-2 gap-8 lg:gap-10"
+        >
+          {filteredProjects.map((project) => (
+            <motion.article
+              key={project.id}
+              layout
+              variants={cardVariants}
+              className="neo-box bg-white dark:bg-neo-darkCard flex flex-col justify-between overflow-hidden group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-neo-lg dark:hover:shadow-neo-dark-lg transition-all duration-200"
+            >
+              <div>
+                {/* Project Image Preview Header */}
+                <div className="relative h-52 sm:h-64 overflow-hidden border-b-2 border-black dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  
+                  {/* Category & Status Badges */}
+                  <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                    <span
+                      className={`neo-badge ${project.tagColor || "bg-neo-yellow"} ${
+                        project.tagTextColor || "text-black"
+                      }`}
+                    >
+                      {project.tag}
+                    </span>
+                  </div>
 
-                  <div className="flex-1 max-w-[500px] min-h-[300px] text-left glass-card p-6 md:p-8 rounded-2xl hover-lift flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-display gradient-text-primary">
-                        {project.title}
-                      </h3>
-                      <div className="flex flex-wrap justify-start gap-2 text-sm mb-6">
-                        {project.tech.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="glass border-primary/30 text-slate-600 dark:text-lightDark px-3 py-1.5 rounded-full text-xs font-medium hover:border-primary/60 hover:bg-primary/10 smooth-transition"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-slate-600 dark:text-lightDark mb-6 leading-relaxed text-base">{project.description}</p>
+                  {project.confidential && (
+                    <div className="absolute top-3 right-3 bg-black text-white border-2 border-white px-2.5 py-1 text-[11px] font-mono font-bold flex items-center gap-1 shadow-neo-sm">
+                      <LockKey size={14} weight="bold" />
+                      <span>ENTERPRISE</span>
                     </div>
-                    <div className="flex flex-wrap justify-start gap-4 items-center mt-auto">
-                      {project.github ? (
-                        <MagneticButton>
-                          <motion.a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary text-sm flex items-center gap-2 whitespace-nowrap flex-shrink-0"
-                            aria-label="GitHub"
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Github size={18} className="flex-shrink-0" />
-                            <span className="whitespace-nowrap">GitHub</span>
-                          </motion.a>
-                        </MagneticButton>
-                      ) : (
-                        <div className="relative group">
-                          <button className="glass border-primary/30 text-light px-4 py-2 rounded-lg flex items-center gap-2 cursor-default text-sm font-medium">
-                            <Info size={18} />
-                            Private Repo
-                          </button>
-                          <div className="absolute left-0 mt-2 w-max glass-strong  dark:text-white text-slate-800 bg-slate-900 dark:bg-slate-800 text-sm rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-10 pointer-events-none border border-slate-200 dark:border-slate-600">
-                            Available upon request
-                          </div>
-                        </div>
-                      )}
-                      <MagneticButton>
-                        <motion.a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-secondary text-sm flex items-center gap-2 whitespace-nowrap flex-shrink-0"
-                          aria-label="Live Project"
-                          whileTap={{ scale: 0.95 }}
-                        > 
-                          <ExternalLink size={18} className="flex-shrink-0" />
-                          <span className="whitespace-nowrap">Live Demo</span>
-                        </motion.a>
-                      </MagneticButton>
+                  )}
+
+                  {/* Bottom metrics pill */}
+                  {project.metrics && (
+                    <div className="absolute bottom-3 left-3 right-3 bg-white/95 dark:bg-black/90 text-black dark:text-white border-2 border-black px-3 py-1 text-xs font-mono font-bold truncate backdrop-blur-sm shadow-neo-sm flex items-center gap-1.5">
+                      <Lightning size={14} weight="fill" className="text-black dark:text-neo-yellow flex-shrink-0" />
+                      <span className="truncate">{project.metrics}</span>
                     </div>
+                  )}
+                </div>
+
+                {/* Card Content Body */}
+                <div className="p-5 sm:p-6 text-left">
+                  <span className="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest block mb-1">
+                    {project.category}
+                  </span>
+                  
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-black dark:text-white mb-2 leading-tight group-hover:text-neo-yellowHover dark:group-hover:text-neo-yellow transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-zinc-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-5">
+                    {project.description}
+                  </p>
+
+                  {/* Highlights Bullet points */}
+                  {project.highlights && (
+                    <ul className="space-y-1.5 mb-5 font-sans text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+                      {project.highlights.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <CheckCircle
+                            size={16}
+                            weight="bold"
+                            className="text-neo-lime flex-shrink-0 mt-0.5"
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Tech Stack Pills */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-zinc-100 dark:bg-neo-darkSurface text-black dark:text-white border border-black dark:border-zinc-600 px-2.5 py-1 text-[11px] font-mono font-bold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+
+              {/* Action Buttons Footer */}
+              <div className="p-5 sm:p-6 pt-0 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 flex flex-wrap items-center gap-3">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="neo-btn-primary text-xs py-2 px-4 flex-1 sm:flex-none"
+                  >
+                    <ArrowSquareOut size={16} weight="bold" />
+                    <span>LIVE DEMO</span>
+                  </a>
+                )}
+
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="neo-btn-secondary text-xs py-2 px-4 flex-1 sm:flex-none"
+                  >
+                    <GithubLogo size={16} weight="bold" />
+                    <span>CODE</span>
+                  </a>
+                )}
+
+                {project.confidential && (
+                  <div className="flex items-center gap-2 bg-zinc-100 dark:bg-neo-darkSurface border-2 border-black dark:border-zinc-600 px-3 py-2 text-xs font-mono text-zinc-600 dark:text-zinc-300 shadow-neo-sm">
+                    <LockKey size={14} weight="bold" />
+                    <span>Confidential (Internal Architecture)</span>
+                  </div>
+                )}
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        {/* Bottom Banner for Architecture Discussions */}
+        <div className="mt-16 neo-box-lg bg-neo-yellow p-6 sm:p-8 text-black flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+          <div>
+            <span className="neo-badge bg-black text-white mb-2">
+              <Lightning size={14} weight="bold" />
+              WANT TO DISCUSS ARCHITECTURE?
+            </span>
+            <h3 className="font-display font-black text-2xl sm:text-3xl">
+              Need scalable frontend architecture or reliable full-stack tooling?
+            </h3>
+            <p className="font-sans text-sm sm:text-base text-zinc-900 mt-1 max-w-xl">
+              I specialize in high-traffic real-time systems, Supabase RLS schema design, and modular UI engineering.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="neo-btn bg-black text-white hover:bg-zinc-800 whitespace-nowrap shadow-neo"
+          >
+            LET'S DISCUSS YOUR PROJECT
+          </a>
         </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 };
 
 export default Projects;
+

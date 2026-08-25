@@ -10,7 +10,7 @@ const CursorFollower = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 30, stiffness: 500 };
+  const springConfig = { damping: 35, stiffness: 600 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -32,8 +32,8 @@ const CursorFollower = () => {
       lastY = e.clientY;
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          cursorX.set(lastX - 16);
-          cursorY.set(lastY - 16);
+          cursorX.set(lastX - 12);
+          cursorY.set(lastY - 12);
           ticking = false;
         });
         ticking = true;
@@ -46,8 +46,8 @@ const CursorFollower = () => {
         e.target.tagName === 'BUTTON' ||
         e.target.closest('a') ||
         e.target.closest('button') ||
-        e.target.closest('.hover-lift') ||
-        e.target.closest('.glass-card')
+        e.target.closest('.neo-btn') ||
+        e.target.closest('.neo-box')
       ) {
         setIsHovering(true);
       }
@@ -59,8 +59,8 @@ const CursorFollower = () => {
         e.target.tagName === 'BUTTON' ||
         e.target.closest('a') ||
         e.target.closest('button') ||
-        e.target.closest('.hover-lift') ||
-        e.target.closest('.glass-card')
+        e.target.closest('.neo-btn') ||
+        e.target.closest('.neo-box')
       ) {
         setIsHovering(false);
       }
@@ -89,30 +89,22 @@ const CursorFollower = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference opacity-90"
+      className="fixed top-0 left-0 w-6 h-6 pointer-events-none z-[9999]"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
       }}
     >
       <motion.div
-        className="w-full h-full rounded-full bg-white"
+        className="w-full h-full bg-neo-yellow border-2 border-black shadow-neo-sm"
         animate={{
-          scale: isClicking ? 0.8 : isHovering ? 1.5 : 1,
+          scale: isClicking ? 0.75 : isHovering ? 1.6 : 1,
+          rotate: isHovering ? 45 : 0,
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28 }}
-      />
-      <motion.div
-        className="absolute inset-0 rounded-full border-2 border-white"
-        animate={{
-          scale: isClicking ? 1.2 : isHovering ? 1.8 : 1.3,
-          opacity: isHovering ? 0.5 : 0.3,
-        }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 25 }}
       />
     </motion.div>
   );
 };
 
 export default CursorFollower;
-

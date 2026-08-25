@@ -1,122 +1,132 @@
 import { motion } from "framer-motion";
 import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiTailwindcss,
-  SiFramer,
-  SiVuedotjs,
-  SiNuxtdotjs,
-  SiNextdotjs,
-  SiTypescript,
-  SiFirebase,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiGit,
-  SiGithub,
-  SiVercel,
-  SiFigma
-} from "react-icons/si";
+  Code,
+  Browser,
+  Database,
+  Wrench,
+  Lightning,
+  GitBranch,
+  Terminal,
+  Cpu,
+  Stack,
+  Sparkle
+} from "@phosphor-icons/react";
+import { fadeUpVariant as cardVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
 
-const skillGroups = {
-  Frontend: [
-    { name: "HTML5", icon: <SiHtml5 className="text-[#e34f26]" /> },
-    { name: "CSS3", icon: <SiCss3 className="text-[#1572B6]" /> },
-    { name: "JavaScript (ES6+)", icon: <SiJavascript className="text-[#F7DF1E]" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
-    { name: "React.js", icon: <SiReact className="text-[#61DAFB]" /> },
-    { name: "Vue.js", icon: <SiVuedotjs className="text-[#4FC08D]" /> },
-    { name: "Nuxt.js", icon: <SiNuxtdotjs className="text-[#00DC82]" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-slate-800 dark:text-white" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38BDF8]" /> },
-    { name: "Framer Motion", icon: <SiFramer className="text-white" /> },
-  ],
-  "Backend & DB": [
-    { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
-    { name: "Node.js (Basic)", icon: <SiNodedotjs className="text-[#68A063]" /> },
-    { name: "Express.js", icon: <SiExpress className="text-white" /> },
-    { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-  ],
-  "Tools & Workflow": [
-    { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
-    { name: "GitHub", icon: <SiGithub className="text-white" /> },
-    { name: "Vercel", icon: <SiVercel className="text-white" /> },
-    { name: "Figma", icon: <SiFigma className="text-[#A259FF]" /> },
-  ],
-};
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.18,
-      duration: 0.5,
-      ease: "easeOut",
-    },
+const skillSections = [
+  {
+    category: "Languages",
+    icon: Code,
+    color: "bg-neo-yellow",
+    skills: [
+      { name: "JavaScript (ES6+)", level: "Advanced" },
+      { name: "TypeScript", level: "Advanced" },
+      { name: "HTML5 / Semantic", level: "Expert" },
+      { name: "CSS3 / Modern", level: "Expert" },
+      { name: "Python", level: "Intermediate" },
+    ],
   },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const skillVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.25 } },
-};
+  {
+    category: "Frontend & UI",
+    icon: Browser,
+    color: "bg-neo-lime",
+    skills: [
+      { name: "React.js", level: "Production" },
+      { name: "Next.js (App Router)", level: "Production" },
+      { name: "Vue.js (Vue 3)", level: "Production" },
+      { name: "Nuxt.js", level: "Proficient" },
+      { name: "Tailwind CSS", level: "Expert" },
+      { name: "Framer Motion", level: "Advanced" },
+      { name: "Radix UI / shadcn", level: "Production" },
+      { name: "Zustand State", level: "Advanced" },
+    ],
+  },
+  {
+    category: "Backend & Data",
+    icon: Database,
+    color: "bg-neo-pink",
+    textColor: "text-white",
+    skills: [
+      { name: "Node.js", level: "Production" },
+      { name: "Express.js", level: "Production" },
+      { name: "Supabase (Postgres, RLS)", level: "Production" },
+      { name: "REST APIs (Swagger)", level: "Production" },
+      { name: "Firebase (Auth, DB)", level: "Advanced" },
+      { name: "JWT & Role-Based Auth", level: "Production" },
+    ],
+  },
+  {
+    category: "Tools, DevOps & Media",
+    icon: Wrench,
+    color: "bg-neo-blue",
+    skills: [
+      { name: "Git & GitHub", level: "Advanced" },
+      { name: "Docker (Basic / Compose)", level: "Proficient" },
+      { name: "Vite / Webpack", level: "Advanced" },
+      { name: "Postman", level: "Advanced" },
+      { name: "AWS S3 & Sharp", level: "Production" },
+      { name: "Figma (UI/UX)", level: "Proficient" },
+    ],
+  },
+];
 
 const Skills = () => {
   return (
-    <motion.section
-      className="text-slate-800 dark:text-textDark px-4 sm:px-6 lg:px-8"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
-    >
-      <div className="mx-auto">
-        <motion.h2
-          className="text-3xl sm:text-4xl font-bold gradient-text-primary text-left md:text-center mb-6 font-display"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          Skills & Tools
-        </motion.h2>
-        <motion.div className="grid grid-cols-1 gap-8" variants={containerVariants}>
-          {Object.entries(skillGroups).map(([category, skills], idx) => (
-            <motion.div 
-              key={idx} 
+    <div className="w-full text-black dark:text-white">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+      >
+        {skillSections.map((section, idx) => {
+          const Icon = section.icon;
+          return (
+            <motion.div
+              key={idx}
               variants={cardVariants}
-              className="glass-card p-6 rounded-2xl hover-lift"
+              className="neo-box bg-white dark:bg-neo-darkCard p-5 text-left flex flex-col justify-between hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-neo-lg dark:hover:shadow-neo-dark transition-all duration-150"
             >
-              <h3 className="text-xl font-semibold text-slate-800 dark:text-textDark mb-4 font-display">{category}</h3>
-              <ul className="flex flex-wrap gap-3">
-                {skills.map((skill, i) => (
-                  <motion.li
-                    key={i}
-                    className="glass text-slate-600 dark:text-lightDark px-4 py-2.5 rounded-full border border-primary/30 text-sm flex items-center gap-2 smooth-transition hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:text-slate-800 dark:hover:text-textDark"
-                    variants={skillVariants}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                  >
-                    <span className="text-lg">{skill.icon}</span>
-                    <span className="font-medium">{skill.name}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              <div>
+                {/* Category Header */}
+                <div className="flex items-center justify-between pb-3 border-b-2 border-black dark:border-zinc-700 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`w-7 h-7 border-2 border-black ${section.color} ${
+                        section.textColor || "text-black"
+                      } flex items-center justify-center shadow-neo-sm`}
+                    >
+                      <Icon size={16} weight="bold" />
+                    </span>
+                    <h3 className="font-display font-black text-lg text-black dark:text-white">
+                      {section.category}
+                    </h3>
+                  </div>
+                  <span className="font-mono text-[10px] bg-zinc-100 dark:bg-neo-darkSurface border border-black dark:border-zinc-600 px-1.5 py-0.5 text-zinc-600 dark:text-zinc-300 font-bold">
+                    {section.skills.length} SKILLS
+                  </span>
+                </div>
+
+                {/* Skills Badges */}
+                <ul className="flex flex-wrap gap-2">
+                  {section.skills.map((skill, i) => (
+                    <li
+                      key={i}
+                      className="inline-flex items-center gap-1.5 bg-zinc-50 dark:bg-neo-darkSurface border-2 border-black dark:border-zinc-600 px-2.5 py-1 text-xs font-mono font-bold text-black dark:text-white shadow-neo-sm hover:bg-neo-yellow hover:text-black dark:hover:bg-neo-yellow dark:hover:text-black hover:-translate-y-0.5 transition-all duration-150"
+                    >
+                      <span>{skill.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </motion.section>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 };
 
 export default Skills;
+
