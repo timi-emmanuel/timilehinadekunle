@@ -48,11 +48,11 @@ const StatStrip = () => {
           return (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.08 }}
-              className={`p-6 sm:p-7 flex flex-col justify-between text-left transition-colors duration-150 group hover:bg-zinc-50 dark:hover:bg-neo-darkSurface/60 ${
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: idx * 0.06 }}
+              className={`p-6 sm:p-7 flex flex-col justify-between text-left transition-colors duration-150 transform-gpu group hover:bg-zinc-50 dark:hover:bg-neo-darkSurface/60 ${
                 !isLastCol ? "lg:border-r-2 border-black dark:border-zinc-700" : ""
               } ${
                 idx < 2 ? "border-b-2 sm:border-b-2 lg:border-b-0 border-black dark:border-zinc-700" : ""

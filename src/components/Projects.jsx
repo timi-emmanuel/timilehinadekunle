@@ -221,19 +221,18 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <motion.div
-          layout
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true, margin: "-40px" }}
           className="grid md:grid-cols-2 gap-8 lg:gap-10"
         >
           {filteredProjects.map((project) => (
             <motion.article
               key={project.id}
-              layout
               variants={cardVariants}
-              className="neo-box bg-white dark:bg-neo-darkCard flex flex-col justify-between overflow-hidden group hover:-translate-x-1 hover:-translate-y-1 hover:shadow-neo-lg dark:hover:shadow-neo-dark-lg transition-all duration-200"
+              whileHover={{ x: -3, y: -3, transition: { duration: 0.15 } }}
+              className="neo-box bg-white dark:bg-neo-darkCard flex flex-col justify-between overflow-hidden group hover:shadow-neo-lg dark:hover:shadow-neo-dark-lg transition-[box-shadow,border-color,background-color] duration-150 transform-gpu"
             >
               <div>
                 {/* Project Image Preview Header */}

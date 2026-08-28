@@ -86,14 +86,15 @@ const Experience = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-40px" }}
           className="space-y-8 text-left"
         >
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-[#1A1A1E] dark:bg-[#16161A] border-2 border-white/80 dark:border-zinc-300 shadow-neo-dark-white p-6 sm:p-8 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 relative"
+              whileHover={{ x: -2, y: -2, transition: { duration: 0.15 } }}
+              className="bg-[#1A1A1E] dark:bg-[#16161A] border-2 border-white/80 dark:border-zinc-300 shadow-neo-dark-white p-6 sm:p-8 transition-[box-shadow,border-color] duration-150 relative transform-gpu"
             >
               {/* Top Row: Number Box + Role / Company + Badges */}
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b-2 border-zinc-700 mb-6">

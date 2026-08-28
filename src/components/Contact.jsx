@@ -83,8 +83,8 @@ const Contact = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="lg:col-span-5 flex flex-col gap-4 text-left"
+            viewport={{ once: true, margin: "-40px" }}
+            className="lg:col-span-5 flex flex-col gap-4 text-left transform-gpu"
           >
             {/* Email Card */}
             <div className="neo-box bg-white dark:bg-neo-darkCard p-5">
@@ -218,8 +218,8 @@ const Contact = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="lg:col-span-7"
+            viewport={{ once: true, margin: "-40px" }}
+            className="lg:col-span-7 transform-gpu"
           >
             <form
               action="https://formsubmit.co/adekemmanuel17@gmail.com"

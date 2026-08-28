@@ -69,8 +69,8 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="lg:col-span-6 flex flex-col gap-6 text-left"
+            viewport={{ once: true, margin: "-40px" }}
+            className="lg:col-span-6 flex flex-col gap-6 text-left transform-gpu"
           >
             {/* Main Narrative Box */}
             <div className="neo-box bg-white dark:bg-neo-darkCard p-6 sm:p-7 space-y-4 text-zinc-700 dark:text-zinc-300 font-sans text-sm sm:text-base leading-relaxed">
@@ -160,8 +160,8 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="lg:col-span-6 flex flex-col gap-4"
+            viewport={{ once: true, margin: "-40px" }}
+            className="lg:col-span-6 flex flex-col gap-4 transform-gpu"
           >
             <div className="flex items-center justify-between pb-2 mb-1">
               <div className="flex items-center gap-2">

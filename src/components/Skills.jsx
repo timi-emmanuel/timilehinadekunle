@@ -77,7 +77,7 @@ const Skills = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true, margin: "-40px" }}
         className="grid grid-cols-1 sm:grid-cols-2 gap-5"
       >
         {skillSections.map((section, idx) => {
@@ -86,7 +86,8 @@ const Skills = () => {
             <motion.div
               key={idx}
               variants={cardVariants}
-              className="neo-box bg-white dark:bg-neo-darkCard p-5 text-left flex flex-col justify-between hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-neo-lg dark:hover:shadow-neo-dark transition-all duration-150"
+              whileHover={{ x: -2, y: -2, transition: { duration: 0.15 } }}
+              className="neo-box bg-white dark:bg-neo-darkCard p-5 text-left flex flex-col justify-between hover:shadow-neo-lg dark:hover:shadow-neo-dark transition-[box-shadow,border-color,background-color] duration-150 transform-gpu"
             >
               <div>
                 {/* Category Header */}
