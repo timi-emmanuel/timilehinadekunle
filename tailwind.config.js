@@ -8,6 +8,12 @@ export default {
         neo: {
           bg: '#FAF8F5',
           bgAlt: '#F4EFEA',
+          bgHero: '#FBF8F2',
+          bgAbout: '#FAF5ED',
+          bgProjects: '#F4EFE6',
+          bgExperience: '#121214',
+          bgContact: '#FFFDF6',
+          bgStatStrip: '#FFFFFF',
           card: '#FFFFFF',
           darkBg: '#121214',
           darkCard: '#1A1A1E',
