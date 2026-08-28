@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import StatStrip from './components/StatStrip';
 import MarqueeTicker from './components/MarqueeTicker';
 import ScrollProgress from './components/ScrollProgress';
 import About from './components/About';
@@ -47,6 +48,7 @@ function App() {
       )}
       <Navbar />
       <Hero />
+      <StatStrip />
       <MarqueeTicker />
       <About />
       <Projects />
