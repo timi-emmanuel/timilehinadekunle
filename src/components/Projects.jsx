@@ -17,66 +17,20 @@ import {
 import { fadeUpVariant as cardVariants, staggerContainerVariant as containerVariants } from "../utils/animations";
 
 import ShortlyImg from "../assets/Shortly.png";
-import QuiqOrderImg from "../assets/quiqorder.png";
+import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import NationaryImg from "../assets/nationary.png";
 import MatchkicksImg from "../assets/matchkicks.png";
 import PadiHoldImg from "../assets/padihold.png";
-import SBEBackOfficeImg from "../assets/sbe-back-office.png";
-import SBEPartnerBOImg from "../assets/sbe-partner-bo.png";
-import JirellaImg from "../assets/jirella-farm.jpg";
+import JirellaImg from "../assets/jirella-farm.png";
 
-const categories = ["ALL", "SPORTSBOOK & FINTECH", "SAAS & TOOLS", "WEB APPS"];
+const categories = ["ALL", "FINTECH & SAAS", "AGRITECH & TOOLS", "WEB APPS"];
 
 const projects = [
-  {
-    id: "sbe-back-office",
-    title: "SBE Sportsbook Back Office",
-    subtitle: "Enterprise Multi-Tenant Administration Platform",
-    category: "SPORTSBOOK & FINTECH",
-    featured: true,
-    tag: "PRODUCTION SYSTEM",
-    tagColor: "bg-neo-yellow",
-    metrics: "6+ Clients • 100k+ Events • 3k+ Markets",
-    description:
-      "Enterprise sportsbook administration platform used to manage multi-tenant sportsbook operations. Built and maintained React/TypeScript interfaces, role-based access control (Super Admin, Agents, Cashiers), secure JWT authentication, and high-frequency real-time betting operational feeds.",
-    highlights: [
-      "Integrated Swagger REST APIs for real-time betting, cashier, and partner data.",
-      "Resolved cross-origin (CORS) & security considerations around impersonation tokens.",
-      "Optimized data tables and state flow handling 100,000+ prematch events.",
-    ],
-    tech: ["React", "TypeScript", "Node.js", "JWT Auth", "REST APIs", "RBAC", "Docker"],
-    live: null,
-    github: null,
-    image: SBEBackOfficeImg,
-    confidential: true,
-  },
-  {
-    id: "sbe-partner-bo",
-    title: "SBE Partner Back Office & Aviata Cashier",
-    subtitle: "Sportsbook Partner Platform & Cashier System",
-    category: "SPORTSBOOK & FINTECH",
-    featured: true,
-    tag: "PRODUCTION SYSTEM",
-    tagColor: "bg-neo-lime",
-    metrics: "Vue 3 Cashier • RTP Engine • API Keys",
-    description:
-      "A dedicated partner-facing sportsbook management platform and cashier application. Built Vue 3 component architecture for the Aviata Crash Shop cashier app handling real-time approval and transaction workflows, API key validation, caching strategies, and RTP financial computations.",
-    highlights: [
-      "Built Vue 3 component architecture for cashier app real-time approval workflows.",
-      "Diagnosed and fixed Docker Compose healthcheck port mismatch in production.",
-      "Implemented financial calculations, RTP metrics, deposits, and withdrawal auditing.",
-    ],
-    tech: ["Vue 3", "React", "Node.js", "Express", "API Keys", "Docker", "Caching"],
-    live: null,
-    github: null,
-    image: SBEPartnerBOImg,
-    confidential: true,
-  },
   {
     id: "padihold",
     title: "PadiHold — Escrow Platform",
     subtitle: "Nigeria's Escrow Platform for Secure Online Transactions",
-    category: "SPORTSBOOK & FINTECH",
+    category: "FINTECH & SAAS",
     featured: true,
     tag: "FINTECH ESCROW",
     tagColor: "bg-neo-pink",
@@ -99,7 +53,7 @@ const projects = [
     id: "jirella-farm",
     title: "Jirella Farm Management System",
     subtitle: "Modular Agritech & Inventory Platform",
-    category: "SAAS & TOOLS",
+    category: "AGRITECH & TOOLS",
     featured: true,
     tag: "SUPABASE RLS & AUTH",
     tagColor: "bg-neo-lime",
@@ -121,8 +75,8 @@ const projects = [
     id: "quiqorder",
     title: "QuiqOrder (Startup)",
     subtitle: "AI-Powered WhatsApp Storefront & Ordering System",
-    category: "SAAS & TOOLS",
-    featured: false,
+    category: "FINTECH & SAAS",
+    featured: true,
     tag: "SAAS STARTUP",
     tagColor: "bg-neo-yellow",
     metrics: "WhatsApp API • Paystack Payments",
@@ -143,7 +97,7 @@ const projects = [
     id: "mockup-tool",
     title: "Mockup Integration Tool",
     subtitle: "Automated Image Processing & Placement Engine",
-    category: "SAAS & TOOLS",
+    category: "AGRITECH & TOOLS",
     featured: false,
     tag: "BACKEND AUTOMATION",
     tagColor: "bg-neo-blue",
