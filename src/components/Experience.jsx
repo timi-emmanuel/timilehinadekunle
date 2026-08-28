@@ -14,11 +14,13 @@ import { fadeUpVariant as itemVariants, staggerContainerVariant as containerVari
 
 const experiences = [
   {
+    number: "01",
+    numberBg: "bg-neo-yellow text-black",
     role: "Frontend Developer (Freelance / Contract)",
     company: "Sportsbook Back Office (SBE Ecosystem)",
     location: "Remote",
     period: "2025 – Present",
-    type: "Contract / Production",
+    type: "CONTRACT / ENTERPRISE",
     tagColor: "bg-neo-yellow",
     highlights: [
       "Built and maintained frontend features for a multi-tenant sportsbook back office serving 6+ betting clients in production, supporting 3,000+ betting markets and 100,000+ prematch events.",
@@ -29,11 +31,13 @@ const experiences = [
     tech: ["React", "TypeScript", "Vue 3", "Node.js", "REST APIs", "Swagger", "Docker", "JWT", "RBAC"],
   },
   {
+    number: "02",
+    numberBg: "bg-neo-lime text-black",
     role: "Junior Developer / Growth & Content",
     company: "QuiqOrder (J6 Business, Startup)",
     location: "Lagos, Nigeria",
     period: "2024 – Present",
-    type: "Startup / Hybrid",
+    type: "STARTUP / SAAS",
     tagColor: "bg-neo-lime",
     highlights: [
       "Contribute to frontend development of QuiqOrder's branded storefront platform for WhatsApp-based sellers, including UI development and Firebase integration.",
@@ -48,32 +52,36 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgAlt dark:bg-neo-darkSurface transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
+      className="relative text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-black dark:bg-[#0c0c0e] neo-terminal-grid transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
       <div className="max-w-5xl mx-auto">
         
-        {/* Section Header */}
+        {/* High-Contrast Section Header (Ayooluwa & DevFest Inspired) */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 text-left">
           <div>
             <div className="flex items-center gap-2 mb-3">
+              <span className="neo-badge bg-white text-black dark:bg-neo-yellow dark:text-black">
+                04 / TIMELINE
+              </span>
               <span className="neo-badge bg-neo-pink text-white">
                 <Briefcase size={14} weight="bold" />
-                CAREER & TRACK RECORD
+                CAREER TRACK RECORD
               </span>
             </div>
-            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
+            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-white">
               WORK{" "}
-              <span className="bg-neo-lime text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[-1deg]">
-                EXPERIENCE
+              <span className="bg-neo-yellow text-black px-2 border-2 border-white shadow-neo-dark-white inline-block rotate-[-1deg]">
+                EXPERIENCE_
               </span>
             </h2>
           </div>
-          <span className="font-mono text-xs font-bold text-zinc-500">
-            PROVEN IMPACT IN PRODUCTION
-          </span>
+
+          <div className="bg-neo-blue text-black border-2 border-white shadow-neo-dark-white px-3.5 py-1.5 font-mono text-xs font-black uppercase tracking-wider self-start sm:self-auto">
+            ⚡ My professional journey & production roles.
+          </div>
         </div>
 
-        {/* Experience Timeline Cards */}
+        {/* Experience Timeline Cards with Numbered Left Boxes */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -85,24 +93,33 @@ const Experience = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="neo-box-lg bg-white dark:bg-neo-darkCard p-6 sm:p-8 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+              className="bg-[#1A1A1E] dark:bg-[#16161A] border-2 border-white/80 dark:border-zinc-300 shadow-neo-dark-white p-6 sm:p-8 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 relative"
             >
-              {/* Top Meta Bar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b-2 border-black dark:border-zinc-700 mb-6">
-                <div>
-                  <span className="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest block">
-                    {exp.company}
-                  </span>
-                  <h3 className="font-display font-black text-xl sm:text-2xl text-black dark:text-white leading-tight">
-                    {exp.role}
-                  </h3>
+              {/* Top Row: Number Box + Role / Company + Badges */}
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b-2 border-zinc-700 mb-6">
+                
+                <div className="flex items-start gap-4">
+                  {/* Chunky Number Box (Ayooluwa Style) */}
+                  <div className={`neo-number-box ${exp.numberBg}`}>
+                    {exp.number}
+                  </div>
+
+                  <div>
+                    <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest block">
+                      {exp.company}
+                    </span>
+                    <h3 className="font-display font-black text-xl sm:text-2xl text-white leading-tight mt-0.5">
+                      {exp.role}
+                    </h3>
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className={`neo-badge ${exp.tagColor} text-black`}>
+                {/* Right Badges */}
+                <div className="flex flex-wrap items-center gap-2 self-start">
+                  <span className={`neo-badge ${exp.tagColor} text-black border-white`}>
                     {exp.type}
                   </span>
-                  <span className="neo-badge bg-zinc-100 dark:bg-neo-darkSurface text-black dark:text-white">
+                  <span className="neo-badge bg-zinc-800 text-zinc-200 border-zinc-500">
                     <CalendarBlank size={13} weight="bold" />
                     <span>{exp.period}</span>
                   </span>
@@ -110,7 +127,7 @@ const Experience = () => {
               </div>
 
               {/* Highlights List */}
-              <div className="mb-6 space-y-3 font-sans text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+              <div className="mb-6 space-y-3 font-sans text-sm sm:text-base text-zinc-300">
                 {exp.highlights.map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle
@@ -124,14 +141,14 @@ const Experience = () => {
               </div>
 
               {/* Technologies Used Strip */}
-              <div className="pt-4 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 flex flex-wrap items-center gap-2">
-                <span className="font-mono text-xs font-bold text-zinc-500 mr-2">
+              <div className="pt-4 border-t-2 border-dashed border-zinc-700 flex flex-wrap items-center gap-2">
+                <span className="font-mono text-xs font-bold text-zinc-400 mr-2">
                   Stack:
                 </span>
                 {exp.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="bg-zinc-100 dark:bg-neo-darkSurface border border-black dark:border-zinc-600 px-2 py-0.5 text-xs font-mono font-bold text-black dark:text-white"
+                    className="bg-zinc-800/90 border border-zinc-600 px-2.5 py-1 text-xs font-mono font-bold text-white shadow-neo-sm"
                   >
                     {t}
                   </span>
@@ -147,4 +164,3 @@ const Experience = () => {
 };
 
 export default Experience;
-
