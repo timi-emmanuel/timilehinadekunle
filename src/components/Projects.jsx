@@ -220,39 +220,42 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgAlt dark:bg-neo-darkSurface transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgProjects dark:bg-neo-darkSurface neo-cross-grid transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Header with Neo Stamp */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Section Header with Neo Stamp & Segmented Tabs */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
+              <span className="neo-badge bg-black text-white dark:bg-white dark:text-black">
+                03 / CASE STUDIES
+              </span>
               <span className="neo-badge bg-neo-yellow text-black">
                 <Cpu size={14} weight="bold" />
-                PORTFOLIO & CASE STUDIES
+                PRODUCTION SYSTEMS
               </span>
             </div>
-            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
+            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white text-left">
               FEATURED{" "}
               <span className="bg-neo-lime text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[-1deg]">
-                PROJECTS
+                PROJECTS_
               </span>
             </h2>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          {/* DevFest-Style Inset Segmented Tab Switcher */}
+          <div className="neo-segmented-container flex-wrap self-start lg:self-end">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3 py-1.5 font-mono font-bold text-xs border-2 border-black dark:border-white transition-all duration-150 cursor-pointer ${
+                  className={`neo-segmented-btn ${
                     isActive
-                      ? "bg-neo-yellow text-black shadow-neo-sm -translate-y-0.5"
-                      : "bg-white dark:bg-neo-darkCard text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                      ? "neo-segmented-btn-active"
+                      : "neo-segmented-btn-inactive"
                   }`}
                 >
                   {cat}
@@ -299,10 +302,15 @@ const Projects = () => {
                     </span>
                   </div>
 
-                  {project.confidential && (
-                    <div className="absolute top-3 right-3 bg-black text-white border-2 border-white px-2.5 py-1 text-[11px] font-mono font-bold flex items-center gap-1 shadow-neo-sm">
-                      <LockKey size={14} weight="bold" />
+                  {/* Pinned Corner Milestone Ribbon */}
+                  {project.confidential ? (
+                    <div className="absolute top-0 right-0 bg-black text-white dark:bg-black dark:text-neo-yellow border-b-2 border-l-2 border-black dark:border-zinc-300 px-2.5 py-1 text-[10px] font-mono font-black flex items-center gap-1 shadow-neo-sm z-10">
+                      <LockKey size={13} weight="bold" />
                       <span>ENTERPRISE</span>
+                    </div>
+                  ) : (
+                    <div className="absolute top-0 right-0 bg-neo-lime text-black border-b-2 border-l-2 border-black px-2.5 py-1 text-[10px] font-mono font-black shadow-neo-sm z-10">
+                      <span>VERIFIED_SYSTEM</span>
                     </div>
                   )}
 
@@ -397,22 +405,22 @@ const Projects = () => {
         </motion.div>
 
         {/* Bottom Banner for Architecture Discussions */}
-        <div className="mt-16 neo-box-lg bg-neo-yellow p-6 sm:p-8 text-black flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+        <div className="mt-16 bg-neo-yellow dark:bg-neo-darkCard border-2 border-black dark:border-zinc-200 shadow-neo-lg dark:shadow-neo-dark-lg p-6 sm:p-8 text-black dark:text-white flex flex-col md:flex-row items-center justify-between gap-6 text-left">
           <div>
-            <span className="neo-badge bg-black text-white mb-2">
+            <span className="neo-badge bg-black text-white dark:bg-white dark:text-black mb-2">
               <Lightning size={14} weight="bold" />
               WANT TO DISCUSS ARCHITECTURE?
             </span>
-            <h3 className="font-display font-black text-2xl sm:text-3xl">
+            <h3 className="font-display font-black text-2xl sm:text-3xl text-black dark:text-white">
               Need scalable frontend architecture or reliable full-stack tooling?
             </h3>
-            <p className="font-sans text-sm sm:text-base text-zinc-900 mt-1 max-w-xl">
+            <p className="font-sans text-sm sm:text-base text-zinc-900 dark:text-zinc-300 mt-1 max-w-xl">
               I specialize in high-traffic real-time systems, Supabase RLS schema design, and modular UI engineering.
             </p>
           </div>
           <a
             href="#contact"
-            className="neo-btn bg-black text-white hover:bg-zinc-800 whitespace-nowrap shadow-neo"
+            className="neo-btn bg-black dark:bg-neo-yellow text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-neo-yellowHover whitespace-nowrap shadow-neo dark:shadow-neo-dark-white"
           >
             LET'S DISCUSS YOUR PROJECT
           </a>
