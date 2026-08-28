@@ -49,13 +49,16 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bg dark:bg-neo-darkBg transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgContact dark:bg-neo-darkBg neo-contact-dots transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-12 text-left">
           <div className="flex items-center gap-2 mb-3">
+            <span className="neo-badge bg-black text-white dark:bg-white dark:text-black">
+              05 / INITIATE
+            </span>
             <span className="neo-badge bg-neo-yellow text-black">
               <ChatCenteredDots size={14} weight="bold" />
               LET'S COLLABORATE
@@ -64,7 +67,7 @@ const Contact = () => {
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
             GET IN{" "}
             <span className="bg-neo-pink text-white px-2 border-2 border-black shadow-neo-sm inline-block rotate-[1deg]">
-              TOUCH
+              TOUCH_
             </span>
           </h2>
           <p className="font-sans text-zinc-600 dark:text-zinc-400 text-sm sm:text-base mt-2 max-w-xl">

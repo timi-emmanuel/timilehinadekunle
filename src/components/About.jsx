@@ -38,22 +38,25 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bg dark:bg-neo-darkBg transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
+      className="relative text-black dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-12 xl:px-20 bg-neo-bgAbout dark:bg-neo-darkBg neo-graph-grid transition-colors duration-200 border-t-2 border-black dark:border-zinc-800"
     >
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-12 text-left">
           <div className="flex items-center gap-2 mb-3">
+            <span className="neo-badge bg-black text-white dark:bg-white dark:text-black">
+              02 / PHILOSOPHY
+            </span>
             <span className="neo-badge bg-neo-lime text-black">
               <Compass size={14} weight="bold" />
-              BACKGROUND & PHILOSOPHY
+              BACKGROUND & VALUES
             </span>
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight leading-none text-black dark:text-white">
             ABOUT{" "}
             <span className="bg-neo-yellow text-black px-2 border-2 border-black shadow-neo-sm inline-block rotate-[1deg]">
-              ME
+              ME_
             </span>
           </h2>
         </div>
@@ -86,35 +89,35 @@ const About = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               
               {/* Education Card */}
-              <div className="neo-box bg-neo-yellow p-5 text-black">
+              <div className="bg-neo-yellow dark:bg-neo-darkCard border-2 border-black dark:border-zinc-200 p-5 text-black dark:text-white shadow-neo dark:shadow-neo-dark">
                 <div className="flex items-center gap-2 mb-2">
-                  <GraduationCap size={22} weight="bold" />
-                  <span className="font-mono text-xs font-black uppercase">Education</span>
+                  <GraduationCap size={22} weight="bold" className="text-black dark:text-neo-yellow" />
+                  <span className="font-mono text-xs font-black uppercase text-black dark:text-white">Education</span>
                 </div>
-                <h4 className="font-display font-black text-base leading-tight">
+                <h4 className="font-display font-black text-base leading-tight text-black dark:text-white">
                   B.Eng. Mechanical Engineering
                 </h4>
-                <p className="font-mono text-xs font-bold text-zinc-800 mt-1">
+                <p className="font-mono text-xs font-bold text-zinc-800 dark:text-zinc-300 mt-1">
                   FUTA • 4.65 / 5.00 GPA
                 </p>
-                <p className="text-xs text-zinc-700 mt-1">
+                <p className="text-xs text-zinc-700 dark:text-zinc-400 mt-1">
                   First Class Distinction (Graduated 2024)
                 </p>
               </div>
 
               {/* Leadership Card */}
-              <div className="neo-box bg-neo-lime p-5 text-black">
+              <div className="bg-neo-lime dark:bg-neo-darkCard border-2 border-black dark:border-zinc-200 p-5 text-black dark:text-white shadow-neo dark:shadow-neo-dark">
                 <div className="flex items-center gap-2 mb-2">
-                  <UsersThree size={22} weight="bold" />
-                  <span className="font-mono text-xs font-black uppercase">Leadership</span>
+                  <UsersThree size={22} weight="bold" className="text-black dark:text-neo-lime" />
+                  <span className="font-mono text-xs font-black uppercase text-black dark:text-white">Leadership</span>
                 </div>
-                <h4 className="font-display font-black text-base leading-tight">
+                <h4 className="font-display font-black text-base leading-tight text-black dark:text-white">
                   Academic Unit Leader
                 </h4>
-                <p className="font-mono text-xs font-bold text-zinc-800 mt-1">
+                <p className="font-mono text-xs font-bold text-zinc-800 dark:text-zinc-300 mt-1">
                   WCF FUTA • 100+ Students
                 </p>
-                <p className="text-xs text-zinc-700 mt-1">
+                <p className="text-xs text-zinc-700 dark:text-zinc-400 mt-1">
                   Mentoring, tutorials & academic planning
                 </p>
               </div>
@@ -133,9 +136,7 @@ const About = () => {
                     className="neo-box bg-white dark:bg-neo-darkCard p-4 flex items-start gap-4"
                   >
                     <span
-                      className={`font-mono font-black text-xs px-2 py-1 border-2 border-black ${p.bg} ${
-                        p.textColor || "text-black"
-                      } shadow-neo-sm flex-shrink-0`}
+                      className={`font-mono font-black text-xs px-2 py-1 border-2 border-black ${p.bg} text-black shadow-neo-sm flex-shrink-0`}
                     >
                       {p.num}
                     </span>
@@ -143,7 +144,7 @@ const About = () => {
                       <h5 className="font-display font-black text-sm text-black dark:text-white">
                         {p.title}
                       </h5>
-                      <p className="font-sans text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
+                      <p className="font-sans text-xs text-zinc-600 dark:text-zinc-300 mt-0.5">
                         {p.desc}
                       </p>
                     </div>
