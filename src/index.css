@@ -65,7 +65,14 @@ body {
   .terminal-wrap {
     max-width: 920px;
     margin: 0 auto;
-    padding: 0 20px 48px;
+    padding: 0 12px 36px;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .terminal-wrap {
+      padding: 0 20px 48px;
+    }
   }
 
   /* Pane border-collapse structure */
@@ -74,6 +81,8 @@ body {
     background: var(--panel);
     margin-top: -1px;
     position: relative;
+    overflow: hidden;
+    width: 100%;
   }
 
   .pane-label {
@@ -82,12 +91,18 @@ body {
     font-weight: 500;
     letter-spacing: 0.06em;
     color: var(--muted);
-    padding: 10px 20px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-transform: uppercase;
+  }
+
+  @media (min-width: 640px) {
+    .pane-label {
+      padding: 10px 20px;
+    }
   }
 
   .pane-label .status-live {

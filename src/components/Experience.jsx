@@ -52,7 +52,7 @@ const Experience = () => {
         {experiences.map((exp, idx) => (
           <div
             key={idx}
-            className="p-6 sm:p-8 grid sm:grid-cols-12 gap-4 sm:gap-6 items-start hover:bg-panel-2/30 transition-colors"
+            className="p-4 sm:p-8 grid sm:grid-cols-12 gap-4 sm:gap-6 items-start hover:bg-panel-2/30 transition-colors"
           >
             {/* Date Column (3 cols) */}
             <div className="sm:col-span-3 font-mono text-xs text-muted-2 pt-0.5">

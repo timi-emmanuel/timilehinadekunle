@@ -12,7 +12,7 @@ const stats = [
 const Hero = () => {
   return (
     <section className="pane hero" id="hero">
-      <div className="p-6 sm:p-10 lg:p-12">
+      <div className="p-4 sm:p-8 lg:p-12">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Intro & Navigation (8 cols on lg) */}
@@ -33,7 +33,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.05 }}
-              className="font-mono text-3xl sm:text-4xl lg:text-[42px] font-semibold text-text leading-tight tracking-tight mb-5"
+              className="font-mono text-[26px] sm:text-4xl lg:text-[42px] font-semibold text-text leading-tight tracking-tight mb-5"
             >
               Timilehin Adekunle<br />
               <span className="text-accent">Frontend Engineer</span>
@@ -126,9 +126,16 @@ const Hero = () => {
       </div>
 
       {/* 4-Cell Metric Readout Strip from CV */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-border bg-panel-2/50 divide-x divide-border">
+      <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-border bg-panel-2/50">
         {stats.map((stat, idx) => (
-          <div key={idx} className="p-4 sm:p-5 flex flex-col justify-center text-left">
+          <div
+            key={idx}
+            className={`p-3.5 sm:p-5 flex flex-col justify-center text-left ${
+              idx % 2 === 1 ? "border-l border-border" : ""
+            } ${idx >= 2 ? "border-t border-border sm:border-t-0" : ""} ${
+              idx > 0 ? "sm:border-l sm:border-border" : ""
+            }`}
+          >
             <div className="font-mono text-xl sm:text-2xl font-semibold text-accent leading-none">
               {stat.num}
             </div>

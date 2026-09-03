@@ -126,8 +126,8 @@ const TechLogos = () => {
               </span>
             </motion.div>
           ) : (
-            <span className="text-muted-2 text-[10px]">
-              &gt; hover over any technology icon above to inspect category
+            <span className="text-muted-2 text-[10px] truncate">
+              &gt; hover or tap any technology icon above
             </span>
           )}
         </AnimatePresence>

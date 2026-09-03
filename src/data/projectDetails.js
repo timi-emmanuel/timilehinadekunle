@@ -27,7 +27,7 @@ export const projectsData = [
       "Frontend development of QuiqOrder's branded storefront platform for WhatsApp-based sellers, including UI development, Firebase real-time integration, and the Shipbubble logistics integration for automated order fulfillment.",
     stack: ["React.js", "Firebase", "Shipbubble", "Tailwind CSS", "WhatsApp API", "Node.js"],
     image: QuiqOrderImg,
-    liveUrl: "https://www.quiqorderng.com/",
+    liveUrl: "https://www.tryquiqorder.com/",
     githubUrl: null,
   },
   {

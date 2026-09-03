@@ -17,7 +17,7 @@ const Footer = () => {
         <span className="status-live font-mono text-[10px]">open to work</span>
       </div>
 
-      <div className="p-6 sm:p-10 space-y-6 text-left">
+      <div className="p-4 sm:p-8 lg:p-10 space-y-6 text-left">
         <div className="space-y-2">
           <div className="font-mono text-xs text-accent">$ initiate_conversation --hire</div>
           <h2 className="font-mono text-xl sm:text-2xl font-semibold text-text">
@@ -29,13 +29,13 @@ const Footer = () => {
         </div>
 
         {/* Action Button & Email */}
-        <div className="flex flex-wrap items-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
           <a
             href="mailto:adekemmanuel17@gmail.com"
-            className="btn-terminal btn-terminal-primary"
+            className="btn-terminal btn-terminal-primary max-w-full truncate"
           >
-            <EnvelopeSimple size={15} weight="bold" />
-            <span>adekemmanuel17@gmail.com</span>
+            <EnvelopeSimple size={15} weight="bold" className="shrink-0" />
+            <span className="truncate">adekemmanuel17@gmail.com</span>
           </a>
 
           <a

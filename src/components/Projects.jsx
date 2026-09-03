@@ -27,7 +27,7 @@ const Projects = () => {
           return (
             <div
               key={project.id}
-              className="p-6 sm:p-8 hover:bg-panel-2/30 transition-colors duration-150"
+              className="p-4 sm:p-6 lg:p-8 hover:bg-panel-2/30 transition-colors duration-150"
             >
               <div className="grid md:grid-cols-12 gap-6 items-center">
                 
@@ -102,7 +102,7 @@ const Projects = () => {
                 <div className="md:col-span-7 space-y-3">
                   
                   {/* Category & Text Links Row */}
-                  <div className="flex items-center justify-between gap-3 font-mono text-xs">
+                  <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                     <span className="text-muted-2 text-[11px] uppercase tracking-wider">
                       {project.category}
                     </span>

@@ -69,7 +69,7 @@ const About = () => {
       <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-border">
         
         {/* Left Column: Story & System Mindset */}
-        <div className="lg:col-span-6 p-6 sm:p-8 space-y-4">
+        <div className="lg:col-span-6 p-4 sm:p-8 space-y-4">
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
             I'm a <strong className="text-text font-medium">Frontend Engineer</strong> based in Lagos, Nigeria. I transitioned from mechanical engineering into frontend engineering — bringing an analytical systems mindset to frontend UI designs and modern architecture.
           </p>
@@ -103,7 +103,7 @@ const About = () => {
           {skillCategories.map((category, idx) => {
             const Icon = category.icon;
             return (
-              <div key={idx} className="p-5 sm:p-6">
+              <div key={idx} className="p-4 sm:p-6">
                 <div className="flex items-center gap-2 font-mono text-[11px] font-medium text-muted-2 uppercase tracking-wider mb-3">
                   <Icon size={14} weight="bold" className="text-accent" />
                   <span>{category.key}</span>
@@ -120,7 +120,7 @@ const About = () => {
           })}
 
           {/* Interactive Tech Logo Matrix with Hover Tooltips */}
-          <div className="p-5 sm:p-6 bg-panel-2/30">
+          <div className="p-4 sm:p-6 bg-panel-2/30">
             <TechLogos />
           </div>
         </div>
