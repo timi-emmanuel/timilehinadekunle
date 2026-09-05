@@ -3,8 +3,8 @@ import { ArrowRight, DownloadSimple, Terminal, ShieldCheck } from "@phosphor-ico
 import HeroImg from "../assets/hero-image-optimized.jpg";
 
 const stats = [
-  { num: "6", label: "Prod. Clients", note: "Sportsbook Back Office" },
-  { num: "5", label: "SaaS Merchants", note: "QuiqOrder Commerce" },
+  { num: "6+", label: "Prod. Clients", note: "Sportsbook Back Office" },
+  { num: "5+", label: "SaaS Merchants", note: "QuiqOrder Commerce" },
   { num: "10", label: "Staff Roles (RBAC)", note: "Jirella Farm ERP" },
   { num: "4.65", label: "GPA / 5.00", note: "First Class Distinction" },
 ];
@@ -47,7 +47,7 @@ const Hero = () => {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-muted max-w-2xl leading-relaxed mb-8"
             >
-              Frontend Engineer not shy of working within backend systems, possessing professional experience across a multi-tenant sportsbook back office serving <strong className="text-text font-medium">6 betting clients</strong>, a SaaS commerce platform serving <strong className="text-text font-medium">5 businesses</strong>, and a solo-architected farm management ERP. Transitioned from Mechanical Engineering (<strong className="text-text font-medium">4.65/5.00, First Class Distinction</strong>) with systems-oriented strength in PostgreSQL, Row-Level Security, and RBAC.
+              Frontend Engineer specializing in React/Next.js frontends for multi-tenant SaaS and sportsbook platforms, with <strong className="text-text font-medium">2.5 years</strong> building data-dense dashboards, RBAC, and Row-Level Security in PostgreSQL across products serving <strong className="text-text font-medium">6+ betting clients</strong> and <strong className="text-text font-medium">5+ businesses</strong>. Transitioned from Mechanical Engineering (<strong className="text-text font-medium">4.65/5.00, First Class Distinction</strong>) with systems-oriented strength in database design, Docker multi-stage builds, and reproducible SQL migrations.
             </motion.p>
 
             {/* Action Buttons Row */}

@@ -9,10 +9,10 @@ export const projectsData = [
   {
     id: "jirella-farm",
     title: "Jirella Farm Management System",
-    category: "AGRITECH & DATA",
+    category: "AGRITECH & ERP",
     status: "live",
     summary:
-      "Solo-built a modular agricultural ERP covering Poultry, Catfish/Aquaculture, Feed Mill, BSF bioconversion, Central Store, Procurement, Inventory, and Sales. Designed RBAC with 10 distinct staff roles, configured AG Grid for data-dense tables, and wrote idempotent SQL migrations.",
+      "Architected and solo-built a modular agricultural ERP covering 8 core operational modules (Poultry, Aquaculture, Feed Mill, BSF bioconversion, Central Store, Inventory, Sales). Designed an advanced RBAC engine mapping 10 distinct staff roles using custom PostgreSQL Row-Level Security (RLS), configured AG Grid for high-density dashboards, wrote idempotent SQL migrations, and containerized the application with Docker.",
     stack: ["Next.js", "Supabase", "PostgreSQL", "AG Grid", "Docker", "Tailwind CSS"],
     image: JirellaImg,
     liveUrl: "https://farms-accounting-software.vercel.app/",

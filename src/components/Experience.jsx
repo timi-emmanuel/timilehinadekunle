@@ -8,7 +8,7 @@ const experiences = [
     bullets: [
       "Own the data layer of SBE's Next.js Back Office — architected the data-fetching layer with Axios, built the table system with shadcn/ui and TanStack Table, and optimized filtering logic and state management (Zustand) across high-density dashboards (player management, banking, bonus, risk, reporting) on an existing UI/auth scaffold.",
       "Built the Aviata Partner Back Office as a subset of the main Aviata BO; contributed to the main BO by optimizing API calls and adding an API key management feature.",
-      "Built pages/features on the legacy Nuxt/Vue Back Office alongside the newer Next.js rebuild; added deposit/withdrawal features to the Aviatax mobile web app; optimized the Unified Cashier UI.",
+      "Built pages/features on the legacy Nuxt/Vue Back Office alongside the newer Next.js rebuild; added deposit/withdrawal features to the Aviatax mobile web app; optimized the Unified Cashier UI built with Vue.",
       "Resolved cross-origin (CORS) and API integration issues from Swagger documentation, worked on security considerations around impersonation tokens in admin tooling, and fixed a Docker Compose healthcheck port mismatch affecting service reliability in production.",
     ],
   },
