@@ -2,6 +2,7 @@ import PadiHoldImg from "../assets/padihold.png";
 import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import JirellaImg from "../assets/jirella-farm.png";
 import MatchkicksImg from "../assets/matchkicks.png";
+import AffiliateImg from "../assets/affiliate-portal.png";
 
 export const projectsData = [
   {
@@ -24,7 +25,7 @@ export const projectsData = [
     summary:
       "Built the entire frontend of a multi-tenant affiliate and financial attribution platform for sportsbook/casino operators — traffic tracking, retention cohorts, and commission settlement dashboards, consuming backend REST APIs (backend and deployment handled separately). Implemented 3-tier RBAC and frontend session handling (silent JWT refresh, cross-device session termination, tenant context isolation), built a custom design system on Radix UI primitives, and built server-side paginated, filterable views over large activity logs using SWR caching and Zod schema validation.",
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Zustand", "SWR", "Radix UI", "Zod"],
-    image: null,
+    image: AffiliateImg,
     liveUrl: null,
     githubUrl: null,
     isConfidential: true,
