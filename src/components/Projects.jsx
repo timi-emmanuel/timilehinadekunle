@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { LockSimple, ArrowUpRight, GitBranch, ArrowSquareOut } from "@phosphor-icons/react";
-import { projectsData } from "../data/projectDetails";
+import { LockSimple, GitBranch, ArrowSquareOut } from "@phosphor-icons/react";
+import { projectsData, archivedExperiments } from "../data/projectDetails";
 
 const Projects = () => {
+  const liveCount = projectsData.filter((p) => p.status === "live").length;
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -12,10 +14,10 @@ const Projects = () => {
       className="pane"
       id="projects"
     >
-      {/* Pane Header */}
+      {/* Pane Header with Dynamically Derived Count */}
       <div className="pane-label">
         <span>02 — projects/</span>
-        <span className="status-live font-mono text-[10px]">3 in production</span>
+        <span className="status-live font-mono text-[10px]">{liveCount} in production</span>
       </div>
 
       {/* Project Rows with Backdrop & Clickable Images */}
@@ -31,7 +33,7 @@ const Projects = () => {
             >
               <div className="grid md:grid-cols-12 gap-6 items-center">
                 
-                {/* Project Image with Backdrop Column (5 cols) */}
+                {/* Project Image / Architecture Card Column (5 cols) */}
                 <div className="md:col-span-5">
                   <a
                     href={destinationUrl || undefined}
@@ -50,10 +52,14 @@ const Projects = () => {
                         : project.title
                     }
                   >
-                    {/* Atmospheric Backdrop: Blurred Project Screenshot + Grid Texture */}
+                    {/* Atmospheric Backdrop: Blurred Screenshot or Radial Glow */}
                     <div
                       className="absolute inset-0 w-full h-full bg-cover bg-center blur-2xl opacity-25 scale-125 transition-opacity duration-300 group-hover:opacity-40 pointer-events-none"
-                      style={{ backgroundImage: `url("${project.image}")` }}
+                      style={
+                        project.image
+                          ? { backgroundImage: `url("${project.image}")` }
+                          : { background: "radial-gradient(circle, rgba(242,184,75,0.22) 0%, rgba(10,13,11,0.85) 100%)" }
+                      }
                       aria-hidden="true"
                     />
 
@@ -63,14 +69,51 @@ const Projects = () => {
                       aria-hidden="true"
                     />
 
-                    {/* Main Foreground Screenshot */}
+                    {/* Main Foreground Container */}
                     <div className="relative border border-border/90 bg-black aspect-[16/10] overflow-hidden shadow-md transition-all duration-300 group-hover:scale-[1.02]">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top opacity-95 transition-opacity duration-300 group-hover:opacity-100"
-                        loading="lazy"
-                      />
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top opacity-95 transition-opacity duration-300 group-hover:opacity-100"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full p-3.5 sm:p-4 flex flex-col justify-between bg-[#080B09] font-mono select-none">
+                          <div className="flex items-center justify-between text-[10px] text-muted-2 border-b border-border/80 pb-2">
+                            <span className="flex items-center gap-1.5 text-accent">
+                              <LockSimple size={12} weight="bold" />
+                              <span>SYS://ENTERPRISE_INTERNAL</span>
+                            </span>
+                            <span className="text-[9px] px-1 py-0.2 border border-border text-muted-2 uppercase tracking-wider">
+                              RESTRICTED
+                            </span>
+                          </div>
+
+                          {/* Stylized SVG Attribution Cohort / Data Pipeline Graphic */}
+                          <div className="py-2 flex flex-col items-center justify-center space-y-1.5 text-center">
+                            <div className="w-full max-w-[180px] h-10 flex items-center justify-center gap-1.5 opacity-60">
+                              <div className="h-5 w-2 bg-accent/40 rounded-xs" />
+                              <div className="h-9 w-2 bg-accent/70 rounded-xs" />
+                              <div className="h-7 w-2 bg-accent/50 rounded-xs" />
+                              <div className="h-10 w-2 bg-accent rounded-xs" />
+                              <div className="h-6 w-2 bg-accent/60 rounded-xs" />
+                              <div className="h-8 w-2 bg-accent/80 rounded-xs" />
+                            </div>
+                            <div className="text-[10.5px] font-semibold text-text tracking-wide uppercase">
+                              CONFIDENTIAL ENTERPRISE PLATFORM
+                            </div>
+                            <div className="text-[9px] text-muted-2 max-w-[210px] leading-tight">
+                              Sportsbook & Casino Multi-Tenant Attribution // NDA Protected
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between text-[9px] text-muted-2 border-t border-border/80 pt-1.5">
+                            <span>TENANT_ISOLATION: ENFORCED</span>
+                            <span className="text-accent">3-TIER RBAC</span>
+                          </div>
+                        </div>
+                      )}
 
                       {/* Status Overlay Badge */}
                       <div className="absolute top-2 left-2 z-10">
@@ -131,7 +174,7 @@ const Projects = () => {
                       ) : (
                         <span className="text-muted-2 text-[11px] flex items-center gap-1 select-none">
                           <LockSimple size={12} />
-                          <span>private repo</span>
+                          <span>private / internal</span>
                         </span>
                       )}
                     </div>
@@ -173,6 +216,29 @@ const Projects = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Archived Experiments & Utilities Strip */}
+      <div className="p-4 sm:p-6 border-t border-border bg-panel-2/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+        <div className="flex items-center gap-2 text-muted-2">
+          <span className="text-accent">$</span>
+          <span>ls ./archived_experiments</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          {archivedExperiments.map((item, idx) => (
+            <a
+              key={idx}
+              href={item.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent transition-colors flex items-center gap-1.5"
+            >
+              <span className="text-text font-medium">{item.title}</span>
+              <span className="text-muted-2 text-[11px] hidden md:inline">({item.description})</span>
+              <ArrowSquareOut size={12} weight="bold" />
+            </a>
+          ))}
+        </div>
       </div>
     </motion.section>
   );

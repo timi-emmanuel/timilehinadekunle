@@ -6,10 +6,11 @@ const experiences = [
     role: "Frontend Developer (Freelance/Contract)",
     org: "Sportsbook Back Office (SBE Ecosystem)",
     bullets: [
-      "Own the data layer of SBE's Next.js Back Office — architected the data-fetching layer with Axios, built the table system with shadcn/ui and TanStack Table, and optimized filtering logic and state management (Zustand) across high-density dashboards (player management, banking, bonus, risk, reporting) on an existing UI/auth scaffold.",
-      "Built the Aviata Partner Back Office as a subset of the main Aviata BO; contributed to the main BO by optimizing API calls and adding an API key management feature.",
-      "Built pages/features on the legacy Nuxt/Vue Back Office alongside the newer Next.js rebuild; added deposit/withdrawal features to the Aviatax mobile web app; optimized the Unified Cashier UI built with Vue.",
-      "Resolved cross-origin (CORS) and API integration issues from Swagger documentation, worked on security considerations around impersonation tokens in admin tooling, and fixed a Docker Compose healthcheck port mismatch affecting service reliability in production.",
+      "Own the data layer of a production Next.js back office — architected the data-fetching layer (Axios), built the table system (shadcn/ui, TanStack Table), and optimized filtering/state management (Zustand) across high-density dashboards (player management, banking, bonus, risk, reporting) on an existing UI/auth scaffold.",
+      "Rebuilt and extended a legacy Nuxt.js back office over 8 months — building commission/GGR (Gross Gaming Revenue) reporting with multi-tier payout logic, a player segmentation suite with campaign triggers, and a trust-threshold security module with audit logging.",
+      "Diagnosed and resolved a production SSR hydration mismatch causing date-picker and table failures across reporting modules, standardizing client-only rendering for DOM-dependent components; also resolved CORS/API integration issues and impersonation-token security considerations in admin tooling.",
+      "On a related back-office product line: corrected RTP and jackpot payout calculation logic that was producing invalid financial values, built an API caching layer eliminating redundant re-fetching, and led a Tailwind CSS v2→v3 migration removing ~9,800 lines of legacy CSS.",
+      "Built a secure API key management system (one-time secret reveal, revocation) for partner accounts, implemented JWT expiration handling and protected-route architecture to prevent stale sessions, and built an end-to-end deposit/withdrawal transfer flow for a companion mobile web application.",
     ],
   },
   {
@@ -27,7 +28,7 @@ const experiences = [
     org: "WCF FUTA Academic Unit · Leadership Role",
     bullets: [
       "Mentored and organized academic tutorials in engineering mathematics and technical computation for 100+ undergraduate students.",
-      "Graduated First Class Distinction with a 4.65/5.00 GPA in Mechanical Engineering.",
+      "Graduated First Class Honours with a 4.65/5.00 GPA in Mechanical Engineering.",
     ],
   },
 ];

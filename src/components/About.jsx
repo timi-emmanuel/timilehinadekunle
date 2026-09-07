@@ -75,21 +75,21 @@ const About = () => {
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            Comfortable working across both <strong className="text-text font-medium">legacy</strong> and <strong className = "text-text font-medium">modern</strong> codebases (Nuxt/Vue and Next.js) — translating complex business requirements into software workflows, integrating REST APIs, implementing authentication and RBAC, and building reusable component systems.
+            Comfortable working across both <strong className="text-text font-medium">legacy</strong> and <strong className="text-text font-medium">modern</strong> codebases (Nuxt/Vue and Next.js) — translating complex business requirements into software workflows, integrating REST APIs, implementing authentication and RBAC, and building reusable component systems. On Jirella Farm Management System, this extended into solo-architecting the PostgreSQL schema itself, including Row-Level Security (RLS) policies and idempotent migrations.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            My background from Mechanical Engineering extends directly into software systems thus making me proficient in handling PostgreSQL relational schema design, Row-Level Security (RLS), and containerized Docker environments.
+            Systems-oriented Mechanical Engineering background informs clean database design, Docker multi-stage builds, and reproducible SQL migrations.
           </p>
 
-          {/* Academic Distinction Badge */}
+          {/* Academic Honours Badge */}
           <div className="mt-6 pt-4 border-t border-border flex items-start gap-3">
             <div className="p-2 border border-border bg-panel-2 text-accent shrink-0">
               <GraduationCap size={18} weight="bold" />
             </div>
             <div>
               <div className="font-mono text-xs font-semibold text-text">
-                B.Eng. Mechanical Engineering — First Class Distinction
+                B.Eng. Mechanical Engineering — First Class Honours
               </div>
               <div className="font-mono text-xs text-muted mt-0.5">
                 Federal University of Technology Akure (FUTA) • 4.65 / 5.00 GPA

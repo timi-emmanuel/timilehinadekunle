@@ -4,12 +4,16 @@ This document tracks all features and enhancements currently placed on hold duri
 
 ---
 
-## 1. 🔍 Comprehensive 6-Part Project Case Studies (Deep Dive)
-- **Status:** `PAUSED` (Awaiting Timi's personal project introspection notes)
-- **Concept:** Provide a dedicated technical deep-dive modal or expandable inspector for key projects (`Jirella Farm ERP`, `PadiHold`, `QuiqOrder`, etc.) using the 6-part senior engineering framework:
+## 1. 🔍 Comprehensive 6-Part Project Case Studies & Struggle Stories (Deep Dive)
+- **Status:** `PAUSED` (To be activated when expanding detailed case studies per project)
+- **Concept:** Provide a dedicated technical deep-dive modal or expandable inspector for key projects (`Jirella Farm ERP`, `SBE Ecosystem`, `PadiHold`, `QuiqOrder`, etc.) using the 6-part senior engineering framework:
   1. **The Problem:** The exact real-world bottleneck or commercial pain point.
   2. **What I Built:** Concrete feature architecture, services, and libraries used.
-  3. **The Hard Part:** Complex engineering challenges (e.g., FSM escrow state transitions, CORS & token impersonation in SBE, idempotent SQL migrations with existence guards in Jirella).
+  3. **The Hard Part / Struggle Stories (Verified Incidents):**
+     - **Production SSR Hydration Mismatch (SBE Reporting):** A production release caused date filters across reporting modules to silently fail (freezing input selection or not triggering data refreshes). Root cause was an SSR hydration mismatch on a DOM-dependent third-party datepicker component preventing event listener attachment. Resolved by standardizing client-only mounting boundaries across all DOM-dependent reporting components.
+     - **Financial Calculation Defect (RTP & Jackpot Payouts):** Traced invalid values in production financial reporting to a multi-tier payout formula error; corrected calculation logic and standardized across reporting tables.
+     - **FSM Escrow State Transitions (PadiHold):** State machine validation across multi-stage buyer/seller deal lifecycles.
+     - **Idempotent SQL Migrations with Existence Guards (Jirella ERP):** Safe schema reruns across multi-stage Docker container environments.
   4. **The Design & UI/UX:** Deliberate visual design and ergonomics decisions.
   5. **What's NOT in It:** Honest trade-offs, constraints, and intentional omissions.
   6. **Current Status & What's Next:** Operational status, roadmap, and next technical milestones.

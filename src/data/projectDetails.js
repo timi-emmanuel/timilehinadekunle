@@ -1,8 +1,6 @@
 import PadiHoldImg from "../assets/padihold.png";
 import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import JirellaImg from "../assets/jirella-farm.png";
-import ShortlyImg from "../assets/Shortly.png";
-import NationaryImg from "../assets/nationary.png";
 import MatchkicksImg from "../assets/matchkicks.png";
 
 export const projectsData = [
@@ -12,11 +10,24 @@ export const projectsData = [
     category: "AGRITECH & ERP",
     status: "live",
     summary:
-      "Architected and solo-built a modular agricultural ERP covering 8 core operational modules (Poultry, Aquaculture, Feed Mill, BSF bioconversion, Central Store, Inventory, Sales). Designed an advanced RBAC engine mapping 10 distinct staff roles using custom PostgreSQL Row-Level Security (RLS), configured AG Grid for high-density dashboards, wrote idempotent SQL migrations, and containerized the application with Docker.",
+      "Architected and solo-built a modular agricultural ERP covering 8 core operational modules: Poultry, Catfish/Aquaculture, Feed Mill, BSF bioconversion, Central Store, Procurement, Inventory, and Sales. Designed an advanced RBAC engine mapping 10 distinct staff roles to operational modules using PostgreSQL Row-Level Security (RLS), configured AG Grid for high-density dashboards, wrote idempotent SQL migrations, and containerized the application with Docker.",
     stack: ["Next.js", "Supabase", "PostgreSQL", "AG Grid", "Docker", "Tailwind CSS"],
     image: JirellaImg,
     liveUrl: "https://farms-accounting-software.vercel.app/",
     githubUrl: null,
+  },
+  {
+    id: "sbe-affiliate-portal",
+    title: "SBE Affiliate & Attribution Portal",
+    category: "FINTECH & ATTRIBUTION",
+    status: "live",
+    summary:
+      "Built the entire frontend of a multi-tenant affiliate and financial attribution platform for sportsbook/casino operators — traffic tracking, retention cohorts, and commission settlement dashboards, consuming backend REST APIs (backend and deployment handled separately). Implemented 3-tier RBAC and frontend session handling (silent JWT refresh, cross-device session termination, tenant context isolation), built a custom design system on Radix UI primitives, and built server-side paginated, filterable views over large activity logs using SWR caching and Zod schema validation.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Zustand", "SWR", "Radix UI", "Zod"],
+    image: null,
+    liveUrl: null,
+    githubUrl: null,
+    isConfidential: true,
   },
   {
     id: "quiqorder",
@@ -36,7 +47,7 @@ export const projectsData = [
     category: "FINTECH & ESCROW",
     status: "in-progress",
     summary:
-      "Nigeria's trust-centric escrow platform engineered to eliminate online commerce fraud. Features an AI dispute resolution assistant, finite state machine escrow deal lifecycles, and simulated logistics verification.",
+      "Nigeria's trust-centric escrow platform engineered to eliminate online commerce fraud. Features an AI dispute resolution assistant, multi-stage deal lifecycle state tracking, and simulated logistics verification.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Radix UI", "OpenAI", "Solidity"],
     image: PadiHoldImg,
     liveUrl: "https://padi-hold.vercel.app/",
@@ -54,27 +65,20 @@ export const projectsData = [
     liveUrl: "https://matchkicks.com/",
     githubUrl: null,
   },
+];
+
+export const archivedExperiments = [
   {
-    id: "shortly",
-    title: "Shortly — URL Shortener",
-    category: "WEB APP",
-    status: "live",
-    summary:
-      "Feature-rich link shortening platform with user authentication, real-time click tracking analytics, QR code generation, and mobile-first responsive layout.",
+    title: "Shortly",
+    description: "URL Shortener & QR Generator",
     stack: ["React.js", "Tailwind CSS", "Firebase Auth", "Firestore", "Framer Motion"],
-    image: ShortlyImg,
     liveUrl: "https://shortly-ivory-theta.vercel.app/",
     githubUrl: "https://github.com/timi-emmanuel/shortly",
   },
   {
-    id: "nationary",
-    title: "Nationary — Country Explorer",
-    category: "WEB APP",
-    status: "live",
-    summary:
-      "Interactive country exploration platform utilizing REST Countries API with real-time fuzzy search, regional filtering, border country links, and dark/light modes.",
+    title: "Nationary",
+    description: "Country Explorer & Filtering",
     stack: ["React.js", "Zustand", "Tailwind CSS", "REST API", "Framer Motion"],
-    image: NationaryImg,
     liveUrl: "https://rest-countries-app-hazel.vercel.app/",
     githubUrl: "https://github.com/timi-emmanuel/rest-countries-app",
   },
