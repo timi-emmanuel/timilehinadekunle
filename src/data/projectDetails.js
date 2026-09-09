@@ -2,7 +2,7 @@ import PadiHoldImg from "../assets/padihold.png";
 import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import JirellaImg from "../assets/jirella-farm.png";
 import MatchkicksImg from "../assets/matchkicks.png";
-import AffiliateImg from "../assets/affiliate-portal.png";
+import AffiliateImg from "../assets/Affiliate-Portal.png";
 
 export const projectsData = [
   {
