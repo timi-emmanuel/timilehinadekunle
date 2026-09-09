@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Squircle Base -->
+  <rect width="64" height="64" rx="16" fill="#0A0D0B" stroke="#26302A" stroke-width="2"/>
+  
+  <!-- Active Green Phosphor Light -->
+  <circle cx="50" cy="14" r="3.5" fill="#4ADE80"/>
+  <circle cx="50" cy="14" r="6" fill="#4ADE80" opacity="0.25"/>
+
+  <!-- Glowing Terminal Command Prompt '>' -->
+  <path d="M16 26 L23 32 L16 38" stroke="#F2B84B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 'T' Geometric Monogram -->
+  <path d="M26 24 L44 24 M35 24 L35 40" stroke="#F2B84B" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Terminal Underscore Cursor '_' -->
+  <line x1="39" y1="40" x2="47" y2="40" stroke="#F2B84B" stroke-width="3" stroke-linecap="round"/>
+</svg>
