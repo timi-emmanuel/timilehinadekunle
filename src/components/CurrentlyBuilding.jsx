@@ -89,16 +89,27 @@ const CurrentlyBuilding = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-20px" }}
-        className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border border-b border-border text-left"
+        className="grid md:grid-cols-2 text-left"
       >
-        {radarItems.slice(0, 2).map((item) => {
+        {radarItems.map((item, idx) => {
           const style = statusStyles[item.statusType] || statusStyles.amber;
+          const isLeftCol = idx % 2 === 0;
+          const isLastItem = idx === radarItems.length - 1;
+          const isSecondToLast = idx === radarItems.length - 2;
+          const isLastRowDesktop = isLastItem || (isSecondToLast && radarItems.length % 2 === 0);
+
           return (
             <motion.div
               key={item.id}
               variants={cardVariants}
               whileHover={{ backgroundColor: "rgba(22, 27, 23, 0.4)" }}
-              className="p-5 sm:p-7 space-y-3.5 transition-colors duration-200 group/radar"
+              className={`p-5 sm:p-7 space-y-3.5 transition-colors duration-200 group/radar ${
+                isLeftCol ? "md:border-r md:border-border" : ""
+              } ${
+                !isLastItem ? "border-b border-border" : ""
+              } ${
+                isLastRowDesktop ? "md:border-b-0" : "md:border-b md:border-border"
+              }`}
             >
               {/* Category & Live Badge */}
               <div className="flex items-center justify-between gap-2 font-mono text-[10.5px]">
@@ -129,69 +140,9 @@ const CurrentlyBuilding = () => {
 
               {/* Tech Stack Pills */}
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {item.stack.map((tech, idx) => (
+                {item.stack.map((tech, i) => (
                   <span
-                    key={idx}
-                    className="tech-tag text-[10.5px] py-0.5 px-2 select-none"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-
-      {/* Lower Row (Items 3 & 4) */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-20px" }}
-        className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border text-left"
-      >
-        {radarItems.slice(2, 4).map((item) => {
-          const style = statusStyles[item.statusType] || statusStyles.amber;
-          return (
-            <motion.div
-              key={item.id}
-              variants={cardVariants}
-              whileHover={{ backgroundColor: "rgba(22, 27, 23, 0.4)" }}
-              className="p-5 sm:p-7 space-y-3.5 transition-colors duration-200 group/radar"
-            >
-              {/* Category & Live Badge */}
-              <div className="flex items-center justify-between gap-2 font-mono text-[10.5px]">
-                <span className="text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-                  <GitCommit size={12} className="text-accent group-hover/radar:rotate-45 transition-transform duration-200" />
-                  <span>{item.category}</span>
-                </span>
-                <span className={`px-2 py-0.5 border font-mono text-[9px] uppercase tracking-wider flex items-center gap-1.5 ${style.badge}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`} />
-                  <span>{item.statusText}</span>
-                </span>
-              </div>
-
-              {/* Title & Context */}
-              <div className="space-y-1">
-                <h3 className="font-mono text-sm sm:text-base font-semibold text-text group-hover/radar:text-accent transition-colors">
-                  {item.title}
-                </h3>
-                <div className="font-mono text-xs text-muted-2">
-                  {item.organization}
-                </div>
-              </div>
-
-              {/* Summary Description */}
-              <p className="font-sans text-xs sm:text-[13px] text-muted leading-relaxed">
-                {item.summary}
-              </p>
-
-              {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {item.stack.map((tech, idx) => (
-                  <span
-                    key={idx}
+                    key={i}
                     className="tech-tag text-[10.5px] py-0.5 px-2 select-none"
                   >
                     {tech}

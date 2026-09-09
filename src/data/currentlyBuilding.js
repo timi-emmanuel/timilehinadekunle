@@ -7,15 +7,37 @@ export const radarMetadata = {
 
 export const radarItems = [
   {
-    id: "active-sprint",
+    id: "sbe-affiliate-portal",
     category: "ACTIVE PRODUCTION SPRINT",
-    statusText: "IN PROGRESS",
+    statusText: "IN SPRINT",
     statusType: "live", // live (green)
-    title: "High-Density Table Caching & Data Layer Optimizations",
-    organization: "SBE Sportsbook Back Office",
+    title: "SBE Affiliate Portal Integration & BO Stat Alignment",
+    organization: "SBE Partner & Affiliate Ecosystem",
     summary:
-      "Architecting TanStack Table query invalidation and request deduplication over high-density financial transaction logs. Eliminating redundant re-renders on real-time bet and payout feeds.",
-    stack: ["Next.js", "TanStack Table", "Zustand", "Axios", "REST APIs"],
+      "Completed core Back Office (BO) API integrations. Currently aligning production data models and metrics schemas so administrative tables render structured reporting accurately, alongside integrating player-facing redirect and tracking APIs into the affiliate portal.",
+    stack: ["React", "Next.js", "REST APIs", "Data Tables", "Redirect Flows", "Tailwind CSS"],
+  },
+  {
+    id: "nexta-saas",
+    category: "SAAS IN ACTIVE INCUBATION",
+    statusText: "MVP IN FLIGHT",
+    statusType: "amber", // amber
+    title: "Nexta — Truthful Resume Tailoring & Application Tracker",
+    organization: "Nexta SaaS // Solo Architecture",
+    summary:
+      "Architecting a multi-stage AI pipeline (parsing, keyword extraction, and hallucination-guarded tailoring) that aligns base resumes with target job specs while enforcing factual integrity, paired with an integrated job application pipeline and PDF export engine.",
+    stack: ["Next.js", "TypeScript", "OpenAI API", "Supabase", "PostgreSQL", "Tailwind CSS"],
+  },
+  {
+    id: "padihold-escrow",
+    category: "FINTECH IN PROGRESS",
+    statusText: "ACTIVE DEV",
+    statusType: "cyan", // cyan
+    title: "PadiHold — Escrow Multi-Stage State Engine & Settlement",
+    organization: "PadiHold // FinTech Platform",
+    summary:
+      "Engineering a resilient finite-state machine (FSM) orchestrating peer-to-peer milestone releases, dispute arbitration lifecycles, and webhook-driven payment settlement (Paystack) for Nigerian digital commerce.",
+    stack: ["Next.js", "Zustand", "Paystack API", "Framer Motion", "Radix UI", "Zod"],
   },
   {
     id: "systems-deepdive",
@@ -40,14 +62,14 @@ export const radarItems = [
     stack: ["React 19", "Next.js", "Radix UI", "Tailwind CSS"],
   },
   {
-    id: "reading-focus",
-    category: "READING & THEORY",
+    id: "architecture-principles",
+    category: "ARCHITECTURE & METHODOLOGY",
     statusText: "STUDYING",
     statusType: "purple", // purple
-    title: "Distributed Systems & Data-Intensive Engineering",
-    organization: "Continuous Learning",
+    title: "Frontend Architecture & System Design Principles",
+    organization: "Continuous Learning // Engineering Craft",
     summary:
-      "Re-reading Martin Kleppmann's 'Designing Data-Intensive Applications' — connecting mechanical engineering finite element and control system principles to distributed consensus and eventual consistency.",
-    stack: ["Distributed Systems", "Fault Tolerance", "Concurrency"],
+      "Deepening core software engineering principles applied to scalable frontends: DRY, SOLID design patterns (single responsibility, dependency inversion), clean component decoupling, and adapting 12-Factor App methodology (strict config separation, stateless processes, environment parity) to modern React and Next.js platforms.",
+    stack: ["SOLID Principles", "DRY & Clean Code", "12-Factor App", "Frontend Architecture", "Design Patterns"],
   },
 ];

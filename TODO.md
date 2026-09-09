@@ -43,8 +43,8 @@ This document tracks all features and enhancements currently placed on hold duri
 ## 4. 🛰️ Currently Building Page / Live Radar (`radar.now`)
 - **Status:** `COMPLETED`
 - **Concept:** A personal `/now` telemetry pane tracking:
-  - Active sprint projects & current production features in flight (SBE enterprise table caching, PostgreSQL RLS query auditing).
-  - Engineering topics and frontend architecture (Next.js client-only hydration boundaries, distributed consensus & event sourcing).
+  - Active sprint projects & features in flight: SBE Affiliate Portal integration & BO stat alignment, Nexta AI truthful resume tailoring SaaS, and PadiHold escrow FSM state engine.
+  - Systems & engineering depth: PostgreSQL multi-tenant RLS query plan benchmarking, SSR hydration boundaries, and frontend architecture principles (DRY, SOLID, 12-Factor App).
   - Telemetry ribbon showing real-time stream status, sync cadence, and operator coordinates.
 - **Components activated:** `src/components/CurrentlyBuilding.jsx`, `src/data/currentlyBuilding.js`, wired into `App.jsx`, `Titlebar.jsx`, and numbered as `04 — radar.now`.
 
