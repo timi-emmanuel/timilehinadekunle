@@ -5,8 +5,8 @@ This document tracks all features and enhancements currently placed on hold duri
 ---
 
 ## 1. 🔍 Comprehensive 6-Part Project Case Studies & Struggle Stories (Deep Dive)
-- **Status:** `PAUSED` (To be activated when expanding detailed case studies per project)
-- **Concept:** Provide a dedicated technical deep-dive modal or expandable inspector for key projects (`Jirella Farm ERP`, `SBE Ecosystem`, `PadiHold`, `QuiqOrder`, etc.) using the 6-part senior engineering framework:
+- **Status:** `COMPLETED`
+- **Concept:** Dedicated technical deep-dive modal inspector (`$ sys.inspect --case-study`) for key projects (`Jirella Farm ERP`, `SBE Ecosystem`, `PadiHold`, `QuiqOrder`, `Mockup Tool`) using the 6-part senior engineering framework:
   1. **The Problem:** The exact real-world bottleneck or commercial pain point.
   2. **What I Built:** Concrete feature architecture, services, and libraries used.
   3. **The Hard Part / Struggle Stories (Verified Incidents):**
@@ -14,10 +14,11 @@ This document tracks all features and enhancements currently placed on hold duri
      - **Financial Calculation Defect (RTP & Jackpot Payouts):** Traced invalid values in production financial reporting to a multi-tier payout formula error; corrected calculation logic and standardized across reporting tables.
      - **FSM Escrow State Transitions (PadiHold):** State machine validation across multi-stage buyer/seller deal lifecycles.
      - **Idempotent SQL Migrations with Existence Guards (Jirella ERP):** Safe schema reruns across multi-stage Docker container environments.
-  4. **The Design & UI/UX:** Deliberate visual design and ergonomics decisions.
+     - **Sub-Pixel Image Scaling Concurrency (Mockup Tool):** Sharp stream backpressure avoiding Node.js heap exhaustion.
+  4. **The Design & UI/UX:** Deliberate visual design, table density, and ergonomics decisions.
   5. **What's NOT in It:** Honest trade-offs, constraints, and intentional omissions.
   6. **Current Status & What's Next:** Operational status, roadmap, and next technical milestones.
-- **Components to activate:** `src/components/CaseStudyModal.jsx`, `src/data/projectDetails.js` (extended case studies).
+- **Components activated:** `src/components/CaseStudyModal.jsx`, `src/data/projectDetails.js` (extended case studies), wired into `src/components/Projects.jsx`.
 
 ---
 
