@@ -8,9 +8,10 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import CurrentlyBuilding from './components/CurrentlyBuilding';
 import Footer from './components/Footer';
 
-// Handles in-page anchor navigation (#projects, #experience, #contact) with Lenis smooth scrolling
+// Handles in-page anchor navigation (#projects, #experience, #radar, #contact) with Lenis smooth scrolling
 function SmoothAnchorHandler() {
   const lenis = useLenis();
 
@@ -58,6 +59,7 @@ function App() {
           <About />
           <Projects />
           <Experience />
+          <CurrentlyBuilding />
           <Footer />
         </main>
       </div>

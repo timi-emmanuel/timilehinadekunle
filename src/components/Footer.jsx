@@ -28,7 +28,7 @@ const Footer = () => {
     >
       {/* Pane Header */}
       <div className="pane-label">
-        <span>04 — contact.sh</span>
+        <span>05 — contact.sh</span>
         <span className="status-live font-mono text-[10px]">open to work</span>
       </div>
 

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { id: "projects", label: "projects" },
   { id: "experience", label: "experience" },
+  { id: "radar", label: "radar" },
   { id: "contact", label: "contact" },
 ];
 
@@ -12,7 +13,7 @@ const Titlebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["projects", "experience", "contact"];
+      const sections = ["projects", "experience", "radar", "contact"];
       const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
