@@ -10,9 +10,10 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import CurrentlyBuilding from './components/CurrentlyBuilding';
 import GitHubActivity from './components/GitHubActivity';
+import Writing from './components/Writing';
 import Footer from './components/Footer';
 
-// Handles in-page anchor navigation (#projects, #experience, #radar, #activity, #contact) with Lenis smooth scrolling
+// Handles in-page anchor navigation (#projects, #experience, #radar, #activity, #writing, #contact) with Lenis smooth scrolling
 function SmoothAnchorHandler() {
   const lenis = useLenis();
 
@@ -62,6 +63,7 @@ function App() {
           <Experience />
           <CurrentlyBuilding />
           <GitHubActivity />
+          <Writing />
           <Footer />
         </main>
       </div>

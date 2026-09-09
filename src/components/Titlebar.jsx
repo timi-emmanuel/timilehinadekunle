@@ -7,6 +7,7 @@ const navItems = [
   { id: "experience", label: "experience", path: "experience.log" },
   { id: "radar", label: "radar", path: "radar.now" },
   { id: "activity", label: "activity", path: "github_activity.log" },
+  { id: "writing", label: "writing", path: "thinkpieces.txt" },
   { id: "contact", label: "contact", path: "contact.sh" },
 ];
 
@@ -17,7 +18,7 @@ const Titlebar = () => {
   // Scroll spy to track currently active viewport section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["projects", "experience", "radar", "activity", "contact"];
+      const sections = ["projects", "experience", "radar", "activity", "writing", "contact"];
       const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
