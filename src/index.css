@@ -47,16 +47,47 @@ body {
 
 /* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted-2);
+}
+
+/* Ultra-thin terminal scrollbar for horizontal widgets */
+.terminal-scrollbar-x {
+  scrollbar-width: thin;
+  scrollbar-color: #26302A transparent;
+}
+.terminal-scrollbar-x::-webkit-scrollbar {
+  height: 3px;
+}
+.terminal-scrollbar-x::-webkit-scrollbar-track {
+  background: rgba(18, 22, 19, 0.4);
+  border-radius: 2px;
+}
+.terminal-scrollbar-x::-webkit-scrollbar-thumb {
+  background: #2D3930;
+  border-radius: 2px;
+}
+.terminal-scrollbar-x::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-2);
+}
+
+/* Utility to completely hide scrollbar while preserving touch/trackpad scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Terminal & Pane System Utilities */

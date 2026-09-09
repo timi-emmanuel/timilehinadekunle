@@ -32,11 +32,10 @@ This document tracks all features and enhancements currently placed on hold duri
 
 ---
 
-## 3. 📊 GitHub Contributions Heatmap (`06 — github_activity.log`)
-- **Status:** `PAUSED`
-- **Concept:** An embedded, responsive GitHub contribution activity grid styled with dark terminal hues (`#121613` to `#F2B84B` amber / `#4ADE80` green) displaying commit velocity, streaks, and repository highlights.
-- **Integration:** GitHub GraphQL/REST API cached endpoint or static synced SVG heatmap.
-- **Components to activate:** `src/components/GitHubActivity.jsx`.
+## 3. 📊 GitHub Contributions Heatmap (`05 — github_activity.log`)
+- **Status:** `COMPLETED`
+- **Concept:** An embedded, responsive 52-week GitHub contribution telemetry grid for `@timi-emmanuel` styled with terminal hues (`#131914` to `#4ADE80` green and `#F2B84B` amber peak spikes), tracking yearly commit volume, current/longest streaks, peak velocity, and interactive hover tooltips with live API fetching and bundled fallback data.
+- **Components activated:** `src/components/GitHubActivity.jsx`, `src/data/githubActivityFallback.js`, wired into `App.jsx`, `Titlebar.jsx`, and numbered as `05 — github_activity.log`.
 
 ---
 

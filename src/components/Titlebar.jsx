@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { List, X } from "@phosphor-icons/react";
 
 const navItems = [
-  { id: "projects", label: "projects" },
-  { id: "experience", label: "experience" },
-  { id: "radar", label: "radar" },
-  { id: "contact", label: "contact" },
+  { id: "projects", label: "projects", path: "projects/" },
+  { id: "experience", label: "experience", path: "experience.log" },
+  { id: "radar", label: "radar", path: "radar.now" },
+  { id: "activity", label: "activity", path: "github_activity.log" },
+  { id: "contact", label: "contact", path: "contact.sh" },
 ];
 
 const Titlebar = () => {
   const [activeSection, setActiveSection] = useState("hero");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Scroll spy to track currently active viewport section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["projects", "experience", "radar", "contact"];
+      const sections = ["projects", "experience", "radar", "activity", "contact"];
       const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
@@ -32,12 +36,34 @@ const Titlebar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on desktop resize or Escape key press
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 w-full bg-[#0A0D0B]/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-[920px] mx-auto px-3 sm:px-5 py-2.5 sm:py-3.5 flex items-center justify-between gap-2">
+      <div className="max-w-[920px] mx-auto px-3.5 sm:px-5 py-2.5 sm:py-3.5 flex items-center justify-between gap-3">
         
         {/* Left: Window Dots & Responsive Breadcrumbs */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <div className="flex items-center gap-1 sm:gap-1.5 shrink-0" aria-hidden="true">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#4F5850]" />
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#4F5850]" />
@@ -55,9 +81,9 @@ const Titlebar = () => {
             />
           </div>
 
-          <div className="font-mono text-[11px] sm:text-xs text-muted flex items-center gap-0.5 sm:gap-1 truncate">
-            <span className="hidden sm:inline text-muted-2">~/timilehin</span>
-            <span className="sm:hidden text-muted-2">~</span>
+          <div className="font-mono text-xs text-muted flex items-center gap-1 truncate">
+            <span className="text-muted-2">~/</span>
+            <span className="hidden sm:inline text-muted-2">timilehin/</span>
             <motion.span
               key={activeSection}
               initial={{ opacity: 0, y: -2 }}
@@ -65,20 +91,20 @@ const Titlebar = () => {
               transition={{ duration: 0.2 }}
               className="text-text font-medium"
             >
-              /{activeSection === "hero" ? "portfolio.sh" : `${activeSection}/`}
+              {activeSection === "hero" ? "portfolio.sh" : `${activeSection}/`}
             </motion.span>
           </div>
         </div>
 
-        {/* Right: Curated Mobile-Responsive Nav Links with Sliding Active Pill */}
-        <nav className="relative font-mono text-[11px] sm:text-xs text-muted flex items-center gap-1 sm:gap-2 shrink-0">
+        {/* Desktop: Horizontal Nav Tabs with Sliding Active Pill */}
+        <nav className="hidden md:flex relative font-mono text-xs text-muted items-center gap-1.5 shrink-0">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative px-2 py-1 transition-colors duration-150 rounded-xs ${
+                className={`relative px-2.5 py-1 transition-colors duration-150 rounded-xs ${
                   isActive ? "text-accent font-semibold" : "hover:text-text"
                 }`}
               >
@@ -99,7 +125,78 @@ const Titlebar = () => {
           })}
         </nav>
 
+        {/* Mobile: Sleek Terminal Hamburger Toggle Button */}
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Close terminal navigation menu" : "Open terminal navigation menu"}
+          className="md:hidden flex items-center gap-1.5 px-2.5 py-1 text-muted hover:text-text border border-border bg-[#121613] hover:bg-[#161B17] rounded-xs font-mono text-xs transition-colors select-none"
+        >
+          {isMenuOpen ? (
+            <X size={15} weight="bold" className="text-accent" />
+          ) : (
+            <List size={15} weight="bold" className="text-text" />
+          )}
+          <span className="text-[11px] text-muted-2">//</span>
+          <span className="text-[11px]">{isMenuOpen ? "close" : "menu"}</span>
+        </button>
+
       </div>
+
+      {/* Mobile: Expandable Terminal Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden border-t border-border bg-[#0A0D0B]/98 backdrop-blur-xl overflow-hidden shadow-2xl"
+          >
+            <div className="max-w-[920px] mx-auto px-4 py-3 space-y-1 font-mono text-xs">
+              <div className="text-[10px] text-muted-2 uppercase tracking-wider pb-1.5 px-2.5 flex items-center justify-between border-b border-border/50 mb-1">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />
+                  <span>terminal navigation</span>
+                </span>
+                <span className="text-[9.5px] text-muted-2">esc to close</span>
+              </div>
+
+              {navItems.map((item, idx) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`flex items-center justify-between px-3 py-2.5 rounded-xs transition-all ${
+                      isActive
+                        ? "bg-[#161B17] text-accent border border-border font-medium shadow-[0_0_10px_rgba(242,184,75,0.06)]"
+                        : "text-muted hover:text-text hover:bg-panel-2/40"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={isActive ? "text-accent" : "text-muted-2"}>
+                        {isActive ? ">" : "$"}
+                      </span>
+                      <span className="text-[11.5px]">cd ~/{item.path}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-muted-2 font-normal">
+                        [{String(idx + 1).padStart(2, "0")}]
+                      </span>
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_6px_rgba(242,184,75,0.8)]" />
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
