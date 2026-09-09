@@ -1,7 +1,22 @@
-import { motion } from "framer-motion";
-import { Terminal, GithubLogo, LinkedinLogo, EnvelopeSimple, ArrowUpRight } from "@phosphor-icons/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  GithubLogo,
+  LinkedinLogo,
+  EnvelopeSimple,
+  CopySimple,
+  Check,
+} from "@phosphor-icons/react";
 
 const Footer = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("adekemmanuel17@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2400);
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -28,35 +43,79 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Action Button & Email */}
+        {/* Action Button & Email Row with Micro-Interactions */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
-          <a
+          <motion.a
             href="mailto:adekemmanuel17@gmail.com"
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-primary max-w-full truncate"
           >
             <EnvelopeSimple size={15} weight="bold" className="shrink-0" />
             <span className="truncate">adekemmanuel17@gmail.com</span>
-          </a>
+          </motion.a>
 
-          <a
+          {/* Quick Copy Action with Terminal Feedback */}
+          <motion.button
+            type="button"
+            onClick={handleCopy}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="btn-terminal btn-terminal-ghost"
+            title="Copy email address to clipboard"
+          >
+            <AnimatePresence mode="wait">
+              {copied ? (
+                <motion.div
+                  key="copied"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.15 }}
+                  className="flex items-center gap-1.5 text-live"
+                >
+                  <Check size={15} weight="bold" />
+                  <span>[200 OK: COPIED]</span>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="copy"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="flex items-center gap-1.5"
+                >
+                  <CopySimple size={15} weight="bold" />
+                  <span>copy email</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+
+          <motion.a
             href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-ghost"
           >
             <LinkedinLogo size={15} weight="bold" />
             <span>LinkedIn Profile ↗</span>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="https://github.com/timi-emmanuel"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-ghost"
           >
             <GithubLogo size={15} weight="bold" />
             <span>GitHub ↗</span>
-          </a>
+          </motion.a>
         </div>
 
         {/* Footer Meta Row */}

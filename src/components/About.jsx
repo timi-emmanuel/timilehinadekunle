@@ -82,20 +82,24 @@ const About = () => {
             Systems-oriented Mechanical Engineering background informs clean database design, Docker multi-stage builds, and reproducible SQL migrations.
           </p>
 
-          {/* Academic Honours Badge */}
-          <div className="mt-6 pt-4 border-t border-border flex items-start gap-3">
-            <div className="p-2 border border-border bg-panel-2 text-accent shrink-0">
+          {/* Academic Honours Badge with Subtle Micro-Interaction */}
+          <motion.div
+            whileHover={{ x: 3 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="mt-6 pt-4 border-t border-border flex items-start gap-3 group cursor-default"
+          >
+            <div className="p-2 border border-border bg-panel-2 text-accent shrink-0 transition-transform duration-200 group-hover:scale-105 group-hover:rotate-6">
               <GraduationCap size={18} weight="bold" />
             </div>
             <div>
-              <div className="font-mono text-xs font-semibold text-text">
+              <div className="font-mono text-xs font-semibold text-text group-hover:text-accent transition-colors">
                 B.Eng. Mechanical Engineering — First Class Honours
               </div>
               <div className="font-mono text-xs text-muted mt-0.5">
                 Federal University of Technology Akure (FUTA) • 4.65 / 5.00 GPA
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column: Verified Tech Stack */}
@@ -110,9 +114,14 @@ const About = () => {
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {category.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="tech-tag text-xs">
+                    <motion.span
+                      key={tIdx}
+                      whileHover={{ y: -1.5, scale: 1.03 }}
+                      transition={{ type: "spring", stiffness: 450, damping: 20 }}
+                      className="tech-tag text-xs cursor-default select-none hover:border-accent/70 hover:text-accent transition-colors"
+                    >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>

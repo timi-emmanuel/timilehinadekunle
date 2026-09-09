@@ -56,6 +56,12 @@ This document tracks all features and enhancements currently placed on hold duri
 
 
 
-## 5. 🌓 Subtle Animation
-- **Status:** `REQUIRED`
-- **Notes:** Add subtle animation wherever is necessary to showcase the Frontend and UI expertise of the dev.
+## 6. 🌓 Subtle Animation
+- **Status:** `COMPLETED`
+- **Notes:** Added high-performance, subtle Framer Motion micro-animations:
+  - **TechLogos:** Staggered entrance, spring physics on hover (`whileHover`), glowing border, and dynamic terminal typewriter readout with cursor.
+  - **Titlebar:** Smooth `layoutId` sliding active pill transition between sections and a breathing terminal green dot.
+  - **Hero:** Animated metric ticker (counting up `6+`, `5+`, `10`, `4.65`) on viewport entry and interactive 3D perspective tilt on the operator card.
+  - **Projects:** Smooth screenshot depth zoom on hover, spring hover hops on tech stack tags, and archived experiments link transitions.
+  - **Experience:** Interactive row hover highlights and animated chevron hops on bullet points.
+  - **Footer:** Direct click-to-copy email button with animated terminal feedback (`$ pbcopy` ➔ `[200 OK: COPIED]`).

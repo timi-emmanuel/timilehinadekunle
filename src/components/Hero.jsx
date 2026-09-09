@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, DownloadSimple, Terminal, ShieldCheck } from "@phosphor-icons/react";
 import HeroImg from "../assets/hero-image-optimized.jpg";
 
@@ -9,7 +10,84 @@ const stats = [
   { num: "4.65", label: "GPA / 5.00", note: "First Class Honours" },
 ];
 
+// Smooth count-up micro-ticker for CV metrics
+const AnimatedStat = ({ num, label, note }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
+  const [displayVal, setDisplayVal] = useState(num);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const isFloat = num.includes(".");
+    const targetNum = parseFloat(num);
+    const hasPlus = num.includes("+");
+
+    if (isNaN(targetNum)) {
+      setDisplayVal(num);
+      return;
+    }
+
+    const duration = 1100;
+    const start = performance.now();
+
+    const frame = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = targetNum * ease;
+
+      if (isFloat) {
+        setDisplayVal(current.toFixed(2));
+      } else {
+        setDisplayVal(`${Math.floor(current)}${hasPlus ? "+" : ""}`);
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        setDisplayVal(num);
+      }
+    };
+
+    requestAnimationFrame(frame);
+  }, [isInView, num]);
+
+  return (
+    <div ref={ref}>
+      <div className="font-mono text-xl sm:text-2xl font-semibold text-accent leading-none">
+        {displayVal}
+      </div>
+      <div className="font-mono text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5">
+        {label}
+      </div>
+      <div className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate">
+        {note}
+      </div>
+    </div>
+  );
+};
+
 const Hero = () => {
+  // Micro-tilt interaction on Operator ID card
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 25 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 25 });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    x.set(mouseX / rect.width - 0.5);
+    y.set(mouseY / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <section className="pane hero" id="hero">
       <div className="p-4 sm:p-8 lg:p-12">
@@ -50,41 +128,62 @@ const Hero = () => {
               Frontend Engineer specializing in React/Next.js frontends for multi-tenant SaaS and sportsbook platforms, with <strong className="text-text font-medium">2.5 years</strong> building data-dense dashboards and RBAC systems across products serving <strong className="text-text font-medium">6+ betting clients</strong> and <strong className="text-text font-medium">5+ businesses</strong> — including a solo-architected PostgreSQL schema with Row-Level Security. Transitioned from Mechanical Engineering (<strong className="text-text font-medium">4.65/5.00, First Class Honours</strong>) with systems-oriented strength in database design, Docker multi-stage builds, and reproducible SQL migrations.
             </motion.p>
 
-            {/* Action Buttons Row */}
+            {/* Action Buttons Row with Spring Physics */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.15 }}
               className="flex flex-wrap gap-3"
             >
-              <a href="#projects" className="btn-terminal btn-terminal-primary">
+              <motion.a
+                href="#projects"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-terminal btn-terminal-primary"
+              >
                 <ArrowRight size={15} weight="bold" />
                 <span>view_work.sh</span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="btn-terminal btn-terminal-ghost"
               >
                 <DownloadSimple size={15} weight="bold" />
                 <span>resume.pdf</span>
-              </a>
-              <a href="#contact" className="btn-terminal btn-terminal-ghost">
+              </motion.a>
+              <motion.a
+                href="#contact"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-terminal btn-terminal-ghost"
+              >
                 <Terminal size={15} weight="bold" />
                 <span>$ contact --me</span>
-              </a>
+              </motion.a>
             </motion.div>
           </div>
 
-          {/* Right Column: Operator Photo Card (4 cols on lg) */}
+          {/* Right Column: Operator Photo Card (4 cols on lg) with 3D Tilt */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.15 }}
             className="lg:col-span-4 flex justify-center lg:justify-end"
           >
-            <div className="relative p-3 border border-border bg-[#0E120F] max-w-[260px] sm:max-w-[280px] w-full select-none group shadow-lg">
+            <motion.div
+              style={{
+                perspective: 900,
+                rotateX,
+                rotateY,
+              }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="relative p-3 border border-border bg-[#0E120F] max-w-[260px] sm:max-w-[280px] w-full select-none group shadow-lg transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(242,184,75,0.08)]"
+            >
 
               {/* Cross-Dot Texture */}
               <div
@@ -119,13 +218,13 @@ const Hero = () => {
                 </div>
                 <div className="text-muted-2 text-[9.5px]">LAGOS, NG • UTC+1</div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>
       </div>
 
-      {/* 4-Cell Metric Readout Strip from CV */}
+      {/* 4-Cell Metric Readout Strip with Animated Number Reel */}
       <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-border bg-panel-2/50">
         {stats.map((stat, idx) => (
           <div
@@ -136,15 +235,7 @@ const Hero = () => {
               idx > 0 ? "sm:border-l sm:border-border" : ""
             }`}
           >
-            <div className="font-mono text-xl sm:text-2xl font-semibold text-accent leading-none">
-              {stat.num}
-            </div>
-            <div className="font-mono text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5">
-              {stat.label}
-            </div>
-            <div className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate">
-              {stat.note}
-            </div>
+            <AnimatedStat num={stat.num} label={stat.label} note={stat.note} />
           </div>
         ))}
       </div>

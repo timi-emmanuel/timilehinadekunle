@@ -79,56 +79,103 @@ const technologies = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.035,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const tileVariants = {
+  hidden: { opacity: 0, y: 8, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 380,
+      damping: 24,
+    },
+  },
+};
+
 const TechLogos = () => {
   const [hoveredTech, setHoveredTech] = useState(null);
 
   return (
     <div className="space-y-3 text-left">
       <div className="flex items-center justify-between font-mono text-xs">
-        <span className="text-muted-2 text-[11px] uppercase tracking-wider">
-          Core Technologies // Stack Matrix
+        <span className="text-muted-2 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-accent">$</span>
+          <span>stack --matrix --core</span>
         </span>
         <span className="text-accent text-[10px] hidden sm:inline">hover for role</span>
       </div>
 
-      {/* Tech Grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+      {/* Tech Grid with Staggered Entrance & Micro-Spring Physics */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        className="grid grid-cols-4 sm:grid-cols-6 gap-2"
+      >
         {technologies.map((tech) => (
-          <div
+          <motion.div
             key={tech.name}
+            variants={tileVariants}
+            whileHover={{
+              y: -3,
+              scale: 1.05,
+              transition: { type: "spring", stiffness: 450, damping: 20 },
+            }}
+            whileTap={{ scale: 0.95 }}
             onMouseEnter={() => setHoveredTech(tech)}
             onMouseLeave={() => setHoveredTech(null)}
-            className="relative p-3 border border-border bg-[#0E120F] flex items-center justify-center hover:border-accent/80 hover:bg-panel-2 transition-all cursor-crosshair group"
+            className="relative p-3 border border-border bg-[#0E120F] flex items-center justify-center hover:border-accent/80 hover:bg-panel-2 hover:shadow-[0_4px_14px_rgba(242,184,75,0.12)] transition-colors duration-150 cursor-crosshair group"
             title={`${tech.name} — ${tech.category}`}
           >
             <div className="transition-transform duration-200 group-hover:scale-110">
               {tech.icon}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Dynamic Hover Status Readout Bar */}
+      {/* Dynamic Hover Status Readout Bar with Cursor */}
       <div className="h-7 px-3 border border-border/80 bg-panel-2/40 flex items-center justify-between font-mono text-[11px]">
         <AnimatePresence mode="wait">
           {hoveredTech ? (
             <motion.div
               key={hoveredTech.name}
-              initial={{ opacity: 0, x: -4 }}
+              initial={{ opacity: 0, x: -6 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 4 }}
+              exit={{ opacity: 0, x: 6 }}
               transition={{ duration: 0.15 }}
               className="flex items-center justify-between w-full"
             >
-              <span className="text-accent font-semibold">{hoveredTech.name}</span>
+              <span className="text-accent font-semibold flex items-center gap-1">
+                <span>{hoveredTech.name}</span>
+                <span className="w-1.5 h-3 bg-accent animate-pulse inline-block" />
+              </span>
               <span className="text-muted text-[10.5px] truncate ml-2">
                 {hoveredTech.category}
               </span>
             </motion.div>
           ) : (
-            <span className="text-muted-2 text-[10px] truncate">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-muted-2 text-[10px] truncate"
+            >
               &gt; hover or tap any technology icon above
-            </span>
+            </motion.span>
           )}
         </AnimatePresence>
       </div>

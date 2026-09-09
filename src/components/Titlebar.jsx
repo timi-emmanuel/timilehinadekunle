@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const navItems = [
+  { id: "projects", label: "projects" },
+  { id: "experience", label: "experience" },
+  { id: "contact", label: "contact" },
+];
 
 const Titlebar = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -33,44 +40,62 @@ const Titlebar = () => {
           <div className="flex items-center gap-1 sm:gap-1.5 shrink-0" aria-hidden="true">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#4F5850]" />
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#4F5850]" />
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-live shadow-[0_0_6px_#4ADE80]" />
+            <motion.span
+              animate={{
+                scale: [1, 1.25, 1],
+                opacity: [0.85, 1, 0.85],
+              }}
+              transition={{
+                duration: 2.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-live shadow-[0_0_6px_#4ADE80]"
+            />
           </div>
 
           <div className="font-mono text-[11px] sm:text-xs text-muted flex items-center gap-0.5 sm:gap-1 truncate">
             <span className="hidden sm:inline text-muted-2">~/timilehin</span>
             <span className="sm:hidden text-muted-2">~</span>
-            <span className="text-text font-medium">
+            <motion.span
+              key={activeSection}
+              initial={{ opacity: 0, y: -2 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-text font-medium"
+            >
               /{activeSection === "hero" ? "portfolio.sh" : `${activeSection}/`}
-            </span>
+            </motion.span>
           </div>
         </div>
 
-        {/* Right: Curated Mobile-Responsive Nav Links */}
-        <nav className="font-mono text-[11px] sm:text-xs text-muted flex items-center gap-2.5 sm:gap-5 shrink-0">
-          <a
-            href="#projects"
-            className={`transition-colors duration-150 hover:text-accent px-1 py-0.5 ${
-              activeSection === "projects" ? "text-accent font-semibold" : ""
-            }`}
-          >
-            projects
-          </a>
-          <a
-            href="#experience"
-            className={`transition-colors duration-150 hover:text-accent px-1 py-0.5 ${
-              activeSection === "experience" ? "text-accent font-semibold" : ""
-            }`}
-          >
-            experience
-          </a>
-          <a
-            href="#contact"
-            className={`transition-colors duration-150 hover:text-accent px-1 py-0.5 ${
-              activeSection === "contact" ? "text-accent font-semibold" : ""
-            }`}
-          >
-            contact
-          </a>
+        {/* Right: Curated Mobile-Responsive Nav Links with Sliding Active Pill */}
+        <nav className="relative font-mono text-[11px] sm:text-xs text-muted flex items-center gap-1 sm:gap-2 shrink-0">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`relative px-2 py-1 transition-colors duration-150 rounded-xs ${
+                  isActive ? "text-accent font-semibold" : "hover:text-text"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavPill"
+                    className="absolute inset-0 bg-[#161B17] border border-border/90 rounded-xs -z-10 shadow-[0_0_8px_rgba(242,184,75,0.1)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 420,
+                      damping: 30,
+                    }}
+                  />
+                )}
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
         </nav>
 
       </div>

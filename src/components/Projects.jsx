@@ -29,7 +29,7 @@ const Projects = () => {
           return (
             <div
               key={project.id}
-              className="p-4 sm:p-6 lg:p-8 hover:bg-panel-2/30 transition-colors duration-150"
+              className="p-4 sm:p-6 lg:p-8 hover:bg-panel-2/30 transition-colors duration-200 group/row"
             >
               <div className="grid md:grid-cols-12 gap-6 items-center">
                 
@@ -41,7 +41,7 @@ const Projects = () => {
                     rel={destinationUrl ? "noopener noreferrer" : undefined}
                     className={`relative p-3 sm:p-3.5 border border-border bg-[#0E120F] overflow-hidden block group select-none transition-all duration-300 ${
                       isClickable
-                        ? "cursor-pointer hover:border-accent/60"
+                        ? "cursor-pointer hover:border-accent/70 hover:shadow-[0_8px_24px_rgba(242,184,75,0.08)]"
                         : "cursor-default"
                     }`}
                     title={
@@ -54,7 +54,7 @@ const Projects = () => {
                   >
                     {/* Atmospheric Backdrop: Blurred Screenshot or Radial Glow */}
                     <div
-                      className="absolute inset-0 w-full h-full bg-cover bg-center blur-2xl opacity-25 scale-125 transition-opacity duration-300 group-hover:opacity-40 pointer-events-none"
+                      className="absolute inset-0 w-full h-full bg-cover bg-center blur-2xl opacity-25 scale-125 transition-opacity duration-500 group-hover:opacity-45 pointer-events-none"
                       style={
                         project.image
                           ? { backgroundImage: `url("${project.image}")` }
@@ -75,7 +75,7 @@ const Projects = () => {
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover object-top opacity-95 transition-opacity duration-300 group-hover:opacity-100"
+                          className="w-full h-full object-cover object-top opacity-95 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
                           loading="lazy"
                         />
                       ) : (
@@ -201,12 +201,17 @@ const Projects = () => {
                     {project.summary}
                   </p>
 
-                  {/* Tech Stack Pills */}
+                  {/* Tech Stack Pills with Micro-Spring Hover */}
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.stack.map((tech, idx) => (
-                      <span key={idx} className="tech-tag text-[11px] py-0.5 px-2">
+                      <motion.span
+                        key={idx}
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        transition={{ type: "spring", stiffness: 450, damping: 20 }}
+                        className="tech-tag text-[11px] py-0.5 px-2 cursor-default select-none hover:border-accent/70 hover:text-accent transition-colors"
+                      >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
@@ -218,7 +223,7 @@ const Projects = () => {
         })}
       </div>
 
-      {/* Archived Experiments & Utilities Strip */}
+      {/* Archived Experiments & Utilities Strip with Micro-Interactions */}
       <div className="p-4 sm:p-6 border-t border-border bg-panel-2/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
         <div className="flex items-center gap-2 text-muted-2">
           <span className="text-accent">$</span>
@@ -226,17 +231,21 @@ const Projects = () => {
         </div>
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           {archivedExperiments.map((item, idx) => (
-            <a
+            <motion.a
               key={idx}
               href={item.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-accent transition-colors flex items-center gap-1.5"
+              whileHover={{ x: 2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="text-muted hover:text-accent transition-colors flex items-center gap-1.5 group/exp"
             >
-              <span className="text-text font-medium">{item.title}</span>
+              <span className="text-text font-medium group-hover/exp:text-accent transition-colors">
+                {item.title}
+              </span>
               <span className="text-muted-2 text-[11px] hidden md:inline">({item.description})</span>
-              <ArrowSquareOut size={12} weight="bold" />
-            </a>
+              <ArrowSquareOut size={12} weight="bold" className="group-hover/exp:translate-x-0.5 transition-transform" />
+            </motion.a>
           ))}
         </div>
       </div>
