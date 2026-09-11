@@ -63,7 +63,7 @@ function App() {
           <Experience />
           <CurrentlyBuilding />
           <GitHubActivity />
-          <Writing />
+          {/* <Writing /> */}
           <Footer />
         </main>
       </div>
