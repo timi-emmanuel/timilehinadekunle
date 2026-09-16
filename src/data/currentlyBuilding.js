@@ -21,7 +21,7 @@ export const radarItems = [
     id: "padihold-escrow",
     category: "FINTECH IN PROGRESS",
     statusText: "ACTIVE DEV",
-    statusType: "cyan", // cyan
+    statusType: "amber", // cyan
     title: "PadiHold — Escrow Multi-Stage State Engine & Settlement",
     organization: "PadiHold // FinTech Platform",
     summary:
@@ -43,7 +43,7 @@ export const radarItems = [
     id: "frontend-architecture",
     category: "FRONTEND ARCHITECTURE",
     statusText: "EXPLORING",
-    statusType: "cyan", // cyan
+    statusType: "amber", // cyan
     title: "Server-Side Hydration Boundaries & Client Isolation",
     organization: "Architecture Spike",
     summary:
@@ -54,7 +54,7 @@ export const radarItems = [
     id: "architecture-principles",
     category: "ARCHITECTURE & METHODOLOGY",
     statusText: "STUDYING",
-    statusType: "purple", // purple
+    statusType: "amber",
     title: "Frontend Architecture & System Design Principles",
     organization: "Continuous Learning // Engineering Craft",
     summary:

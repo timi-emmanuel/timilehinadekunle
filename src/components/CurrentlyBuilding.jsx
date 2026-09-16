@@ -4,20 +4,12 @@ import { radarMetadata, radarItems } from "../data/currentlyBuilding";
 
 const statusStyles = {
   live: {
-    badge: "border-live text-live bg-[#0A0D0B]",
+    badge: "border-live/40 text-live bg-[#0A0D0B]",
     dot: "bg-live shadow-[0_0_8px_#4ADE80]",
   },
   amber: {
-    badge: "border-accent text-accent bg-[#0A0D0B]",
-    dot: "bg-accent shadow-[0_0_8px_rgba(242,184,75,0.8)]",
-  },
-  cyan: {
-    badge: "border-[#38BDF8] text-[#38BDF8] bg-[#0A0D0B]",
-    dot: "bg-[#38BDF8] shadow-[0_0_8px_#38BDF8]",
-  },
-  purple: {
-    badge: "border-[#C084FC] text-[#C084FC] bg-[#0A0D0B]",
-    dot: "bg-[#C084FC] shadow-[0_0_8px_#C084FC]",
+    badge: "border-border bg-[#0E1310] text-muted",
+    dot: "bg-accent shadow-[0_0_6px_rgba(242,184,75,0.7)]",
   },
 };
 
@@ -101,8 +93,7 @@ const CurrentlyBuilding = () => {
             <motion.div
               key={item.id}
               variants={cardVariants}
-              whileHover={{ backgroundColor: "rgba(22, 27, 23, 0.4)" }}
-              className={`p-5 sm:p-7 space-y-3.5 transition-colors duration-200 group/radar ${
+              className={`p-5 sm:p-7 space-y-3.5 ${
                 isOddLast ? "md:col-span-2" : ""
               } ${
                 isLeftCol ? "md:border-r md:border-border" : ""
@@ -113,7 +104,7 @@ const CurrentlyBuilding = () => {
               {/* Category & Live Badge */}
               <div className="flex items-center justify-between gap-2 font-mono text-[10.5px]">
                 <span className="text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-                  <GitCommit size={12} className="text-accent group-hover/radar:rotate-45 transition-transform duration-200" />
+                  <GitCommit size={12} className="text-accent" />
                   <span>{item.category}</span>
                 </span>
                 <span className={`px-2 py-0.5 border font-mono text-[9px] uppercase tracking-wider flex items-center gap-1.5 ${style.badge}`}>
@@ -124,7 +115,7 @@ const CurrentlyBuilding = () => {
 
               {/* Title & Context */}
               <div className="space-y-1">
-                <h3 className="font-mono text-sm sm:text-base font-semibold text-text group-hover/radar:text-accent transition-colors">
+                <h3 className="font-mono text-sm sm:text-base font-semibold text-text">
                   {item.title}
                 </h3>
                 <div className="font-mono text-xs text-muted-2">
