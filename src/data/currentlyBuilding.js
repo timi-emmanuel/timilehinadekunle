@@ -7,17 +7,6 @@ export const radarMetadata = {
 
 export const radarItems = [
   {
-    id: "sbe-affiliate-portal",
-    category: "ACTIVE PRODUCTION SPRINT",
-    statusText: "IN SPRINT",
-    statusType: "live", // live (green)
-    title: "SBE Affiliate Portal Integration & BO Stat Alignment",
-    organization: "SBE Partner & Affiliate Ecosystem",
-    summary:
-      "Completed core Back Office (BO) API integrations. Currently aligning production data models and metrics schemas so administrative tables render structured reporting accurately, alongside integrating player-facing redirect and tracking APIs into the affiliate portal.",
-    stack: ["React", "Next.js", "REST APIs", "Data Tables", "Redirect Flows", "Tailwind CSS"],
-  },
-  {
     id: "nexta-saas",
     category: "SAAS IN ACTIVE INCUBATION",
     statusText: "MVP IN FLIGHT",

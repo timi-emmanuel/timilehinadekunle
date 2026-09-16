@@ -228,8 +228,8 @@ const Projects = () => {
                       ))}
                     </div>
 
-                    {/* 6-Part Case Study Action Trigger */}
-                    {project.caseStudy && (
+                    {/* 6-Part Case Study Action Trigger (Temporarily commented out - WIP) */}
+                    {/* {project.caseStudy && (
                       <div className="pt-2 flex flex-wrap items-center gap-3">
                         <motion.button
                           type="button"
@@ -247,7 +247,7 @@ const Projects = () => {
                           // verified struggle story & architectural trade-offs
                         </span>
                       </div>
-                    )}
+                    )} */}
 
                   </div>
 
@@ -285,11 +285,11 @@ const Projects = () => {
         </div>
       </motion.section>
 
-      {/* 6-Part Case Study Terminal Inspector Modal */}
-      <CaseStudyModal
+      {/* 6-Part Case Study Terminal Inspector Modal (Temporarily commented out - WIP) */}
+      {/* <CaseStudyModal
         project={activeCaseStudy}
         onClose={() => setActiveCaseStudy(null)}
-      />
+      /> */}
     </>
   );
 };

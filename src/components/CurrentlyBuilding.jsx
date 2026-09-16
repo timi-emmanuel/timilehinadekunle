@@ -93,10 +93,9 @@ const CurrentlyBuilding = () => {
       >
         {radarItems.map((item, idx) => {
           const style = statusStyles[item.statusType] || statusStyles.amber;
-          const isLeftCol = idx % 2 === 0;
           const isLastItem = idx === radarItems.length - 1;
-          const isSecondToLast = idx === radarItems.length - 2;
-          const isLastRowDesktop = isLastItem || (isSecondToLast && radarItems.length % 2 === 0);
+          const isOddLast = isLastItem && radarItems.length % 2 !== 0;
+          const isLeftCol = !isOddLast && idx % 2 === 0;
 
           return (
             <motion.div
@@ -104,11 +103,11 @@ const CurrentlyBuilding = () => {
               variants={cardVariants}
               whileHover={{ backgroundColor: "rgba(22, 27, 23, 0.4)" }}
               className={`p-5 sm:p-7 space-y-3.5 transition-colors duration-200 group/radar ${
+                isOddLast ? "md:col-span-2" : ""
+              } ${
                 isLeftCol ? "md:border-r md:border-border" : ""
               } ${
                 !isLastItem ? "border-b border-border" : ""
-              } ${
-                isLastRowDesktop ? "md:border-b-0" : "md:border-b md:border-border"
               }`}
             >
               {/* Category & Live Badge */}
