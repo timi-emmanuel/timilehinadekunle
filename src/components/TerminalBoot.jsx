@@ -144,7 +144,7 @@ const TerminalBoot = () => {
           {/* Terminal Footer CTA */}
           <div className="px-5 sm:px-6 py-3 border-t border-border bg-[#0E120F] flex items-center justify-between text-xs">
             <div className="text-muted-2 text-[10px]">
-              OPERATOR // 4.65 GPA FUTA
+              OPERATOR // FUTA
             </div>
 
             <button

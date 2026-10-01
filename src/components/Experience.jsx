@@ -28,7 +28,7 @@ const experiences = [
     org: "WCF FUTA Academic Unit · Leadership Role",
     bullets: [
       "Mentored and organized academic tutorials in engineering mathematics and technical computation for 100+ undergraduate students.",
-      "Graduated First Class Honours with a 4.65/5.00 GPA in Mechanical Engineering.",
+      "Graduated with a B.Eng in Mechanical Engineering.",
     ],
   },
 ];

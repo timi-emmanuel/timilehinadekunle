@@ -82,7 +82,7 @@ const About = () => {
             Systems-oriented Mechanical Engineering background informs clean database design, Docker multi-stage builds, and reproducible SQL migrations.
           </p>
 
-          {/* Academic Honours Badge with Subtle Micro-Interaction */}
+          {/* Academic Degree Badge with Subtle Micro-Interaction */}
           <motion.div
             whileHover={{ x: 3 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -93,10 +93,10 @@ const About = () => {
             </div>
             <div>
               <div className="font-mono text-xs font-semibold text-text group-hover:text-accent transition-colors">
-                B.Eng. Mechanical Engineering — First Class Honours
+                B.Eng. Mechanical Engineering
               </div>
               <div className="font-mono text-xs text-muted mt-0.5">
-                Federal University of Technology Akure (FUTA) • 4.65 / 5.00 GPA
+                Federal University of Technology Akure (FUTA)
               </div>
             </div>
           </motion.div>
