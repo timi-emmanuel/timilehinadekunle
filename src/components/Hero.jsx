@@ -55,10 +55,10 @@ const AnimatedStat = ({ num, label, note }) => {
 
   return (
     <div ref={ref}>
-      <div className="font-mono text-xl sm:text-2xl font-semibold text-accent leading-none">
+      <div className="font-mono text-lg sm:text-2xl font-semibold text-accent leading-none">
         {displayVal}
       </div>
-      <div className="font-mono text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5">
+      <div className="font-mono text-[10px] sm:text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5">
         {label}
       </div>
       <div className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate">
@@ -224,16 +224,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 4-Cell Metric Readout Strip with Animated Number Reel */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-border bg-panel-2/50">
+      {/* 3-Cell Metric Readout Strip with Animated Number Reel */}
+      <div className="grid grid-cols-3 divide-x divide-border border-t border-border bg-panel-2/50">
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className={`p-3.5 sm:p-5 flex flex-col justify-center text-left ${
-              idx % 2 === 1 ? "border-l border-border" : ""
-            } ${idx >= 2 ? "border-t border-border sm:border-t-0" : ""} ${
-              idx > 0 ? "sm:border-l sm:border-border" : ""
-            }`}
+            className="p-3 sm:p-5 flex flex-col justify-center text-left"
           >
             <AnimatedStat num={stat.num} label={stat.label} note={stat.note} />
           </div>
