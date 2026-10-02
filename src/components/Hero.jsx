@@ -114,7 +114,7 @@ const Hero = () => {
               className="font-mono text-[26px] sm:text-4xl lg:text-[42px] font-semibold text-text leading-tight tracking-tight mb-5"
             >
               Timilehin Adekunle<br />
-              <span className="text-accent">Frontend Engineer</span>
+              <span className="text-accent">Frontend & Systems Engineer</span>
               <span className="terminal-cursor" aria-hidden="true" />
             </motion.h1>
 
@@ -125,7 +125,7 @@ const Hero = () => {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-muted max-w-2xl leading-relaxed mb-8"
             >
-              Frontend Engineer specializing in React/Next.js frontends for multi-tenant SaaS and sportsbook platforms, with <strong className="text-text font-medium">2.5 years</strong> building data-dense dashboards and RBAC systems across products serving <strong className="text-text font-medium">6+ betting clients</strong> and <strong className="text-text font-medium">5+ businesses</strong> — including a solo-architected PostgreSQL schema with Row-Level Security. Transitioned from Mechanical Engineering with systems-oriented strength in database design, Docker multi-stage builds, and reproducible SQL migrations.
+              Frontend Engineer with full-stack capability across React/Next.js, Node.js, and PostgreSQL. <strong className="text-text font-medium">2.5 years</strong> building data-dense dashboards, RBAC engines, and solo-architected database schemas with Row-Level Security for products serving <strong className="text-text font-medium">6+ betting clients</strong> and <strong className="text-text font-medium">5+ businesses</strong>. Transitioned from Mechanical Engineering with systems-oriented strength in API integration, database design, Docker multi-stage builds, and reproducible SQL migrations.
             </motion.p>
 
             {/* Action Buttons Row with Spring Physics */}

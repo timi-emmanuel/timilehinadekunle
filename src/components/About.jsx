@@ -71,7 +71,7 @@ const About = () => {
         {/* Left Column: Story & System Mindset */}
         <div className="lg:col-span-6 p-4 sm:p-8 space-y-4">
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            I'm a <strong className="text-text font-medium">Frontend Engineer</strong> based in Lagos, Nigeria. I transitioned from mechanical engineering into frontend engineering — bringing an analytical systems mindset to frontend UI designs and modern architecture.
+            I'm a <strong className="text-text font-medium">Frontend & Systems Engineer</strong> based in Lagos, Nigeria. I transitioned from mechanical engineering into software engineering — bringing an analytical systems mindset to high-performance frontend interfaces, scalable component architectures, and robust backend services.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">

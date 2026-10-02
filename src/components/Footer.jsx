@@ -36,10 +36,10 @@ const Footer = () => {
         <div className="space-y-2">
           <div className="font-mono text-xs text-accent">$ initiate_conversation --hire</div>
           <h2 className="font-mono text-xl sm:text-2xl font-semibold text-text">
-            Need a reliable frontend Engineer to provide scalable, maintainable, and accessible solutions?
+            Need a reliable engineer who can own the frontend without getting lost in the backend?
           </h2>
           <p className="font-sans text-sm text-muted max-w-xl leading-relaxed">
-            I build web applications with a focus on performance, scalability, and accessibility. I'm open to frontend Engineer roles or contract roles. Reach out directly.
+            I build performant, accessible web applications, design clean PostgreSQL database schemas, and integrate robust APIs. Open to Frontend and Full-Stack engineering roles or contract projects. Reach out directly.
           </p>
         </div>
 
