@@ -1,5 +1,5 @@
 export const radarMetadata = {
-  lastUpdated: "September 2026",
+  lastUpdated: "October 2026",
   status: "ONLINE // TRANSMITTING",
   location: "Lagos, NG (UTC+1)",
   cadence: "Updated bi-weekly with active engineering focus",
@@ -7,15 +7,15 @@ export const radarMetadata = {
 
 export const radarItems = [
   {
-    id: "nexta-saas",
-    category: "SAAS IN ACTIVE INCUBATION",
+    id: "deslop-engine",
+    category: "AI DEVTOOLING IN ACTIVE DEV",
     statusText: "MVP IN FLIGHT",
-    statusType: "amber", // amber
-    title: "Nexta — Truthful Resume Tailoring & Application Tracker",
-    organization: "Nexta SaaS // Solo Architecture",
+    statusType: "amber",
+    title: "Deslop — Anti-Slop AI Design System Engine",
+    organization: "Deslop // Solo Architecture",
     summary:
-      "Architecting a multi-stage AI pipeline (parsing, keyword extraction, and hallucination-guarded tailoring) that aligns base resumes with target job specs while enforcing factual integrity, paired with an integrated job application pipeline and PDF export engine.",
-    stack: ["Next.js", "TypeScript", "OpenAI API", "Supabase", "PostgreSQL", "Tailwind CSS"],
+      "Architecting a deterministic style ingestion pipeline (Inspect, Extract, CIELAB/Delta-E color clustering, and 8pt spatial quantization) that transforms live websites into production-grade design tokens, standardized design.md context, and Tailwind v4 themes to constrain AI coding tools from generating visual slop.",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Supabase", "CIELAB / Delta-E", "Framer Motion"],
   },
   {
     id: "padihold-escrow",
