@@ -98,7 +98,7 @@ const Titlebar = () => {
         </div>
 
         {/* Desktop: Horizontal Nav Tabs with Sliding Active Pill */}
-        <nav className="hidden md:flex relative font-mono text-xs text-muted items-center gap-1.5 shrink-0">
+        <nav aria-label="Primary navigation" className="hidden md:flex relative font-mono text-xs text-muted items-center gap-1.5 shrink-0">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -149,6 +149,7 @@ const Titlebar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

@@ -100,6 +100,7 @@ const CaseStudyModal = ({ project, onClose }) => {
             <button
               type="button"
               onClick={onClose}
+              aria-label="Close case study modal"
               className="flex items-center gap-1 font-mono text-xs text-muted hover:text-text border border-border px-2 py-0.5 rounded-xs hover:bg-[#161B17] transition-colors"
             >
               <span>esc</span>

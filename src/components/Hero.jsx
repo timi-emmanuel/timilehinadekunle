@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, DownloadSimple, Terminal, ShieldCheck } from "@phosphor-icons/react";
-import HeroImg from "../assets/hero-image-optimized.jpg";
+import HeroImg448 from "../assets/hero-image-448.jpg";
+import HeroImg768 from "../assets/hero-image-768.jpg";
+import HeroImgOptimized from "../assets/hero-image-optimized.jpg";
 
 const stats = [
   { num: "6+", label: "Prod. Clients", note: "Sportsbook Back Office" },
@@ -239,8 +241,14 @@ const Hero = () => {
               {/* Photo Itself */}
               <div className="relative z-10 border border-border/80 bg-black aspect-[4/5] overflow-hidden">
                 <img
-                  src={HeroImg}
-                  alt="Timilehin Adekunle"
+                  src={HeroImgOptimized}
+                  srcSet={`${HeroImg448} 448w, ${HeroImg768} 768w, ${HeroImgOptimized} 1024w`}
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
+                  alt="Timilehin Adekunle — Frontend & Systems Engineer"
+                  width="380"
+                  height="475"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
                   loading="eager"
                 />

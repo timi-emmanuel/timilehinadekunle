@@ -47,6 +47,7 @@ const Footer = () => {
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
           <motion.a
             href="mailto:adekemmanuel17@gmail.com"
+            aria-label="Send email to adekemmanuel17@gmail.com"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-primary max-w-full truncate"
@@ -59,6 +60,7 @@ const Footer = () => {
           <motion.button
             type="button"
             onClick={handleCopy}
+            aria-label="Copy email address to clipboard"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-ghost"
@@ -97,6 +99,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/oluwatimilehin-adekunle-aa76a1271/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Timilehin's LinkedIn profile (opens in new tab)"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-ghost"
@@ -109,6 +112,7 @@ const Footer = () => {
             href="https://github.com/timi-emmanuel"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Timilehin's GitHub profile (opens in new tab)"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="btn-terminal btn-terminal-ghost"
