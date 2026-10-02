@@ -71,15 +71,15 @@ const About = () => {
         {/* Left Column: Story & System Mindset */}
         <div className="lg:col-span-6 p-4 sm:p-8 space-y-4">
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            I'm a <strong className="text-text font-medium">Frontend & Systems Engineer</strong> based in Lagos, Nigeria. I transitioned from mechanical engineering into software engineering — bringing an analytical systems mindset to high-performance frontend interfaces, scalable component architectures, and robust backend services.
+            I'm a <strong className="text-text font-medium">full-stack engineer</strong> in Lagos, Nigeria, with a <strong className="text-text font-medium">frontend focus</strong>. I came into software from Mechanical Engineering, and that background still shapes how I work: I look for the system behind a problem before I build the interface for it.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            Comfortable working across both <strong className="text-text font-medium">legacy</strong> and <strong className="text-text font-medium">modern</strong> codebases (Nuxt/Vue and Next.js) — translating complex business requirements into software workflows, integrating REST APIs, implementing authentication and RBAC, and building reusable component systems. On Jirella Farm Management System, this extended into solo-architecting the PostgreSQL schema itself, including Row-Level Security (RLS) policies and idempotent migrations.
+            For the past 3 years I've built data-heavy products for sportsbook and SaaS teams, including back offices and affiliate platforms used by <strong className="text-text font-medium">6+ betting clients</strong>. I'm equally at home in modern <strong className="text-text font-medium">Next.js</strong> codebases and legacy <strong className="text-text font-medium">Nuxt/Vue</strong> ones, turning messy business requirements into interfaces that stay fast and maintainable, with RBAC, auth, and reusable component systems underneath.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            Systems-oriented Mechanical Engineering background informs clean database design, Docker multi-stage builds, and reproducible SQL migrations.
+            I also go below the UI. On Jirella, a farm management ERP, I designed the <strong className="text-text font-medium">PostgreSQL schema</strong> myself, including a 10-role access model enforced with <strong className="text-text font-medium">Row-Level Security</strong> and idempotent migrations, then built the product on top of it.
           </p>
 
           {/* Academic Degree Badge with Subtle Micro-Interaction */}
