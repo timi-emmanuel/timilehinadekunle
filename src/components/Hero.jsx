@@ -10,60 +10,96 @@ const stats = [
 
 ];
 
-// Smooth count-up micro-ticker for CV metrics
-const AnimatedStat = ({ num, label, note }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-20px" });
-  const [displayVal, setDisplayVal] = useState(num);
+const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  useEffect(() => {
-    if (!isInView) return;
-
-    const isFloat = num.includes(".");
-    const targetNum = parseFloat(num);
-    const hasPlus = num.includes("+");
-
-    if (isNaN(targetNum)) {
-      setDisplayVal(num);
-      return;
-    }
-
-    const duration = 1100;
-    const start = performance.now();
-
-    const frame = (now) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const current = targetNum * ease;
-
-      if (isFloat) {
-        setDisplayVal(current.toFixed(2));
-      } else {
-        setDisplayVal(`${Math.floor(current)}${hasPlus ? "+" : ""}`);
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        setDisplayVal(num);
-      }
-    };
-
-    requestAnimationFrame(frame);
-  }, [isInView, num]);
+const RollingDigit = ({ digit, delay = 0, isInView }) => {
+  const targetDigit = parseInt(digit, 10);
+  const targetIndex = 10 + targetDigit; // Full initial spin cycle into target digit
+  const targetPercent = (targetIndex / DIGITS.length) * 100;
 
   return (
-    <div ref={ref}>
-      <div className="font-mono text-lg sm:text-2xl font-semibold text-accent leading-none">
-        {displayVal}
+    <span className="inline-block relative h-[1.12em] overflow-hidden align-top leading-none">
+      <motion.span
+        initial={{ y: "0%" }}
+        animate={isInView ? { y: `-${targetPercent}%` } : { y: "0%" }}
+        transition={{
+          duration: 1.0,
+          delay: delay,
+          ease: [0.16, 1, 0.3, 1], // Apple / Linear silky ease-out
+        }}
+        className="flex flex-col select-none"
+      >
+        {DIGITS.map((d, i) => (
+          <span key={i} className="h-[1.12em] flex items-center justify-center">
+            {d}
+          </span>
+        ))}
+      </motion.span>
+    </span>
+  );
+};
+
+// Smooth rolling mechanical ticker for CV metrics
+const AnimatedStat = ({ num, label, note, index = 0 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-10px" });
+
+  const characters = num.split("");
+  const baseDelay = 0.12 + index * 0.12;
+
+  let digitCount = 0;
+
+  return (
+    <div ref={ref} className="group/stat">
+      <div className="font-mono text-lg sm:text-2xl font-semibold text-accent leading-none flex items-center gap-0.5">
+        {characters.map((char, i) => {
+          if (/\d/.test(char)) {
+            const digitDelay = baseDelay + digitCount * 0.08;
+            digitCount += 1;
+            return (
+              <RollingDigit
+                key={i}
+                digit={char}
+                delay={digitDelay}
+                isInView={isInView}
+              />
+            );
+          }
+          return (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
+              transition={{
+                duration: 0.35,
+                delay: baseDelay + digitCount * 0.08 + 0.1,
+                ease: "easeOut",
+              }}
+              className="inline-block leading-none select-none text-accent"
+            >
+              {char}
+            </motion.span>
+          );
+        })}
       </div>
-      <div className="font-mono text-[10px] sm:text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5">
+
+      <motion.div
+        initial={{ opacity: 0, y: 4 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }}
+        transition={{ duration: 0.4, delay: baseDelay + 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="font-mono text-[10px] sm:text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5"
+      >
         {label}
-      </div>
-      <div className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate">
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 4 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }}
+        transition={{ duration: 0.4, delay: baseDelay + 0.26, ease: [0.16, 1, 0.3, 1] }}
+        className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate"
+      >
         {note}
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -231,7 +267,7 @@ const Hero = () => {
             key={idx}
             className="p-3 sm:p-5 flex flex-col justify-center text-left"
           >
-            <AnimatedStat num={stat.num} label={stat.label} note={stat.note} />
+            <AnimatedStat num={stat.num} label={stat.label} note={stat.note} index={idx} />
           </div>
         ))}
       </div>
