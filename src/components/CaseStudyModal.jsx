@@ -27,6 +27,7 @@ const CaseStudyModal = ({ project, onClose }) => {
   // Lock body scroll and listen for Escape and number keys
   useEffect(() => {
     if (!project) return;
+    setActiveTab("problem");
 
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -149,9 +150,16 @@ const CaseStudyModal = ({ project, onClose }) => {
               </div>
             </div>
 
-            <h2 className="font-mono text-lg sm:text-xl font-semibold text-text">
-              {project.title}
-            </h2>
+            <div className="space-y-1">
+              <h2 className="font-mono text-lg sm:text-xl font-semibold text-text">
+                {project.title}
+              </h2>
+              {project.summary && (
+                <p className="font-sans text-xs sm:text-[13px] text-muted leading-relaxed">
+                  {project.summary}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* 6-Part Framework Navigation Tabs */}

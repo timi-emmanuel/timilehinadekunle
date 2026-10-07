@@ -11,7 +11,7 @@ export const projectsData = [
     category: "AGRITECH & ERP",
     status: "live",
     summary:
-      "Architected and solo-built a modular agricultural ERP covering 8 core operational modules: Poultry, Catfish/Aquaculture, Feed Mill, BSF bioconversion, Central Store, Procurement, Inventory, and Sales. Designed an advanced RBAC engine mapping 10 distinct staff roles to operational modules using PostgreSQL Row-Level Security (RLS), configured AG Grid for high-density dashboards, wrote idempotent SQL migrations, and containerized the application with Docker.",
+      "Modular agricultural ERP covering 8 operational verticals with a 10-role PostgreSQL RLS access model, high-density AG Grid dashboards, and Docker multi-stage builds.",
     stack: ["Next.js", "Supabase", "PostgreSQL", "AG Grid", "Docker", "Tailwind CSS"],
     image: JirellaImg,
     liveUrl: "https://farms-accounting-software.vercel.app/",
@@ -45,7 +45,7 @@ export const projectsData = [
     category: "FINTECH & ATTRIBUTION",
     status: "live",
     summary:
-      "Built the entire frontend of a multi-tenant affiliate and financial attribution platform for sportsbook/casino operators — traffic tracking, retention cohorts, and commission settlement dashboards, consuming backend REST APIs (backend and deployment handled separately). Implemented 3-tier RBAC and frontend session handling (silent JWT refresh, cross-device session termination, tenant context isolation), built a custom design system on Radix UI primitives, and built server-side paginated, filterable views over large activity logs using SWR caching and Zod schema validation.",
+      "Multi-tenant sportsbook financial attribution and affiliate dashboard featuring 3-tier RBAC, silent JWT session lifecycle management, and server-side paginated SWR activity logs.",
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Zustand", "SWR", "Radix UI", "Zod"],
     image: AffiliateImg,
     liveUrl: null,

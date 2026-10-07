@@ -42,15 +42,13 @@ const Projects = () => {
                   <div className={`md:col-span-5 ${isAlternate ? "md:order-2" : "md:order-1"}`}>
                     <div
                       onClick={() => {
-                        if (project.caseStudy && !destinationUrl) {
+                        if (project.caseStudy) {
                           setActiveCaseStudy(project);
                         }
                       }}
                       className={`relative p-3 sm:p-3.5 border border-border bg-[#0E120F] overflow-hidden block group select-none transition-all duration-300 ${
-                        isClickable
+                        project.caseStudy
                           ? "cursor-pointer hover:border-accent/70 hover:shadow-[0_8px_24px_rgba(242,184,75,0.08)]"
-                          : project.caseStudy
-                          ? "cursor-pointer hover:border-accent/50"
                           : "cursor-default"
                       }`}
                     >
@@ -137,6 +135,7 @@ const Projects = () => {
                               href={destinationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
                               className="font-mono text-[10px] px-2 py-0.5 bg-accent text-[#0A0D0B] font-semibold flex items-center gap-1 shadow-md hover:brightness-110"
                             >
                               <span>{project.liveUrl ? "live demo" : "source"}</span>
@@ -146,7 +145,7 @@ const Projects = () => {
                         ) : project.caseStudy ? (
                           <div className="absolute bottom-2 right-2 z-10 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
                             <span className="font-mono text-[10px] px-2 py-0.5 bg-[#161B17] border border-accent/80 text-accent font-semibold flex items-center gap-1 shadow-md">
-                              <span>case study</span>
+                              <span>see more</span>
                               <Terminal size={11} weight="bold" />
                             </span>
                           </div>
@@ -229,26 +228,26 @@ const Projects = () => {
                       ))}
                     </div>
 
-                    {/* 6-Part Case Study Action Trigger (Temporarily commented out - WIP) */}
-                    {/* {project.caseStudy && (
+                    {/* See More Details Modal Trigger */}
+                    {project.caseStudy && (
                       <div className="pt-2 flex flex-wrap items-center gap-3">
                         <motion.button
                           type="button"
                           onClick={() => setActiveCaseStudy(project)}
                           whileHover={{ scale: 1.02, y: -1 }}
                           whileTap={{ scale: 0.98 }}
-                          className="btn-terminal btn-terminal-ghost py-1 px-2.5 text-xs text-text hover:text-accent hover:border-accent/80 flex items-center gap-1.5 transition-all shadow-xs"
-                          title={`Inspect 6-part senior engineering case study for ${project.title}`}
+                          className="btn-terminal btn-terminal-ghost py-1 px-3 text-xs text-text hover:text-accent hover:border-accent/80 flex items-center gap-1.5 transition-all shadow-xs"
+                          title={`View full details for ${project.title}`}
                         >
                           <Terminal size={13} className="text-accent" />
-                          <span>inspect case study [01–06]</span>
+                          <span>see more</span>
                           <ArrowSquareOut size={12} className="text-muted-2" />
                         </motion.button>
                         <span className="font-mono text-[10.5px] text-muted-2 hidden sm:inline">
-                          // verified struggle story & architectural trade-offs
+                          // full architecture, RCA incident debrief & trade-offs
                         </span>
                       </div>
-                    )} */}
+                    )}
 
                   </div>
 
@@ -286,11 +285,11 @@ const Projects = () => {
         </div>
       </motion.section>
 
-      {/* 6-Part Case Study Terminal Inspector Modal (Temporarily commented out - WIP) */}
-      {/* <CaseStudyModal
+      {/* 6-Part Case Study Terminal Inspector Modal */}
+      <CaseStudyModal
         project={activeCaseStudy}
         onClose={() => setActiveCaseStudy(null)}
-      /> */}
+      />
     </>
   );
 };
