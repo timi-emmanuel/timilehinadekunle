@@ -41,13 +41,8 @@ const Projects = () => {
                   {/* Project Image / Architecture Card Column (5 cols) */}
                   <div className={`md:col-span-5 ${isAlternate ? "md:order-2" : "md:order-1"}`}>
                     <div
-                      onClick={() => {
-                        if (project.caseStudy) {
-                          setActiveCaseStudy(project);
-                        }
-                      }}
                       className={`relative p-3 sm:p-3.5 border border-border bg-[#0E120F] overflow-hidden block group select-none transition-all duration-300 ${
-                        project.caseStudy
+                        isClickable
                           ? "cursor-pointer hover:border-accent/70 hover:shadow-[0_8px_24px_rgba(242,184,75,0.08)]"
                           : "cursor-default"
                       }`}
@@ -129,27 +124,19 @@ const Projects = () => {
                         </div>
 
                         {/* Hover Action Pill */}
-                        {isClickable ? (
+                        {isClickable && (
                           <div className="absolute bottom-2 right-2 z-10 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
                             <a
                               href={destinationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
                               className="font-mono text-[10px] px-2 py-0.5 bg-accent text-[#0A0D0B] font-semibold flex items-center gap-1 shadow-md hover:brightness-110"
                             >
                               <span>{project.liveUrl ? "live demo" : "source"}</span>
                               <ArrowSquareOut size={12} weight="bold" />
                             </a>
                           </div>
-                        ) : project.caseStudy ? (
-                          <div className="absolute bottom-2 right-2 z-10 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
-                            <span className="font-mono text-[10px] px-2 py-0.5 bg-[#161B17] border border-accent/80 text-accent font-semibold flex items-center gap-1 shadow-md">
-                              <span>see more</span>
-                              <Terminal size={11} weight="bold" />
-                            </span>
-                          </div>
-                        ) : null}
+                        )}
                       </div>
                     </div>
                   </div>
@@ -228,8 +215,8 @@ const Projects = () => {
                       ))}
                     </div>
 
-                    {/* See More Details Modal Trigger */}
-                    {project.caseStudy && (
+                    {/* See More Details Modal Trigger (Temporarily commented out) */}
+                    {/* {project.caseStudy && (
                       <div className="pt-2 flex flex-wrap items-center gap-3">
                         <motion.button
                           type="button"
@@ -247,7 +234,7 @@ const Projects = () => {
                           // full architecture, RCA incident debrief & trade-offs
                         </span>
                       </div>
-                    )}
+                    )} */}
 
                   </div>
 
@@ -285,11 +272,11 @@ const Projects = () => {
         </div>
       </motion.section>
 
-      {/* 6-Part Case Study Terminal Inspector Modal */}
-      <CaseStudyModal
+      {/* 6-Part Case Study Terminal Inspector Modal (Temporarily commented out) */}
+      {/* <CaseStudyModal
         project={activeCaseStudy}
         onClose={() => setActiveCaseStudy(null)}
-      />
+      /> */}
     </>
   );
 };
