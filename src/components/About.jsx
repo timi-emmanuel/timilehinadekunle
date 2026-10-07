@@ -71,11 +71,11 @@ const About = () => {
         {/* Left Column: Story & System Mindset */}
         <div className="lg:col-span-6 p-4 sm:p-8 space-y-4">
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            I'm a <strong className="text-text font-medium">full-stack engineer</strong> in Lagos, Nigeria, with a <strong className="text-text font-medium">frontend focus</strong>. I came into software from Mechanical Engineering, and that background still shapes how I work: I look for the system behind a problem before I build the interface for it.
+            I'm a <strong className="text-text font-medium">full-stack engineer</strong> in Lagos, Nigeria, with a <strong className="text-text font-medium">frontend focus</strong>. I came into software from Mechanical Engineering, and that background still shapes how I work; I look for the system behind a problem before I build the interface for it.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            For the past 3 years I've built data-heavy products for sportsbook and SaaS teams, including back offices and affiliate platforms used by <strong className="text-text font-medium">6+ betting clients</strong>. I'm equally at home in modern <strong className="text-text font-medium">Next.js</strong> codebases and legacy <strong className="text-text font-medium">Nuxt/Vue</strong> ones, turning messy business requirements into interfaces that stay fast and maintainable, with RBAC, auth, and reusable component systems underneath.
+            For the past 3 years I've built data-heavy products for sportsbook and SaaS teams, including back offices and affiliate platforms used by <strong className="text-text font-medium">6 clients</strong>. I'm equally at home in modern <strong className="text-text font-medium">Next.js</strong> codebases and legacy <strong className="text-text font-medium">Nuxt/Vue</strong> ones, turning messy business requirements into interfaces that stay fast and maintainable, with RBAC, auth, and reusable component systems underneath.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">

@@ -26,9 +26,10 @@ const Projects = () => {
 
         {/* Project Rows with Backdrop & Clickable Images */}
         <div className="divide-y divide-border text-left">
-          {projectsData.map((project) => {
+          {projectsData.map((project, index) => {
             const destinationUrl = project.liveUrl || project.githubUrl;
             const isClickable = Boolean(destinationUrl);
+            const isAlternate = index % 2 === 1;
 
             return (
               <div
@@ -38,7 +39,7 @@ const Projects = () => {
                 <div className="grid md:grid-cols-12 gap-6 items-center">
                   
                   {/* Project Image / Architecture Card Column (5 cols) */}
-                  <div className="md:col-span-5">
+                  <div className={`md:col-span-5 ${isAlternate ? "md:order-2" : "md:order-1"}`}>
                     <div
                       onClick={() => {
                         if (project.caseStudy && !destinationUrl) {
@@ -155,7 +156,7 @@ const Projects = () => {
                   </div>
 
                   {/* Content & Metadata Column (7 cols) */}
-                  <div className="md:col-span-7 space-y-3">
+                  <div className={`md:col-span-7 space-y-3 ${isAlternate ? "md:order-1" : "md:order-2"}`}>
                     
                     {/* Category & Text Links Row */}
                     <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
