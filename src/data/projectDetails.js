@@ -2,7 +2,6 @@ import PadiHoldImg from "../assets/padihold.png";
 import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import JirellaImg from "../assets/jirella-farm.png";
 import MatchkicksImg from "../assets/matchkicks.png";
-import AffiliateImg from "../assets/Affiliate-Portal.png";
 
 export const projectsData = [
   {
@@ -37,41 +36,6 @@ export const projectsData = [
         "No complex multi-currency conversion (hardcoded to NGN to match farm local commerce), no real-time IoT sensor telemetry (mortality and feed inputs are manually logged by section supervisors at shift changes to prevent false positives from unreliable farm hardware), and no native mobile app (responsive PWA built for mobile browser access across low-end Android handsets).",
       currentStatus:
         "Live in production. Successfully managing 8 farm operational modules, tracking thousands of livestock and daily feed batches with zero recorded schema inconsistencies. Next milestone: automated offline-first PWA sync via IndexedDB for field workers in connectivity dead zones.",
-    },
-  },
-  {
-    id: "sbe-affiliate-portal",
-    title: "SBE Affiliate & Attribution Portal",
-    category: "FINTECH & ATTRIBUTION",
-    status: "live",
-    summary:
-      "Multi-tenant sportsbook financial attribution and affiliate dashboard featuring 3-tier RBAC, silent JWT session lifecycle management, and server-side paginated SWR activity logs.",
-    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Zustand", "SWR", "Radix UI", "Zod"],
-    image: AffiliateImg,
-    liveUrl: null,
-    githubUrl: null,
-    isConfidential: true,
-    caseStudy: {
-      tag: "ENTERPRISE PRODUCTION",
-      theProblem:
-        "Partner operators in high-stakes sportsbook and casino environments lacked unified, real-time visibility into affiliate traffic attribution, player conversion cohorts, commission settlement tiers, and multi-tenant performance metrics. Fragmented partner back offices delayed financial settlements, obscured player churn, and created friction during monthly audits.",
-      whatIBuilt:
-        "Architected and implemented the entire frontend for a high-density, multi-tenant sportsbook affiliate and financial attribution portal using Next.js 14, TypeScript, Zustand, and Tailwind CSS. Implemented 3-tier Role-Based Access Control (Super Admin, Partner Admin, Affiliate Agent), silent JWT authentication with cross-device session termination, server-side paginated and filterable data tables handling massive traffic logs with SWR caching, and dynamic payout/commission calculation interfaces.",
-      theHardPart: {
-        incident: "Production SSR Hydration Mismatch on Dynamic Datepickers",
-        symptoms:
-          "A production release caused date range filters across critical financial reporting modules to silently fail (inputs froze and data refreshes stopped triggering without throwing visible browser console exceptions).",
-        rootCause:
-          "An SSR hydration mismatch on a DOM-dependent third-party datepicker component: server-rendered HTML differed from the initial client render, causing React 18/19 hydration to discard DOM event listeners silently.",
-        solution:
-          "Engineered client-only dynamic mounting boundaries (next/dynamic with ssr: false and custom skeleton placeholders) across all DOM-dependent reporting modules, standardizing an architectural pattern used across the platform.",
-      },
-      theDesign:
-        "Strict enterprise-grade data ergonomics designed for continuous daily usage by financial analysts and partners. Built a customized UI system on Radix UI primitives prioritizing sub-100ms keyboard navigation, sticky table headers with horizontal scrolling for 20+ columns, and clear visual hierarchy without distracting consumer visual clutter.",
-      whatsNotInIt:
-        "No client-side financial computations (all critical balance settlements, net gaming revenue, and partner commissions are calculated strictly server-side to eliminate client tampering vectors), and no direct betting mechanics (purely an administrative attribution, audit, and partner analytics interface).",
-      currentStatus:
-        "Running in production across partner operators. Tracking millions in betting turnover and multi-tier affiliate commissions. Next milestone: streaming WebSocket table updates for live event attribution during major tournament fixtures.",
     },
   },
   {
