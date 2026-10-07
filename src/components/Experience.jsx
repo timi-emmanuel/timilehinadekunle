@@ -3,14 +3,12 @@ import { motion } from "framer-motion";
 const experiences = [
   {
     date: "2025 — Present",
-    role: "Frontend Developer (Freelance/Contract)",
+    role: "Frontend Developer",
     org: "Sportsbook Back Office (SBE Ecosystem)",
     bullets: [
-      "Own the data layer of a production Next.js back office — architected the data-fetching layer (Axios), built the table system (shadcn/ui, TanStack Table), and optimized filtering/state management (Zustand) across high-density dashboards (player management, banking, bonus, risk, reporting) on an existing UI/auth scaffold.",
-      "Rebuilt and extended a legacy Nuxt.js back office over 8 months — building commission/GGR (Gross Gaming Revenue) reporting with multi-tier payout logic, a player segmentation suite with campaign triggers, and a trust-threshold security module with audit logging.",
-      "Diagnosed and resolved a production SSR hydration mismatch causing date-picker and table failures across reporting modules, standardizing client-only rendering for DOM-dependent components; also resolved CORS/API integration issues and impersonation-token security considerations in admin tooling.",
-      "On a related back-office product line: corrected RTP and jackpot payout calculation logic that was producing invalid financial values, built an API caching layer eliminating redundant re-fetching, and led a Tailwind CSS v2→v3 migration removing ~9,800 lines of legacy CSS.",
-      "Built a secure API key management system (one-time secret reveal, revocation) for partner accounts, implemented JWT expiration handling and protected-route architecture to prevent stale sessions, and built an end-to-end deposit/withdrawal transfer flow for a companion mobile web application.",
+      "Architect and maintain data-heavy Next.js back office dashboards (TanStack Table, Zustand) for player management, banking, risk, and financial reporting.",
+      "Engineered multi-tier commission/GGR calculation modules, API caching layers, and partner API key management systems (JWT auth, token revocation, RBAC).",
+      "Resolved critical production SSR hydration and state synchronization bottlenecks, standardizing client-boundary patterns and modernizing legacy codebases.",
     ],
   },
   {
@@ -20,15 +18,6 @@ const experiences = [
     bullets: [
       "Contribute to frontend development of QuiqOrder's branded storefront platform for WhatsApp-based sellers, including UI development, Firebase integration, and the Shipbubble logistics integration for order fulfillment.",
       "Support lead generation and merchant activation through structured outreach and qualification campaigns.",
-    ],
-  },
-  {
-    date: "2023 — 2024",
-    role: "Academic Unit Leader & Peer Mentor",
-    org: "WCF FUTA Academic Unit · Leadership Role",
-    bullets: [
-      "Mentored and organized academic tutorials in engineering mathematics and technical computation for 100+ undergraduate students.",
-      "Graduated with a B.Eng in Mechanical Engineering.",
     ],
   },
 ];
