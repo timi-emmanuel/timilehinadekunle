@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, DownloadSimple, Terminal, ShieldCheck } from "@phosphor-icons/react";
 import HeroImg448 from "../assets/hero-image-448.jpg";
@@ -6,9 +6,10 @@ import HeroImg768 from "../assets/hero-image-768.jpg";
 import HeroImgOptimized from "../assets/hero-image-optimized.jpg";
 
 const stats = [
-  { num: "77+", label: "Merchants", note: "QuiqOrder (₦2.2M+ Sales)" },
-  { num: "6", label: "Betting Companies", note: "Sportsbook Back Office" },
-  { num: "10", label: "Staff Roles (RBAC)", note: "Jirella Farm ERP" },
+  { num: "77", label: "MERCHANT ACCOUNTS", note: "QuiqOrder · 19 live stores · ₦2.2M+ sales" },
+  // TODO(verify): CV says "6+ betting clients"; old site said "6". Using "6+" per spec.
+  { num: "6+", label: "BETTING Companies", note: "Sportsbook back office" },
+  { num: "10", label: "STAFF ROLES (RBAC)", note: "Jirella · used daily by 5+ staff" },
 ];
 
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -88,7 +89,7 @@ const AnimatedStat = ({ num, label, note, index = 0 }) => {
         initial={{ opacity: 0, y: 4 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }}
         transition={{ duration: 0.4, delay: baseDelay + 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="font-mono text-[10px] sm:text-[11px] font-medium text-muted uppercase tracking-wider mt-1.5"
+        className="font-mono text-xs font-medium text-muted uppercase tracking-wider mt-1.5"
       >
         {label}
       </motion.div>
@@ -97,7 +98,7 @@ const AnimatedStat = ({ num, label, note, index = 0 }) => {
         initial={{ opacity: 0, y: 4 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }}
         transition={{ duration: 0.4, delay: baseDelay + 0.26, ease: [0.16, 1, 0.3, 1] }}
-        className="font-mono text-[10px] text-muted-2 mt-0.5 hidden sm:block truncate"
+        className="font-mono text-xs text-muted-2 mt-0.5 hidden sm:block truncate"
       >
         {note}
       </motion.div>
@@ -151,7 +152,7 @@ const Hero = () => {
               className="font-mono text-[26px] sm:text-4xl lg:text-[42px] font-semibold text-text leading-tight tracking-tight mb-5"
             >
               Timilehin Adekunle<br />
-              <span className="text-accent">Frontend & Systems Engineer</span>
+              <span className="text-accent">Full-Stack Engineer</span>
               <span className="terminal-cursor" aria-hidden="true" />
             </motion.h1>
 
@@ -162,7 +163,7 @@ const Hero = () => {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-muted max-w-2xl leading-relaxed mb-8"
             >
-              Fullstack Engineer with <strong className="text-text font-medium">3 years of experience</strong> building React/Next.js products, from a founding-engineer role at a live e-commerce startup to data-dense dashboards for multi-tenant sportsbook platforms. Built RBAC and PostgreSQL Row-Level Security systems, owned the data layer of a Next.js back office, and built an on-demand image generation service replacing pre-rendered S3 storage. Led a Tailwind v2→v3 migration removing ~9,800 lines of legacy CSS.
+              Full-stack engineer with 3 years of experience building React and Next.js products and the data layers behind them: a live e-commerce platform as a founding engineer, a farm ERP on Supabase and PostgreSQL, and data-dense dashboards for multi-tenant sportsbook platforms.
             </motion.p>
 
             {/* Action Buttons Row with Spring Physics */}
@@ -229,12 +230,12 @@ const Hero = () => {
               />
 
               {/* Photo Frame Header */}
-              <div className="relative z-10 flex items-center justify-between pb-2 border-b border-border/80 font-mono text-[10px] text-muted mb-2.5">
+              <div className="relative z-10 flex items-center justify-between pb-2 border-b border-border/80 font-mono text-xs text-muted mb-2.5">
                 <span className="flex items-center gap-1 text-muted-2">
                   <ShieldCheck size={13} className="text-accent" />
                   <span>OPERATOR_ID</span>
                 </span>
-                <span className="status-live text-[9px] uppercase tracking-wider">active</span>
+                <span className="status-live text-xs uppercase tracking-wider">active</span>
               </div>
 
               {/* Photo Itself */}
@@ -243,7 +244,7 @@ const Hero = () => {
                   src={HeroImgOptimized}
                   srcSet={`${HeroImg448} 448w, ${HeroImg768} 768w, ${HeroImgOptimized} 1024w`}
                   sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
-                  alt="Timilehin Adekunle — Frontend & Systems Engineer"
+                  alt="Timilehin Adekunle — Full-Stack Engineer"
                   width="380"
                   height="475"
                   fetchPriority="high"
@@ -254,12 +255,12 @@ const Hero = () => {
               </div>
 
               {/* Photo Frame Footer */}
-              <div className="relative z-10 pt-2.5 mt-2.5 border-t border-border/80 font-mono text-[10px] text-left space-y-0.5">
+              <div className="relative z-10 pt-2.5 mt-2.5 border-t border-border/80 font-mono text-xs text-left space-y-0.5">
                 <div className="text-text font-medium flex justify-between">
-                  <span>ADEKUNLE, O. E.</span>
+                  <span>Timilehin Adekunle</span>
                   <span className="text-accent">0xADEK</span>
                 </div>
-                <div className="text-muted-2 text-[9.5px]">LAGOS, NG • UTC+1</div>
+                <div className="text-muted-2 text-xs">LAGOS, NG • UTC+1</div>
               </div>
             </motion.div>
           </motion.div>
