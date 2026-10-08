@@ -44,8 +44,8 @@ export const projectsData = [
     category: "SAAS & E-COMMERCE",
     status: "live",
     summary:
-      "Frontend development of QuiqOrder's branded storefront platform for WhatsApp-based sellers, including UI development, Firebase real-time integration, and the Shipbubble logistics integration for automated order fulfillment.",
-    stack: ["React.js", "Firebase", "Shipbubble", "Tailwind CSS", "WhatsApp API", "Node.js"],
+      "E-commerce and merchant revenue-recovery platform live with 77 merchant accounts, 19 published storefronts, and ₦2.2M+ in merchant sales, featuring automated Shipbubble delivery logistics.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "TanStack Query", "Shipbubble", "Zod"],
     image: QuiqOrderImg,
     liveUrl: "https://www.tryquiqorder.com/",
     githubUrl: null,
@@ -112,8 +112,8 @@ export const projectsData = [
     category: "BACKEND AUTOMATION",
     status: "live",
     summary:
-      "High-throughput automated image rendering service that dynamically overlays custom customer graphic designs onto merchandise mockups at pixel-perfect coordinates.",
-    stack: ["Node.js", "Express.js", "Sharp", "AWS S3", "JavaScript"],
+      "Serverless image-generation microservice that composites design layers into product mockups on demand as WebP, replacing pre-rendered S3 storage with on-the-fly generation and Redis caching.",
+    stack: ["Node.js", "Sharp", "AWS Lambda", "Redis", "AWS S3", "Express.js"],
     image: MatchkicksImg,
     liveUrl: "https://matchkicks.com/",
     githubUrl: null,

@@ -7,9 +7,9 @@ const skillCategories = [
     key: "Frontend & UI Engineering",
     icon: Code,
     tags: [
-      "React.js",
+      "React",
       "Next.js",
-      "Vue.js (Vue 3)",
+      "Vue 3",
       "Nuxt",
       "TypeScript",
       "Tailwind CSS",
@@ -20,30 +20,36 @@ const skillCategories = [
     ],
   },
   {
-    key: "State, Data & Backend",
+    key: "State, Data & APIs",
     icon: Database,
     tags: [
+      "Redux Toolkit",
       "Zustand",
+      "TanStack Query",
+      "SWR",
       "Axios",
-      "Supabase (PostgreSQL, RLS, Auth)",
+      "Zod",
+      "React Hook Form",
       "REST APIs",
-      "Node.js",
-      "Express.js",
-      "SQL",
     ],
   },
   {
-    key: "Architecture & Tooling",
+    key: "Backend, Cloud & Tooling",
     icon: Wrench,
     tags: [
-      "Multi-Tenant Systems",
-      "Role-Based Access Control (RBAC)",
-      "Row-Level Security",
-      "Git / GitHub",
-      "Docker (multi-stage builds)",
-      "Postman",
+      "Node.js",
+      "Express",
+      "Fastify",
+      "Supabase (PostgreSQL, RLS, Auth)",
+      "Drizzle ORM",
+      "Redis",
+      "AWS (Lambda, S3)",
+      "Playwright",
+      "Docker (multi-stage)",
+      "Idempotent Migrations",
       "Vite",
-      "Vercel",
+      "Postman",
+      "Git / GitHub",
       "Figma",
     ],
   },
@@ -93,10 +99,10 @@ const About = () => {
             </div>
             <div>
               <div className="font-mono text-xs font-semibold text-text group-hover:text-accent transition-colors">
-                B.Eng. Mechanical Engineering
+                B.Eng. Mechanical Engineering — First Class (4.65/5.00)
               </div>
               <div className="font-mono text-xs text-muted mt-0.5">
-                Federal University of Technology Akure (FUTA)
+                Federal University of Technology, Akure (FUTA) • 2024
               </div>
             </div>
           </motion.div>

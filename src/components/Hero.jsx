@@ -6,10 +6,9 @@ import HeroImg768 from "../assets/hero-image-768.jpg";
 import HeroImgOptimized from "../assets/hero-image-optimized.jpg";
 
 const stats = [
-  { num: "6+", label: "Prod. Clients", note: "Sportsbook Back Office" },
-  { num: "5+", label: "SaaS Merchants", note: "QuiqOrder Commerce" },
+  { num: "77+", label: "Merchants", note: "QuiqOrder (₦2.2M+ Sales)" },
+  { num: "6", label: "Betting Clients", note: "Sportsbook Back Office" },
   { num: "10", label: "Staff Roles (RBAC)", note: "Jirella Farm ERP" },
-
 ];
 
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -163,7 +162,7 @@ const Hero = () => {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-muted max-w-2xl leading-relaxed mb-8"
             >
-              Frontend Engineer with full-stack capability across React/Next.js, Node.js, and PostgreSQL. <strong className="text-text font-medium">3 years</strong> building data-dense dashboards, RBAC site, and solo-architected database schemas with Row-Level Security for products serving <strong className="text-text font-medium">clients</strong> and <strong className="text-text font-medium">5 businesses</strong>. Transitioned from Mechanical Engineering with systems-oriented strength in API integration, Docker multi-stage builds, and reproducible SQL migrations.
+              Frontend Engineer with <strong className="text-text font-medium">3 years of experience</strong> building React/Next.js products, from a founding-engineer role at a live e-commerce startup to data-dense dashboards for multi-tenant sportsbook platforms. Built RBAC and PostgreSQL Row-Level Security systems, owned the data layer of a Next.js back office, and built an on-demand image generation service replacing pre-rendered S3 storage. Led a Tailwind v2→v3 migration removing ~9,800 lines of legacy CSS.
             </motion.p>
 
             {/* Action Buttons Row with Spring Physics */}
