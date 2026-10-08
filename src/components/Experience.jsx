@@ -2,32 +2,33 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    date: "Nov 2024 — Present",
-    role: "Founding Frontend Engineer",
+    date: "Nov 2024 – Present",
+    role: "Founding Engineer",
     org: "QuiqOrder (Startup)",
     bullets: [
       "One of the founding engineers on an e-commerce and revenue-recovery platform for merchants. Live since March 2026 with 77 merchant accounts, 19 published storefronts, and ₦2.2M+ in merchant sales.",
-      "Built the merchant dashboard (products, orders, sales metrics, subscription billing) and internal admin portal using Next.js App Router, TypeScript, Tailwind CSS, Redux Toolkit, TanStack Query, React Hook Form, and Zod.",
-      "Integrated Shipbubble logistics for automated delivery and order fulfilment. Contributed to the product rebuilds that led up to the March 2026 launch.",
+      "Built the merchant dashboard (products, orders, sales metrics, subscription billing) and the internal admin portal using Next.js App Router, TypeScript, Tailwind CSS, Redux Toolkit, TanStack Query, React Hook Form, and Zod.",
+      "Integrated Shipbubble logistics for delivery and order fulfilment. Contributed to the product rebuilds that led up to the March 2026 launch.",
     ],
   },
   {
-    date: "Sep 2025 — Sep 2026",
-    role: "Frontend Developer",
+    date: "Sep 2025 – Sep 2026",
+    role: "Frontend Developer (Contract)",
     org: "Sportsbook Back Office (SBE)",
     bullets: [
-      "Owned the data layer of a Next.js B2B back office: Axios data fetching, shadcn/ui and TanStack Table, and Zustand state across high-density dashboards (player management, banking, bonus, risk, reporting) serving 6 betting businesses.",
+      "Owned the data layer of a Next.js back office: Axios data fetching, shadcn/ui and TanStack Table, and Zustand state across high-density dashboards (player management, banking, bonus, risk, reporting).",
       "Built the Aviata Partner Back Office; optimized API calls and added API-key management to the main back office. Built features on the legacy Nuxt/Vue back office and the Aviatax mobile web app.",
-      "Led a Tailwind v2→v3 migration (~9,800 lines of legacy CSS removed). Resolved CORS and API integration issues, hardened impersonation-token handling, and fixed a Docker Compose healthcheck mismatch in production.",
+      "Led a Tailwind v2 to v3 migration (~9,800 lines of legacy CSS removed). Resolved CORS and API integration issues, hardened impersonation-token handling, and fixed a Docker Compose healthcheck mismatch in production.",
     ],
   },
   {
-    date: "Feb — Mar 2025",
-    role: "Backend Developer (Contract)",
+    date: "Feb – Mar 2025",
+    role: "Backend Developer",
     org: "Matchkicks",
     bullets: [
       "Built a serverless image-generation service (Node.js, Sharp, AWS Lambda, Redis) that composites design layers into product mockups on demand as WebP.",
       "Replaced pre-rendered images stored in S3 with on-the-fly generation and Redis caching, cutting latency and S3 storage costs.",
+      "Built Shopify product-creation endpoints and legacy product-migration tooling.",
     ],
   },
 ];
