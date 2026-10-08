@@ -162,7 +162,7 @@ const Hero = () => {
               transition={{ duration: 0.35, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-muted max-w-2xl leading-relaxed mb-8"
             >
-              Frontend Engineer with <strong className="text-text font-medium">3 years of experience</strong> building React/Next.js products, from a founding-engineer role at a live e-commerce startup to data-dense dashboards for multi-tenant sportsbook platforms. Built RBAC and PostgreSQL Row-Level Security systems, owned the data layer of a Next.js back office, and built an on-demand image generation service replacing pre-rendered S3 storage. Led a Tailwind v2→v3 migration removing ~9,800 lines of legacy CSS.
+              Fullstack Engineer with <strong className="text-text font-medium">3 years of experience</strong> building React/Next.js products, from a founding-engineer role at a live e-commerce startup to data-dense dashboards for multi-tenant sportsbook platforms. Built RBAC and PostgreSQL Row-Level Security systems, owned the data layer of a Next.js back office, and built an on-demand image generation service replacing pre-rendered S3 storage. Led a Tailwind v2→v3 migration removing ~9,800 lines of legacy CSS.
             </motion.p>
 
             {/* Action Buttons Row with Spring Physics */}
