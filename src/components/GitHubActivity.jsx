@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   GitCommit,
   GitBranch,
-  Flame,
-  Trophy,
   CalendarCheck,
   ArrowSquareOut,
   ClockAfternoon,
@@ -49,7 +47,7 @@ const GitHubActivity = () => {
             setIsLiveFetched(true);
           }
         }
-      } catch (err) {
+      } catch {
         // Fallback already pre-loaded into state
       }
     }
@@ -86,7 +84,7 @@ const GitHubActivity = () => {
           <GitBranch size={13} className="text-accent" />
           <span>05 — github_activity.log</span>
         </div>
-        <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted">
+        <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
           <span className={`w-1.5 h-1.5 rounded-full ${isLiveFetched ? "bg-live shadow-[0_0_6px_#4ADE80] animate-pulse" : "bg-accent"}`} />
           <span>{isLiveFetched ? "live telemetry active" : "cached snapshot [363+ commits]"}</span>
         </div>
@@ -94,11 +92,11 @@ const GitHubActivity = () => {
 
       {/* Terminal Command & Telemetry Ribbon */}
       <div className="px-4 py-3 sm:px-6 sm:py-3.5 border-b border-border bg-panel-2/30 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted-2">
-        <div className="flex items-center gap-2 text-text text-[11px] truncate">
+        <div className="flex items-center gap-2 text-text text-xs truncate">
           <span className="text-accent">$</span>
           <span>git log --author="{GITHUB_USERNAME}" --since="1.year.ago" --graph</span>
         </div>
-        <div className="flex items-center gap-4 text-[10px] sm:text-[11px]">
+        <div className="flex items-center gap-4 text-xs">
           <span className="text-muted flex items-center gap-1">
             <ClockAfternoon size={12} className="text-accent" />
             <span>Branch: main</span>
@@ -117,44 +115,14 @@ const GitHubActivity = () => {
       </div>
 
       {/* Metric Counters Banner */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-border border-b border-border font-mono text-left bg-[#0C100D]/60">
-        <div className="p-3.5 sm:p-4 space-y-1">
-          <div className="text-[10px] text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-            <CalendarCheck size={12} className="text-live" />
+      <div className="border-b border-border font-mono text-left bg-[#0C100D]/60 p-3.5 sm:p-4">
+        <div className="space-y-1">
+          <div className="text-xs text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
+            <CalendarCheck size={14} className="text-live" />
             <span>Yearly Volume</span>
           </div>
           <div className="text-base sm:text-lg font-semibold text-text">
             {metrics.total} <span className="text-xs font-normal text-muted">commits</span>
-          </div>
-        </div>
-
-        <div className="p-3.5 sm:p-4 space-y-1">
-          <div className="text-[10px] text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-            <Flame size={12} className="text-accent" />
-            <span>Current Streak</span>
-          </div>
-          <div className="text-base sm:text-lg font-semibold text-text">
-            {metrics.currentStreak} <span className="text-xs font-normal text-muted">days</span>
-          </div>
-        </div>
-
-        <div className="p-3.5 sm:p-4 space-y-1">
-          <div className="text-[10px] text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-            <Trophy size={12} className="text-[#38BDF8]" />
-            <span>Longest Streak</span>
-          </div>
-          <div className="text-base sm:text-lg font-semibold text-text">
-            {metrics.longestStreak} <span className="text-xs font-normal text-muted">days</span>
-          </div>
-        </div>
-
-        <div className="p-3.5 sm:p-4 space-y-1">
-          <div className="text-[10px] text-muted-2 uppercase tracking-wider flex items-center gap-1.5">
-            <GitCommit size={12} className="text-accent" />
-            <span>Peak Velocity</span>
-          </div>
-          <div className="text-base sm:text-lg font-semibold text-text">
-            {metrics.peakDayCount} <span className="text-xs font-normal text-muted">in 1 day</span>
           </div>
         </div>
       </div>
@@ -162,7 +130,7 @@ const GitHubActivity = () => {
       {/* Heatmap Container with Horizontal Scroll for Mobile */}
       <div className="p-4 sm:p-6 lg:p-7 space-y-4">
         {/* Dynamic Tooltip Bar */}
-        <div className="h-6 font-mono text-[11px] flex items-center justify-between text-left text-muted">
+        <div className="h-6 font-mono text-xs flex items-center justify-between text-left text-muted">
           <AnimatePresence mode="wait">
             {hoveredDay ? (
               <motion.div
@@ -180,13 +148,13 @@ const GitHubActivity = () => {
                 </span>
               </motion.div>
             ) : (
-              <span className="text-muted-2 text-[10.5px]">
+              <span className="text-muted-2 text-xs">
                 Hover over squares to inspect daily commit density
               </span>
             )}
           </AnimatePresence>
 
-          <span className="hidden sm:inline font-mono text-[10.5px] text-muted-2">
+          <span className="hidden sm:inline font-mono text-xs text-muted-2">
             52 weeks telemetry window
           </span>
         </div>
@@ -195,7 +163,7 @@ const GitHubActivity = () => {
         <div className="overflow-x-auto pb-2 -mx-2 px-2 terminal-scrollbar-x">
           <div className="inline-flex flex-col min-w-[700px] select-none">
             {/* Month Labels Axis */}
-            <div className="flex text-[9.5px] font-mono text-muted-2 mb-1 pl-6">
+            <div className="flex text-xs font-mono text-muted-2 mb-1 pl-6">
               {weeks.map((_, weekIdx) => {
                 const label = monthLabels.find((m) => m.weekIndex === weekIdx);
                 return (
@@ -209,7 +177,7 @@ const GitHubActivity = () => {
             {/* Matrix with Day Labels */}
             <div className="flex">
               {/* Weekday labels column */}
-              <div className="flex flex-col justify-between text-[9px] font-mono text-muted-2 pr-2 h-[98px]">
+              <div className="flex flex-col justify-between text-xs font-mono text-muted-2 pr-2 h-[98px]">
                 {weekdayLabels.map((day, i) => (
                   <span key={i} className="h-[12px] leading-[12px]">
                     {day}
@@ -253,7 +221,7 @@ const GitHubActivity = () => {
         </div>
 
         {/* Heatmap Legend & Footer Info */}
-        <div className="pt-3 border-t border-border flex flex-wrap items-center justify-between gap-3 font-mono text-[10.5px] text-muted-2">
+        <div className="pt-3 border-t border-border flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted-2">
           <div className="flex items-center gap-2">
             <span>Activity Legend:</span>
             <div className="flex items-center gap-1.5">
