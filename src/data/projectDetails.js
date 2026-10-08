@@ -3,17 +3,55 @@ import QuiqOrderImg from "../assets/QuiqOrder Homepage.png";
 import JirellaImg from "../assets/jirella-farm.png";
 import MatchkicksImg from "../assets/matchkicks.png";
 
+// TODO(user): add dashboard screenshot (blur customer data) at public/projects/quiqorder-dashboard.png
+
 export const projectsData = [
+  {
+    id: "quiqorder",
+    title: "QuiqOrder",
+    category: "SAAS & E-COMMERCE",
+    status: "live",
+    statusLabel: "Live · Founding engineering team · Code private",
+    summary:
+      "E-commerce and revenue-recovery platform for merchants, live since March 2026 with 77 merchant accounts, 19 published storefronts, and ₦2.2M+ in merchant sales. I built the merchant dashboard, the internal admin portal, and the Shipbubble delivery integration.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "TanStack Query", "Zod", "Shipbubble"],
+    image: QuiqOrderImg,
+    liveUrl: "https://www.tryquiqorder.com",
+    githubUrl: null,
+    caseStudy: {
+      tag: "SAAS & LOGISTICS",
+      theProblem:
+        "Micro-merchants and restaurants in emerging markets rely heavily on WhatsApp for order taking, but face overwhelming manual order collation, missed customer chats, inaccurate inventory tracking, and disconnected last-mile delivery fulfillment.",
+      whatIBuilt:
+        "Built the merchant dashboard, products and order management, sales telemetry, subscription billing, and internal admin portal. Integrated automated delivery logistics via Shipbubble for rapid on-demand order dispatch.",
+      theHardPart: {
+        incident: "Real-Time State Synchronization Between WhatsApp Bots & Dispatch",
+        symptoms:
+          "Customers placing orders via WhatsApp while simultaneously modifying carts on the web storefront created race conditions where delivery dispatches were requested for outdated item quantities.",
+        rootCause:
+          "Asynchronous webhook dispatch triggers firing before cart state reconciliation completed.",
+        solution:
+          "Decoupled order submission into atomic transactions with optimistic UI locking and live listener debouncing, ensuring order modifications immediately sync before dispatch triggers.",
+      },
+      theDesign:
+        "Lightweight, mobile-first design system tailored for fast load times on constrained 3G/4G cellular networks. Simplified 2-tap checkout flow minimizing form fields, high-contrast action buttons, and instant order receipt sharing.",
+      whatsNotInIt:
+        "No complicated merchant ERP accounting (focused squarely on rapid order intake, catalog display, and delivery dispatch to keep the merchant learning curve under 5 minutes).",
+      currentStatus:
+        "Live in production. Powering automated ordering and instant delivery dispatch for emerging food and retail merchants.",
+    },
+  },
   {
     id: "jirella-farm",
     title: "Jirella Farm Management System",
-    category: "AGRITECH & ERP",
+    category: "AGRICULTURE & ERP",
     status: "live",
+    statusLabel: "Live demo · Built solo for a client · Code private",
     summary:
-      "Modular agricultural ERP covering 8 operational verticals with a 10-role PostgreSQL RLS access model, high-density AG Grid dashboards, and Docker multi-stage builds.",
+      "Modular farm ERP built solo for a client: 8 modules covering poultry, catfish, feed mill, BSF, inventory, sales, and accounting, used daily by 5+ staff. Access is controlled by 10 staff roles enforced with PostgreSQL Row-Level Security.",
     stack: ["Next.js", "Supabase", "PostgreSQL", "AG Grid", "Docker", "Tailwind CSS"],
     image: JirellaImg,
-    liveUrl: "https://farms-accounting-software.vercel.app/",
+    liveUrl: "https://farms-accounting-software.vercel.app",
     githubUrl: null,
     caseStudy: {
       tag: "FLAGSHIP ARCHITECTURE",
@@ -35,87 +73,20 @@ export const projectsData = [
       whatsNotInIt:
         "No complex multi-currency conversion (hardcoded to NGN to match farm local commerce), no real-time IoT sensor telemetry (mortality and feed inputs are manually logged by section supervisors at shift changes to prevent false positives from unreliable farm hardware), and no native mobile app (responsive PWA built for mobile browser access across low-end Android handsets).",
       currentStatus:
-        "Live in production. Successfully managing 8 farm operational modules, tracking thousands of livestock and daily feed batches with zero recorded schema inconsistencies. Next milestone: automated offline-first PWA sync via IndexedDB for field workers in connectivity dead zones.",
+        "Live in production. Successfully managing 8 farm operational modules, tracking thousands of livestock and daily feed batches with zero recorded schema inconsistencies.",
     },
   },
   {
-    id: "quiqorder",
-    title: "QuiqOrder (Startup)", 
-    category: "SAAS & E-COMMERCE",
-    status: "live",
-    summary:
-      "E-commerce and merchant revenue-recovery platform live with 77 merchant accounts, 19 published storefronts, and ₦2.2M+ in merchant sales, featuring automated Shipbubble delivery logistics.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "TanStack Query", "Shipbubble", "Zod"],
-    image: QuiqOrderImg,
-    liveUrl: "https://www.tryquiqorder.com/",
-    githubUrl: null,
-    caseStudy: {
-      tag: "SAAS & LOGISTICS",
-      theProblem:
-        "Micro-merchants and restaurants in emerging markets rely heavily on WhatsApp for order taking, but face overwhelming manual order collation, missed customer chats, inaccurate inventory tracking, and disconnected last-mile delivery fulfillment.",
-      whatIBuilt:
-        "Built the merchant storefront and dispatch dashboard using React.js, Firebase real-time database, and Tailwind CSS. Integrated automated WhatsApp catalog order messaging, live order status tracking, and seamless logistics dispatch via the Shipbubble delivery API for on-demand rider booking.",
-      theHardPart: {
-        incident: "Real-Time State Synchronization Between WhatsApp Bots & Dispatch",
-        symptoms:
-          "Customers placing orders via WhatsApp while simultaneously modifying carts on the web storefront created race conditions where delivery dispatches were requested for outdated item quantities.",
-        rootCause:
-          "Asynchronous webhook dispatch triggers firing before cart state reconciliation completed in Firestore.",
-        solution:
-          "Decoupled order submission into atomic Firebase transaction events and introduced an optimistic UI locking state with live listener debouncing, ensuring order modifications immediately sync across all channels before dispatch triggers.",
-      },
-      theDesign:
-        "Lightweight, mobile-first design system tailored for fast load times on constrained 3G/4G cellular networks. Simplified 2-tap checkout flow minimizing form fields, high-contrast action buttons, and instant order receipt sharing.",
-      whatsNotInIt:
-        "No complicated merchant ERP accounting (focused squarely on rapid order intake, catalog display, and delivery dispatch to keep the merchant learning curve under 5 minutes).",
-      currentStatus:
-        "Live in production. Powering automated ordering and instant delivery dispatch for emerging food and retail merchants.",
-    },
-  },
-  {
-    id: "padihold",
-    title: "PadiHold — Escrow Platform",
-    category: "FINTECH & ESCROW",
-    status: "in-progress",
-    summary:
-      "Nigeria's trust-centric escrow platform engineered to eliminate online commerce fraud. Features an AI dispute resolution assistant, multi-stage deal lifecycle state tracking, and simulated logistics verification.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Radix UI", "OpenAI", "Solidity"],
-    image: PadiHoldImg,
-    liveUrl: "https://padi-hold.vercel.app/",
-    githubUrl: null,
-    caseStudy: {
-      tag: "FINTECH & ESCROW",
-      theProblem:
-        "Peer-to-peer e-commerce and freelance digital transactions in Nigeria suffer from rampant fraud, broken trust, and payment chargeback vulnerabilities. Buyers fear paying upfront for unverified goods or services, while sellers fear non-payment after delivery.",
-      whatIBuilt:
-        "An automated, trust-centric digital escrow platform engineered on Next.js, TypeScript, Zustand, and Tailwind CSS. Designed a strict finite-state machine (FSM) managing multi-stage deal lifecycles (Initiation ➔ Escrow Funded ➔ Milestone Verified ➔ Disbursed / Disputed), seamless payment checkout and settlement via Paystack webhooks, and an automated dispute mediation workflow.",
-      theHardPart: {
-        incident: "Finite-State Machine (FSM) Deal Lifecycle Validation & Webhook Race Conditions",
-        symptoms:
-          "Simultaneous buyer/seller actions (e.g. buyer confirming delivery while seller requests a deadline extension, combined with delayed payment gateway webhook delivery) could lead to invalid or corrupt transaction state transitions.",
-        rootCause:
-          "Lack of deterministic state locking and non-atomic webhook status updates.",
-        solution:
-          "Implemented a deterministic finite-state transition table with strict guard conditions. Any state mutation requires idempotency keys, atomic database transactions, and explicit state validation rules ensuring deals can never transition backwards or skip critical escrow milestones.",
-      },
-      theDesign:
-        "Visual trust and absolute clarity. Transactions are presented as an interactive linear milestone timeline where both parties see exactly who owns the next action, the current fund custody status, and remaining inspection time. Clean typography with subtle emerald green security badges to maximize user confidence.",
-      whatsNotInIt:
-        "No uncollateralized lending or credit advances (purely an upfront custodial escrow model), and no automatic unassisted dispute payouts (disputes trigger a structured mediation timeline with manual operator review to prevent social engineering exploits).",
-      currentStatus:
-        "In active progress (MVP stage). Core escrow state machine, Paystack checkout integration, and milestone timeline UI completed. Next milestone: simulated logistics tracking API integration and automated carrier delivery webhooks.",
-    },
-  },
-  {
-    id: "mockup-tool",
-    title: "Mockup Integration Tool",
+    id: "matchkicks",
+    title: "Matchkicks Image Generation Service",
     category: "BACKEND AUTOMATION",
     status: "live",
+    statusLabel: "Contract · Feb – Mar 2025 · Live · Code private",
     summary:
-      "Serverless image-generation microservice that composites design layers into product mockups on demand as WebP, replacing pre-rendered S3 storage with on-the-fly generation and Redis caching.",
+      "Serverless service that composites design layers into product mockups on demand as WebP, replacing pre-rendered images stored in S3. On-the-fly generation with Redis caching cut latency and storage costs. Also built Shopify product-creation and legacy-migration endpoints.",
     stack: ["Node.js", "Sharp", "AWS Lambda", "Redis", "AWS S3", "Express.js"],
     image: MatchkicksImg,
-    liveUrl: "https://matchkicks.com/",
+    liveUrl: "https://matchkicks.com",
     githubUrl: null,
     caseStudy: {
       tag: "AUTOMATION & SYSTEMS",
@@ -140,21 +111,41 @@ export const projectsData = [
         "Live in production powering automated mockup generation for commercial apparel customization platforms.",
     },
   },
-];
-
-export const archivedExperiments = [
   {
-    title: "Shortly",
-    description: "URL Shortener & QR Generator",
-    stack: ["React.js", "Tailwind CSS", "Firebase Auth", "Firestore", "Framer Motion"],
-    liveUrl: "https://shortly-ivory-theta.vercel.app/",
-    githubUrl: "https://github.com/timi-emmanuel/shortly",
-  },
-  {
-    title: "Nationary",
-    description: "Country Explorer & Filtering",
-    stack: ["React.js", "Zustand", "Tailwind CSS", "REST API", "Framer Motion"],
-    liveUrl: "https://rest-countries-app-hazel.vercel.app/",
-    githubUrl: "https://github.com/timi-emmanuel/rest-countries-app",
+    id: "padihold",
+    title: "PadiHold",
+    category: "FINTECH & ESCROW",
+    status: "in-progress",
+    statusLabel: "In development",
+    summary:
+      "Escrow platform for online commerce in Nigeria, currently in development. Planned features include staged transaction states, an AI-assisted dispute flow, and Paystack settlement.",
+    // TODO(verify): Add OpenAI, Paystack, or Zod only if the user confirms they are in the codebase
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Radix UI"],
+    image: PadiHoldImg,
+    // TODO(verify): Show a "live demo" link only if a public URL exists. Otherwise show no link.
+    liveUrl: null,
+    githubUrl: null,
+    caseStudy: {
+      tag: "FINTECH & ESCROW",
+      theProblem:
+        "Peer-to-peer e-commerce and freelance digital transactions in Nigeria suffer from rampant fraud, broken trust, and payment chargeback vulnerabilities. Buyers fear paying upfront for unverified goods or services, while sellers fear non-payment after delivery.",
+      whatIBuilt:
+        "An automated, trust-centric digital escrow platform engineered on Next.js, TypeScript, Zustand, and Tailwind CSS. Designed a strict finite-state machine (FSM) managing multi-stage deal lifecycles (Initiation ➔ Escrow Funded ➔ Milestone Verified ➔ Disbursed / Disputed), seamless payment checkout and settlement via Paystack webhooks, and an automated dispute mediation workflow.",
+      theHardPart: {
+        incident: "Finite-State Machine (FSM) Deal Lifecycle Validation & Webhook Race Conditions",
+        symptoms:
+          "Simultaneous buyer/seller actions (e.g. buyer confirming delivery while seller requests a deadline extension, combined with delayed payment gateway webhook delivery) could lead to invalid or corrupt transaction state transitions.",
+        rootCause:
+          "Lack of deterministic state locking and non-atomic webhook status updates.",
+        solution:
+          "Implemented a deterministic finite-state transition table with strict guard conditions. Any state mutation requires idempotency keys, atomic database transactions, and explicit state validation rules ensuring deals can never transition backwards or skip critical escrow milestones.",
+      },
+      theDesign:
+        "Visual trust and absolute clarity. Transactions are presented as an interactive linear milestone timeline where both parties see exactly who owns the next action, the current fund custody status, and remaining inspection time. Clean typography with subtle emerald green security badges to maximize user confidence.",
+      whatsNotInIt:
+        "No uncollateralized lending or credit advances (purely an upfront custodial escrow model), and no automatic unassisted dispute payouts (disputes trigger a structured mediation timeline with manual operator review to prevent social engineering exploits).",
+      currentStatus:
+        "In active progress (MVP stage). Core escrow state machine, Paystack checkout integration, and milestone timeline UI completed. Next milestone: simulated logistics tracking API integration and automated carrier delivery webhooks.",
+    },
   },
 ];
