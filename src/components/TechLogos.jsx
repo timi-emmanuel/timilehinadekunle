@@ -110,11 +110,11 @@ const TechLogos = () => {
   return (
     <div className="space-y-3 text-left">
       <div className="flex items-center justify-between font-mono text-xs">
-        <span className="text-muted-2 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+        <span className="text-muted-2 text-xs uppercase tracking-wider flex items-center gap-1.5">
           <span className="text-accent">$</span>
           <span>stack --matrix --core</span>
         </span>
-        <span className="text-accent text-[10px] hidden sm:inline">hover for role</span>
+        <span className="text-accent text-xs hidden sm:inline">hover for role</span>
       </div>
 
       {/* Tech Grid with Staggered Entrance & Micro-Spring Physics */}
@@ -148,7 +148,7 @@ const TechLogos = () => {
       </motion.div>
 
       {/* Dynamic Hover Status Readout Bar with Cursor */}
-      <div className="h-7 px-3 border border-border/80 bg-panel-2/40 flex items-center justify-between font-mono text-[11px]">
+      <div className="h-7 px-3 border border-border/80 bg-panel-2/40 flex items-center justify-between font-mono text-xs">
         <AnimatePresence mode="wait">
           {hoveredTech ? (
             <motion.div
@@ -163,7 +163,7 @@ const TechLogos = () => {
                 <span>{hoveredTech.name}</span>
                 <span className="w-1.5 h-3 bg-accent animate-pulse inline-block" />
               </span>
-              <span className="text-muted text-[10.5px] truncate ml-2">
+              <span className="text-muted text-xs truncate ml-2">
                 {hoveredTech.category}
               </span>
             </motion.div>
@@ -172,9 +172,9 @@ const TechLogos = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-muted-2 text-[10px] truncate"
+              className="text-muted-2 text-xs truncate"
             >
-              &gt; hover or tap any technology icon above
+              Tools I use day to day
             </motion.span>
           )}
         </AnimatePresence>

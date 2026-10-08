@@ -68,7 +68,7 @@ const About = () => {
       {/* Pane Header */}
       <div className="pane-label">
         <span>01 — about.md</span>
-        <span className="status-live font-mono text-[10px]">compiled</span>
+        <span className="status-live font-mono text-xs">compiled</span>
       </div>
 
       {/* 2-Column Grid */}
@@ -77,15 +77,15 @@ const About = () => {
         {/* Left Column: Story & System Mindset */}
         <div className="lg:col-span-6 p-4 sm:p-8 space-y-4">
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            I'm a <strong className="text-text font-medium">full-stack engineer</strong> in Lagos, Nigeria, with a <strong className="text-text font-medium">frontend focus</strong>. I came into software from Mechanical Engineering, and that background still shapes how I work; I look for the system behind a problem before I build the interface for it.
+            I'm a full-stack engineer in Lagos, Nigeria, with 3 years of experience building React and Next.js products. I came into software from Mechanical Engineering, and that background still shapes how I work: I look for the system behind a problem before I build the interface for it.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            For the past 3 years I've built data-heavy products for sportsbook and SaaS teams, including back offices and affiliate platforms used by <strong className="text-text font-medium">6 clients</strong>. I'm equally at home in modern <strong className="text-text font-medium">Next.js</strong> codebases and legacy <strong className="text-text font-medium">Nuxt/Vue</strong> ones, turning messy business requirements into interfaces that stay fast and maintainable, with RBAC, auth, and reusable component systems underneath.
+            Most of my work is data-heavy: back offices and dashboards for sportsbook and SaaS platforms, and a live e-commerce platform where I'm one of the founding engineers. I'm comfortable in modern Next.js codebases and legacy Nuxt/Vue ones, turning messy requirements into interfaces that stay fast and maintainable.
           </p>
 
           <p className="text-sm sm:text-[14.5px] text-muted leading-relaxed">
-            I also go below the UI. On Jirella, a farm management ERP, I designed the <strong className="text-text font-medium">PostgreSQL schema</strong> myself, including a 10-role access model enforced with <strong className="text-text font-medium">Row-Level Security</strong> and idempotent migrations, then built the product on top of it.
+            I own the layers below the UI too. On Jirella, a farm ERP I built solo, I designed the PostgreSQL schema, a 10-role access model enforced with Row-Level Security, and idempotent migrations, then built the product on top. I've also built a serverless image-generation service on AWS Lambda and a Playwright-based crawler API.
           </p>
 
           {/* Academic Degree Badge with Subtle Micro-Interaction */}
@@ -114,7 +114,7 @@ const About = () => {
             const Icon = category.icon;
             return (
               <div key={idx} className="p-4 sm:p-6">
-                <div className="flex items-center gap-2 font-mono text-[11px] font-medium text-muted-2 uppercase tracking-wider mb-3">
+                <div className="flex items-center gap-2 font-mono text-xs font-medium text-muted-2 uppercase tracking-wider mb-3">
                   <Icon size={14} weight="bold" className="text-accent" />
                   <span>{category.key}</span>
                 </div>
