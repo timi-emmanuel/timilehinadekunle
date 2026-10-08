@@ -124,7 +124,7 @@ const Footer = () => {
 
         {/* Footer Meta Row */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs text-muted-2">
-          <span>© 2026 timilehin.dev — built with intent, not templates</span>
+          <span>© 2026 timilehin.dev</span>
           <span className="text-muted">Lagos, Nigeria • UTC+1</span>
         </div>
       </div>

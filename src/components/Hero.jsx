@@ -7,7 +7,7 @@ import HeroImgOptimized from "../assets/hero-image-optimized.jpg";
 
 const stats = [
   { num: "77+", label: "Merchants", note: "QuiqOrder (₦2.2M+ Sales)" },
-  { num: "6", label: "Betting Clients", note: "Sportsbook Back Office" },
+  { num: "6", label: "Betting Companies", note: "Sportsbook Back Office" },
   { num: "10", label: "Staff Roles (RBAC)", note: "Jirella Farm ERP" },
 ];
 
