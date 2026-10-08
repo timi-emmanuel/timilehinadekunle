@@ -1,7 +1,7 @@
 /**
  * Technical Thinkpieces & Architecture Essays
  * Authored by Timilehin Adekunle
- * Systems & Frontend Engineering
+ * Full-Stack Engineering
  */
 
 export const thinkpieces = [

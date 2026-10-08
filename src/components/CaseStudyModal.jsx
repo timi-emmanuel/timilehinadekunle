@@ -113,10 +113,10 @@ const CaseStudyModal = ({ project, onClose }) => {
           <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-border bg-panel-2/40 space-y-2">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] text-accent uppercase tracking-wider px-1.5 py-0.5 border border-accent/40 bg-[#0A0D0B]">
+                <span className="font-mono text-xs text-accent uppercase tracking-wider px-1.5 py-0.5 border border-accent/40 bg-[#0A0D0B]">
                   {cs.tag || "DEEP DIVE"}
                 </span>
-                <span className="font-mono text-[10px] text-muted-2 uppercase tracking-wider">
+                <span className="font-mono text-xs text-muted-2 uppercase tracking-wider">
                   {project.category}
                 </span>
               </div>
@@ -145,7 +145,7 @@ const CaseStudyModal = ({ project, onClose }) => {
                   </a>
                 )}
                 {project.isConfidential && (
-                  <span className="text-muted-2 text-[10.5px]">confidential enterprise</span>
+                  <span className="text-muted-2 text-xs">confidential enterprise</span>
                 )}
               </div>
             </div>

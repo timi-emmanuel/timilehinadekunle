@@ -139,8 +139,8 @@ const Titlebar = () => {
           ) : (
             <List size={15} weight="bold" className="text-text" />
           )}
-          <span className="text-[11px] text-muted-2">//</span>
-          <span className="text-[11px]">{isMenuOpen ? "close" : "menu"}</span>
+          <span className="text-xs text-muted-2">//</span>
+          <span className="text-xs">{isMenuOpen ? "close" : "menu"}</span>
         </button>
 
       </div>
@@ -157,12 +157,12 @@ const Titlebar = () => {
             className="md:hidden border-t border-border bg-[#0A0D0B]/98 backdrop-blur-xl overflow-hidden shadow-2xl"
           >
             <div className="max-w-[920px] mx-auto px-4 py-3 space-y-1 font-mono text-xs">
-              <div className="text-[10px] text-muted-2 uppercase tracking-wider pb-1.5 px-2.5 flex items-center justify-between border-b border-border/50 mb-1">
+              <div className="text-xs text-muted-2 uppercase tracking-wider pb-1.5 px-2.5 flex items-center justify-between border-b border-border/50 mb-1">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />
                   <span>terminal navigation</span>
                 </span>
-                <span className="text-[9.5px] text-muted-2">esc to close</span>
+                <span className="text-xs text-muted-2">esc to close</span>
               </div>
 
               {navItems.map((item, idx) => {
@@ -182,10 +182,10 @@ const Titlebar = () => {
                       <span className={isActive ? "text-accent" : "text-muted-2"}>
                         {isActive ? ">" : "$"}
                       </span>
-                      <span className="text-[11.5px]">cd ~/{item.path}</span>
+                      <span className="text-xs">cd ~/{item.path}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] text-muted-2 font-normal">
+                      <span className="text-xs text-muted-2 font-normal">
                         [{String(idx + 1).padStart(2, "0")}]
                       </span>
                       {isActive && (

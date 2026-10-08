@@ -6,7 +6,7 @@ const bootSequence = [
   { text: "Initializing kernel modules (React 19, Vite, Tailwind CSS)...", status: "ok", delay: 280 },
   { text: "Connecting services: SBE Back Office, QuiqOrder, Jirella ERP...", status: "ok", delay: 460 },
   { text: "Verifying multi-tenant schemas, RLS policies, and RBAC tables...", status: "ok", delay: 640 },
-  { text: "Operator verified: ADEKUNLE, OLUWATIMILEHIN E. [Lagos, UTC+1]", status: "ok", delay: 820 },
+  { text: "Operator verified: TIMILEHIN ADEKUNLE [Lagos, UTC+1]", status: "ok", delay: 820 },
   { text: "Systems ready. All services operational.", status: "ready", delay: 1000 },
 ];
 

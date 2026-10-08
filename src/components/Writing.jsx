@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Article,
@@ -79,7 +79,7 @@ const Writing = () => {
           <Article size={13} className="text-accent" />
           <span>06 — thinkpieces.txt</span>
         </div>
-        <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted">
+        <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
           <span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />
           <span>{thinkpieces.length} technical essays published</span>
         </div>
@@ -87,11 +87,11 @@ const Writing = () => {
 
       {/* Terminal Command & Directory Telemetry Ribbon */}
       <div className="px-4 py-3 sm:px-6 sm:py-3.5 border-b border-border bg-panel-2/30 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted-2">
-        <div className="flex items-center gap-2 text-text text-[11px] truncate">
+        <div className="flex items-center gap-2 text-text text-xs truncate">
           <span className="text-accent">$</span>
           <span>ls -la ~/articles/ --sort=importance</span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] sm:text-[11px] text-muted">
+        <div className="flex items-center gap-3 text-xs text-muted">
           <span className="flex items-center gap-1">
             <Books size={12} className="text-accent" />
             <span>Systems Architecture & Frontend Depth</span>
@@ -113,9 +113,9 @@ const Writing = () => {
               <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                 <div className="flex items-center gap-2">
                   <span className="text-accent font-semibold">[{String(idx + 1).padStart(2, "0")}]</span>
-                  <span className="text-muted-2 font-mono text-[11px]">{article.filename}</span>
+                  <span className="text-muted-2 font-mono text-xs">{article.filename}</span>
                 </div>
-                <div className="flex items-center gap-3 text-muted text-[11px]">
+                <div className="flex items-center gap-3 text-muted text-xs">
                   <span className="flex items-center gap-1">
                     <Clock size={12} className="text-accent" />
                     <span>{article.readTime}</span>
@@ -146,7 +146,7 @@ const Writing = () => {
 
             {/* Bottom row: Topic tags & Read button */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-              <div className="flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
+              <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs">
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
@@ -198,7 +198,7 @@ const Writing = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="hidden sm:inline font-mono text-[10px] text-muted-2">
+                  <span className="hidden sm:inline font-mono text-xs text-muted-2">
                     [Esc] to close
                   </span>
                   <button
@@ -213,7 +213,7 @@ const Writing = () => {
               </div>
 
               {/* Reader Sub-bar: Telemetry */}
-              <div className="px-4 py-2 sm:px-6 sm:py-2.5 border-b border-border/80 bg-[#101411] flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted shrink-0">
+              <div className="px-4 py-2 sm:px-6 sm:py-2.5 border-b border-border/80 bg-[#101411] flex flex-wrap items-center justify-between gap-2 text-xs text-muted shrink-0">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1 text-accent font-medium">
                     <Clock size={12} />
@@ -224,7 +224,7 @@ const Writing = () => {
                   <span className="text-muted-2">•</span>
                   <span>{selectedArticle.date}</span>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-muted-2">
+                <div className="flex items-center gap-1 text-xs text-muted-2">
                   <span>Press</span>
                   <kbd className="px-1.5 py-0.5 rounded bg-[#161B17] border border-border text-muted font-mono">←</kbd>
                   <kbd className="px-1.5 py-0.5 rounded bg-[#161B17] border border-border text-muted font-mono">→</kbd>
@@ -236,7 +236,7 @@ const Writing = () => {
               <div className="p-4 sm:p-8 overflow-y-auto space-y-7 text-left terminal-scrollbar-x font-sans">
                 {/* Article Header */}
                 <div className="space-y-3 border-b border-border pb-6">
-                  <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  <div className="flex flex-wrap gap-1.5 font-mono text-xs">
                     {selectedArticle.tags.map((tag) => (
                       <span
                         key={tag}
@@ -280,8 +280,8 @@ const Writing = () => {
 
                     {/* ASCII Architecture Diagram (if present) */}
                     {section.diagram && (
-                      <div className="mt-4 rounded-xs border border-border bg-[#070A08] p-4 font-mono text-[11px] sm:text-xs text-[#86EFAC] overflow-x-auto terminal-scrollbar-x shadow-inner">
-                        <div className="text-[10px] text-muted-2 uppercase tracking-wider mb-2 font-mono flex items-center gap-1.5">
+                      <div className="mt-4 rounded-xs border border-border bg-[#070A08] p-4 font-mono text-xs text-[#86EFAC] overflow-x-auto terminal-scrollbar-x shadow-inner">
+                        <div className="text-xs text-muted-2 uppercase tracking-wider mb-2 font-mono flex items-center gap-1.5">
                           <Terminal size={11} className="text-accent" />
                           <span>ASCII Architecture Pipeline</span>
                         </div>
@@ -292,12 +292,12 @@ const Writing = () => {
                     {/* Code Snippet (if present) */}
                     {section.codeSnippet && (
                       <div className="mt-4 rounded-xs border border-border bg-[#070A08] overflow-hidden font-mono text-xs shadow-inner">
-                        <div className="flex items-center justify-between px-3.5 py-2 border-b border-border bg-[#0D120E] text-[11px] text-muted">
+                        <div className="flex items-center justify-between px-3.5 py-2 border-b border-border bg-[#0D120E] text-xs text-muted">
                           <span className="text-accent">{section.codeSnippet.caption}</span>
                           <button
                             type="button"
                             onClick={() => handleCopyCode(section.codeSnippet.code)}
-                            className="flex items-center gap-1 text-[10px] text-muted hover:text-text transition-colors py-0.5 px-2 rounded-xs border border-border/80 bg-[#121613]"
+                            className="flex items-center gap-1 text-xs text-muted hover:text-text transition-colors py-0.5 px-2 rounded-xs border border-border/80 bg-[#121613]"
                           >
                             {copiedSnippet ? (
                               <>
@@ -312,7 +312,7 @@ const Writing = () => {
                             )}
                           </button>
                         </div>
-                        <pre className="p-4 text-[11.5px] sm:text-xs leading-relaxed text-[#E5E8E3] overflow-x-auto terminal-scrollbar-x">
+                        <pre className="p-4 text-xs leading-relaxed text-[#E5E8E3] overflow-x-auto terminal-scrollbar-x">
                           <code>{section.codeSnippet.code}</code>
                         </pre>
                       </div>
@@ -348,7 +348,7 @@ const Writing = () => {
                     <div />
                   )}
 
-                  <span className="text-[11px] text-muted-2">
+                  <span className="text-xs text-muted-2">
                     [{currentIndex + 1} of {thinkpieces.length}]
                   </span>
 
@@ -368,7 +368,7 @@ const Writing = () => {
               </div>
 
               {/* Modal Footer Status Bar */}
-              <div className="px-4 py-2 border-t border-border bg-[#0C100D] flex items-center justify-between font-mono text-[10px] text-muted-2 select-none shrink-0">
+              <div className="px-4 py-2 border-t border-border bg-[#0C100D] flex items-center justify-between font-mono text-xs text-muted-2 select-none shrink-0">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-live" />
                   <span>READ_MODE: 100% COMPLETE</span>

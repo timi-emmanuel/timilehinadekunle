@@ -1,4 +1,4 @@
-# ⚡ Timilehin Adekunle — Terminal & Systems Engineering Portfolio
+# ⚡ Timilehin Adekunle — Full-Stack Engineer Portfolio
 
 > **High-density, deterministic frontend architecture meets first-principles systems modeling.**  
 > Live Telemetry: [timilehinadekunle.vercel.app](https://timilehinadekunle.vercel.app)
@@ -7,7 +7,7 @@
 $ sys.status --telemetry
 ========================================================================
 OPERATOR    : Timilehin Adekunle
-ROLE        : Frontend & Systems Engineer
+ROLE        : Full-Stack Engineer
 BACKGROUND  : B.Eng. Mechanical Engineering (First Class Honours · 4.65/5.00)
 CORE FOCUS  : React 19 / Next.js · TanStack Table · State Automata · PostgreSQL RLS
 PALETTE     : High-Contrast Terminal Dark (#0A0D0B / #F2B84B / #4ADE80)
