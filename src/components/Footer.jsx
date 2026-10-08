@@ -29,17 +29,17 @@ const Footer = () => {
       {/* Pane Header */}
       <div className="pane-label">
         <span>06 — contact.sh</span>
-        <span className="status-live font-mono text-[10px]">open to work</span>
+        <span className="status-live font-mono text-xs">open to work</span>
       </div>
 
       <div className="p-4 sm:p-8 lg:p-10 space-y-6 text-left">
         <div className="space-y-2">
           <div className="font-mono text-xs text-accent">$ initiate_conversation --hire</div>
           <h2 className="font-mono text-xl sm:text-2xl font-semibold text-text">
-            Need a reliable engineer who can own the frontend without getting lost in the backend?
+            Looking for a full-stack engineer who can ship the UI and own the API and database behind it?
           </h2>
           <p className="font-sans text-sm text-muted max-w-xl leading-relaxed">
-            I build performant, accessible web applications, design clean PostgreSQL database schemas, and integrate robust APIs. Open to Frontend and Full-Stack engineering roles or contract projects. Reach out directly.
+            I build performant, accessible web applications and I'm comfortable with REST APIs, PostgreSQL schemas, and Row-Level Security. Open to full-stack and frontend roles, and to contract work. Reach out directly.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ const Footer = () => {
 
         {/* Footer Meta Row */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs text-muted-2">
-          <span>© 2026 timilehin.dev</span>
+          <span>© 2026 Timilehin Adekunle</span>
           <span className="text-muted">Lagos, Nigeria • UTC+1</span>
         </div>
       </div>
