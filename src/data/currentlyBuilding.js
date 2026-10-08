@@ -2,63 +2,33 @@ export const radarMetadata = {
   lastUpdated: "October 2026",
   status: "ONLINE // TRANSMITTING",
   location: "Lagos, NG (UTC+1)",
-  cadence: "Updated bi-weekly with active engineering focus",
 };
+
+// TODO(verify): Keep PostgreSQL Row-Level Security Query Plan Auditing only if the user has real benchmark results to show. Otherwise remove it.
 
 export const radarItems = [
   {
     id: "deslop-engine",
-    category: "AI DEVTOOLING IN ACTIVE DEV",
-    statusText: "MVP IN FLIGHT",
+    category: "AI DEVTOOLING",
+    statusText: "ACTIVE DEV",
     statusType: "amber",
-    title: "Deslop — Anti-Slop AI Design System Engine",
+    title: "Deslop: Anti-Slop Design System Engine",
     organization: "Deslop // Solo Architecture",
     summary:
-      "Architecting a deterministic style ingestion pipeline (Inspect, Extract, CIELAB/Delta-E color clustering, and 8pt spatial quantization) that transforms live websites into production-grade design tokens, standardized design.md context, and Tailwind v4 themes to constrain AI coding tools from generating visual slop.",
-    stack: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Supabase", "CIELAB / Delta-E", "Framer Motion"],
+      "Design-system extraction tool. Crawls any live URL with Playwright, clusters colors with CIEDE2000, snaps spacing to an 8pt grid, and outputs design.md, a Tailwind v4 theme, and .cursorrules for AI coding tools.",
+    stack: ["Next.js 16", "Fastify", "Playwright", "Drizzle", "PostgreSQL", "Tailwind CSS v4"],
+    githubUrl: "https://github.com/timi-emmanuel/deslop",
   },
   {
     id: "padihold-escrow",
-    category: "FINTECH IN PROGRESS",
-    statusText: "ACTIVE DEV",
-    statusType: "amber", // cyan
-    title: "PadiHold — Escrow Multi-Stage State Engine & Settlement",
+    category: "FINTECH & ESCROW",
+    statusText: "IN DEVELOPMENT",
+    statusType: "amber",
+    title: "PadiHold",
     organization: "PadiHold // FinTech Platform",
     summary:
-      "Engineering a resilient finite-state machine (FSM) orchestrating peer-to-peer milestone releases, dispute arbitration lifecycles, and webhook-driven payment settlement (Paystack) for Nigerian digital commerce.",
-    stack: ["Next.js", "Zustand", "Paystack API", "Framer Motion", "Radix UI", "Zod"],
-  },
-  {
-    id: "systems-deepdive",
-    category: "SYSTEMS & BACKEND DEPTH",
-    statusText: "BENCHMARKING",
-    statusType: "amber", // amber
-    title: "PostgreSQL Row-Level Security (RLS) Query Plan Auditing",
-    organization: "Systems Research // Jirella ERP",
-    summary:
-      "Benchmarking query plan execution on complex multi-tenant RLS policies. Analyzing policy filter pushdown, index usage on composite tenant keys, and migration rollback idempotency.",
-    stack: ["PostgreSQL", "RLS", "Supabase", "Docker", "SQL Migrations"],
-  },
-  {
-    id: "frontend-architecture",
-    category: "FRONTEND ARCHITECTURE",
-    statusText: "EXPLORING",
-    statusType: "amber", // cyan
-    title: "Server-Side Hydration Boundaries & Client Isolation",
-    organization: "Architecture Spike",
-    summary:
-      "Refining zero-hydration-mismatch patterns for DOM-dependent third-party components (date-pickers, data visualizers) to guarantee seamless SSR-to-client handoffs in Next.js 14/15.",
-    stack: ["React 19", "Next.js", "Radix UI", "Tailwind CSS"],
-  },
-  {
-    id: "architecture-principles",
-    category: "ARCHITECTURE & METHODOLOGY",
-    statusText: "STUDYING",
-    statusType: "amber",
-    title: "Frontend Architecture & System Design Principles",
-    organization: "Continuous Learning // Engineering Craft",
-    summary:
-      "Deepening core software engineering principles applied to scalable frontends: DRY, SOLID design patterns (single responsibility, dependency inversion), clean component decoupling, and adapting 12-Factor App methodology (strict config separation, stateless processes, environment parity) to modern React and Next.js platforms.",
-    stack: ["SOLID Principles", "DRY & Clean Code", "12-Factor App", "Frontend Architecture", "Design Patterns"],
+      "Escrow platform for online commerce in Nigeria, currently in development. Planned features include staged transaction states, an AI-assisted dispute flow, and Paystack settlement.",
+    // TODO(verify): Add OpenAI, Paystack, or Zod only if confirmed in codebase
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Radix UI"],
   },
 ];
