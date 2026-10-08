@@ -13,8 +13,8 @@ export default {
         "panel-2": "#161B17",
         border: "#26302A",
         text: "#E5E8E3",
-        muted: "#7C8780",
-        "muted-2": "#4F5850",
+        muted: "#A3B0A7",
+        "muted-2": "#8FA095",
         accent: {
           DEFAULT: "#F2B84B",
           hover: "#FFC968",

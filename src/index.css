@@ -8,8 +8,8 @@
   --panel-2: #161B17;
   --border: #26302A;
   --text: #E5E8E3;
-  --muted: #96A39A;
-  --muted-2: #849287;
+  --muted: #A3B0A7;
+  --muted-2: #8FA095;
   --accent: #F2B84B;
   --accent-hover: #FFC968;
   --live: #4ADE80;
@@ -118,7 +118,7 @@ body {
 
   .pane-label {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.06em;
     color: var(--muted);
