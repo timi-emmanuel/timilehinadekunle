@@ -88,6 +88,16 @@ const About = () => {
             I own the layers below the UI too. On Jirella, a farm ERP I built solo, I designed the PostgreSQL schema, a 10-role access model enforced with Row-Level Security, and idempotent migrations, then built the product on top. I've also built a serverless image-generation service on AWS Lambda and a Playwright-based crawler API.
           </p>
 
+          {/* Core Mindset Terminal Callout */}
+          <div className="p-3.5 sm:p-4 border-l-2 border-accent border border-border/60 bg-panel-2/60 rounded-r font-mono text-xs sm:text-[13px] leading-relaxed">
+            <div className="text-accent text-xs font-medium uppercase tracking-wider mb-1 flex items-center gap-1.5">
+              <span>// core mindset</span>
+            </div>
+            <p className="text-text/90 italic">
+              "My super power is that I'm Turing complete. Give me enough time, I have good memory to master anything."
+            </p>
+          </div>
+
           {/* Academic Degree Badge with Subtle Micro-Interaction */}
           <motion.div
             whileHover={{ x: 3 }}
